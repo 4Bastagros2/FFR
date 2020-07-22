@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MatchRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +49,22 @@ class Match
      * @ORM\Column(type="json", nullable=true)
      */
     private $composition = [];
+
+    /**
+     * @ORM\ManyToOne(targetEntity=MatchType::class, inversedBy="matches")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $match_type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Team::class, mappedBy="play_matches")
+     */
+    private $teams;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,6 +139,46 @@ class Match
     public function setComposition(?array $composition): self
     {
         $this->composition = $composition;
+
+        return $this;
+    }
+
+    public function getMatchType(): ?MatchType
+    {
+        return $this->match_type;
+    }
+
+    public function setMatchType(?MatchType $match_type): self
+    {
+        $this->match_type = $match_type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams[] = $team;
+            $team->addPlayMatch($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->contains($team)) {
+            $this->teams->removeElement($team);
+            $team->removePlayMatch($this);
+        }
 
         return $this;
     }

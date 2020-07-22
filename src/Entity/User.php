@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -33,6 +35,21 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Team::class, inversedBy="users")
+     */
+    private $coaches;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Club::class, inversedBy="users")
+     */
+    private $finances;
+
+    public function __construct()
+    {
+        $this->coaches = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,5 +127,43 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getCoaches(): Collection
+    {
+        return $this->coaches;
+    }
+
+    public function addCoach(Team $coach): self
+    {
+        if (!$this->coaches->contains($coach)) {
+            $this->coaches[] = $coach;
+        }
+
+        return $this;
+    }
+
+    public function removeCoach(Team $coach): self
+    {
+        if ($this->coaches->contains($coach)) {
+            $this->coaches->removeElement($coach);
+        }
+
+        return $this;
+    }
+
+    public function getFinances(): ?Club
+    {
+        return $this->finances;
+    }
+
+    public function setFinances(?Club $finances): self
+    {
+        $this->finances = $finances;
+
+        return $this;
     }
 }

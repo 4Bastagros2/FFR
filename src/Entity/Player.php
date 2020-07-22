@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlayerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,22 @@ class Player
      * @ORM\Column(type="integer", nullable=true)
      */
     private $license_number;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Team::class, inversedBy="players")
+     */
+    private $play_in;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Post::class, inversedBy="players")
+     */
+    private $is_post;
+
+    public function __construct()
+    {
+        $this->play_in = new ArrayCollection();
+        $this->is_post = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +155,58 @@ class Player
     public function setLicenseNumber(?int $license_number): self
     {
         $this->license_number = $license_number;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getPlayIn(): Collection
+    {
+        return $this->play_in;
+    }
+
+    public function addPlayIn(Team $playIn): self
+    {
+        if (!$this->play_in->contains($playIn)) {
+            $this->play_in[] = $playIn;
+        }
+
+        return $this;
+    }
+
+    public function removePlayIn(Team $playIn): self
+    {
+        if ($this->play_in->contains($playIn)) {
+            $this->play_in->removeElement($playIn);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getIsPost(): Collection
+    {
+        return $this->is_post;
+    }
+
+    public function addIsPost(Post $isPost): self
+    {
+        if (!$this->is_post->contains($isPost)) {
+            $this->is_post[] = $isPost;
+        }
+
+        return $this;
+    }
+
+    public function removeIsPost(Post $isPost): self
+    {
+        if ($this->is_post->contains($isPost)) {
+            $this->is_post->removeElement($isPost);
+        }
 
         return $this;
     }
