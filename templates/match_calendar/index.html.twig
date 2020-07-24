@@ -9,13 +9,15 @@
 </style>
 
 
-<center>{{local}}
-	VS
-	{{visitor}}
-	type :
-	{{match_type}}
-    a la date :
-    {{date}} </center>
+
+<ul>
+	{% for match in matches %}
+		<li>{{ match.matchtype.name }}</li>
+        <li>{{ match.localteam }}</li>
+        <li>{{ match.visitorteam }}</li>
+	{% endfor %}
+</ul>
+
 
 
 
