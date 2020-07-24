@@ -96,6 +96,12 @@
     "doctrine/sql-formatter": {
         "version": "1.1.0"
     },
+    "egulias/email-validator": {
+        "version": "2.1.18"
+    },
+    "fzaninotto/faker": {
+        "version": "v1.9.1"
+    },
     "nikic/php-parser": {
         "version": "v4.6.0"
     },
@@ -103,7 +109,7 @@
         "version": "2.2.3"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.3"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -180,6 +186,9 @@
             "./.env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.1.2"
+    },
     "symfony/framework-bundle": {
         "version": "5.1",
         "recipe": {
@@ -208,6 +217,21 @@
     "symfony/inflector": {
         "version": "v5.1.2"
     },
+    "symfony/intl": {
+        "version": "v5.1.2"
+    },
+    "symfony/mailer": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "15658c2a0176cda2e7dba66276a2030b52bd81b2"
+        },
+        "files": [
+            "./config/packages/mailer.yaml"
+        ]
+    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -217,10 +241,22 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/mime": {
+        "version": "v5.1.2"
+    },
+    "symfony/options-resolver": {
+        "version": "v5.1.2"
+    },
     "symfony/orm-pack": {
         "version": "v2.0.0"
     },
     "symfony/polyfill-intl-grapheme": {
+        "version": "v1.18.0"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.18.0"
+    },
+    "symfony/polyfill-intl-idn": {
         "version": "v1.18.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -311,6 +347,19 @@
             "./templates/base.html.twig"
         ]
     },
+    "symfony/validator": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "d902da3e4952f18d3bf05aab29512eb61cabd869"
+        },
+        "files": [
+            "./config/packages/test/validator.yaml",
+            "./config/packages/validator.yaml"
+        ]
+    },
     "symfony/var-dumper": {
         "version": "v5.1.2"
     },
@@ -333,6 +382,9 @@
     },
     "symfony/yaml": {
         "version": "v5.1.2"
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.0.0"
     },
     "twig/twig": {
         "version": "v3.0.4"
