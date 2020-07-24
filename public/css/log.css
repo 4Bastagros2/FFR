@@ -16,6 +16,17 @@ body {
   transition: .2s;
 }
 
+h2 {
+  font-size: 1.50rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1rem auto;
+  border-bottom: 2px solid;
+  padding-bottom: .5rem;
+  margin: 1.25rem auto 1.75rem;
+}
+
 .project-ffr {
   font-size: calc(3rem + 1vw);
   text-align: center;
@@ -41,8 +52,9 @@ hr {
 .form-wrap label,
 .form-wrap input {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin: .75rem .25em;
+  display: block;
 }
 
 .form-wrap input:first-of-type {
@@ -62,6 +74,26 @@ hr {
 
 .form-wrap input:focus-within {
   border: 0.5px solid #013974;
+}
+
+.form-wrap .agree-terms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-wrap .agree-terms label {
+  font-size: 1rem;
+}
+
+.form-wrap .agree-terms input[type=checkbox] {
+  margin: .75rem .25em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .form-sublink {
@@ -85,6 +117,7 @@ hr {
   margin: 30px auto;
   -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+  text-transform: uppercase;
 }
 
 .btn-lg:hover {
@@ -112,8 +145,8 @@ hr {
     -webkit-box-shadow: 0px 0px 14px 7px #0000008a;
             box-shadow: 0px 0px 14px 7px #0000008a;
   }
-  .log-container form {
-    padding: 1rem calc(1rem + 2vw);
+  .log-container .form-wrap {
+    padding: 2rem calc(2rem + 2vw);
     background-color: #e3e8eebf;
     -webkit-backdrop-filter: blur(3px) opacity(70%) brightness(250%);
     backdrop-filter: blur(3px) opacity(70%) brightness(250%);

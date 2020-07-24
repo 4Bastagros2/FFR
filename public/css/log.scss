@@ -12,6 +12,16 @@ body {
     transition: .2s;
 }
 
+
+h2 {
+    font-size: 1.50rem;
+    width: fit-content;
+    margin: 1rem auto;
+    border-bottom: 2px solid;
+    padding-bottom: .5rem;
+    margin: 1.25rem auto 1.75rem;
+}
+
 .project-ffr {
     font-size: calc(3rem + 1vw);
     text-align: center;
@@ -35,8 +45,9 @@ hr {
     label,
     input {
         font-family: 'Roboto', sans-serif;
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         margin: .75rem .25em;
+        display: block;
     }
 
     input:first-of-type {
@@ -56,6 +67,20 @@ hr {
 
     input:focus-within {
         border: .5px solid $blue;
+    }
+
+    .agree-terms {
+        display: flex;
+        justify-content: center;
+
+        label {
+            font-size: 1rem;
+        }
+
+        input[type=checkbox] {
+            margin: .75rem .25em;
+            width: fit-content;
+        }
     }
 }
 
@@ -78,6 +103,7 @@ hr {
     width: 165px;
     margin: 30px auto;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+    text-transform: uppercase;
 }
 
 .btn-lg:hover {
@@ -99,18 +125,17 @@ hr {
         background-size: cover;
         background-position: center;
     }
+
     .log-container {
         max-width: 70vw;
         max-height: 75vh;
         box-shadow: 0px 0px 14px 7px #0000008a;
 
-        form {
-            padding: 1rem calc(1rem + 2vw);
+        .form-wrap {
+            padding: 2rem calc(2rem + 2vw);
             background-color: #e3e8eebf;
             -webkit-backdrop-filter: blur(3px) opacity(70%) brightness(250%);
-                    backdrop-filter: blur(3px) opacity(70%) brightness(250%);
+            backdrop-filter: blur(3px) opacity(70%) brightness(250%);
         }
     }
-
-    
 }
