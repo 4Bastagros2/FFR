@@ -10,7 +10,22 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
-    <h1>Hello {{ team_name }}! ✅</h1>
+    
+    <h2>{% if app.user %} {{app.user.email}} {% endif %}</h2>
+
+    <ul>
+        {% for team in teams %}
+            {% for user in team.users %}
+                <li>Team name :</li>
+                <li>{{ user.finances.name }}</li>
+            {% endfor %}
+            <li>{{ team.id }}</li>
+            <li>{{ team.category }}</li>
+
+        {% endfor %}
+    </ul>
+
+
 
     This friendly message is coming from:
     <ul>
