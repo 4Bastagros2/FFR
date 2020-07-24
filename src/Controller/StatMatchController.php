@@ -15,6 +15,8 @@ class StatMatchController extends AbstractController
     public function index(MatchRepository $Match, MatchTypeRepository $Type,$id)
     {   
         
+
+        //test
         $team = $Match->find($id);
         $local=$team->getLocalTeam();
         $visitor=$team->getVisitorTeam();
