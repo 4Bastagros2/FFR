@@ -16,20 +16,28 @@ class StatMatchController extends AbstractController
     {   
         
 
-        //test
+        //affiche team local
         $team = $Match->find($id);
         $local=$team->getLocalTeam();
+        //affiche team visiteur
         $visitor=$team->getVisitorTeam();
+        //affiche type de match
         $idType=$team->getMatchType();
         $matchType=$Type->find($idType);
         $type=$matchType->getName();
+
+        //affiche score
+        $tmp=$team->getStats();
+        $score=$tmp[0]["score"];
+       
         
     
         return $this->render('stat_match/index.html.twig', [
             
             'local_team'=>$local,
             'visitor_team'=>$visitor,
-            'match_type'=>$type
+            'match_type'=>$type,
+            'score'=>$score
         ]);
     }
 }
