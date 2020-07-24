@@ -24,12 +24,19 @@ class MatchCalendarController extends AbstractController
         // $type = $matchtype->getMatchType()->getName();
         // $visitor = $visitorteam->getVisitorTeam();
         // $local = $visitorteam->getLocalTeam();
-     
+        $truc=$match->find(1);
+        $comp=$truc->getComposition()["backer"];
+        // dump($comp);
+        // $jsp=$comp[0]["backer"];
+
+        
         $matches = $match->findAll();
+    
 
-
+        
         return $this->render('match_calendar/index.html.twig', [
             'controller_name' => 'MatchCalendarController',
+            'comps' => $comp,
             'matches' => $matches
             // 'match_type' => $type,
             // 'visitor' =>$visitor,
