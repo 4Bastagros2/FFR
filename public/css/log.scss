@@ -9,6 +9,7 @@ body {
 
 .pointer {
     cursor: pointer;
+    transition: .2s;
 }
 
 .project-ffr {
@@ -77,6 +78,11 @@ hr {
     width: 165px;
     margin: 30px auto;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+}
+
+.btn-lg:hover {
+    background-color: white;
+    color: red;
 }
 
 .underline {

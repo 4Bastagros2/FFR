@@ -12,6 +12,8 @@ body {
 
 .pointer {
   cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 .project-ffr {
@@ -83,6 +85,11 @@ hr {
   margin: 30px auto;
   -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+}
+
+.btn-lg:hover {
+  background-color: white;
+  color: red;
 }
 
 .underline {
