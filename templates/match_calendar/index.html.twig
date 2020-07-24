@@ -15,6 +15,10 @@
 		<li>{{ match.matchtype.name }}</li>
         <li>{{ match.localteam }}</li>
         <li>{{ match.visitorteam }}</li>
+        <li>{{ match.date |date("m/d/Y") }}</li>
+        <li>{{ match.duration |date('H:i:s') }}</li>
+        {# <li>{{ match.stats }}</li> #}
+        {# <li>{{ match.composition }}</li> #}
 	{% endfor %}
 </ul>
 
