@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Team;
+use App\Repository\TeamRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,15 +15,13 @@ class TeamScreenController extends AbstractController
      */
 
     
-    public function index()
+    public function index(TeamRepository $teamRepo)
     {
         $id = 0;
         
-        dump($teams);
-
-        $teams = $this->getDoctrine()
-            ->getRepository(Team::class)
-            ->find($id);
+        
+        $teams = $teamRepo->find($id);
+        var_dump($teams);
 
         
 
