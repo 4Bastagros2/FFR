@@ -6,6 +6,49 @@ html {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+body {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: $gray;
+}
+
+.pointer {
+    cursor: pointer;
+    transition: .2s;
+}
+
+hr {
+    margin: 0;
+    height: 8px;
+    border: none;
+    background-color: $blue;
+}
+
+.btn-lg {
+    background-color: $red;
+    padding: 16px 20px;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: none;
+    display: block;
+    width: 165px;
+    margin: 30px auto;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+    text-transform: uppercase;
+}
+
+.btn-lg:hover {
+    background-color: white;
+    color: red;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+
+
 @media screen and (min-width: 760px) {
     body {
         place-content: center;
