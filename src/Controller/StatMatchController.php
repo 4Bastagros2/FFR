@@ -6,13 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\MatchRepository;
 use App\Repository\MatchTypeRepository;
+use App\Repository\TeamRepository;
+
 
 class StatMatchController extends AbstractController
 {
     /**
      * @Route("/stat/match/{id}", name="stat_match")
      */
-    public function index(MatchRepository $Match, MatchTypeRepository $Type,$id)
+    public function index(MatchRepository $Match, MatchTypeRepository $Type,TeamRepository $teamMatch,$id)
     {   
         //affiche team local
         $team = $Match->find($id);
@@ -40,7 +42,11 @@ class StatMatchController extends AbstractController
         //affiche drops
         $drops=$tmp[6]["drops"];
        
-    
+
+        
+        
+        dump($teamlocal);
+        
         return $this->render('stat_match/index.html.twig', [
             'local_team'=>$local,
             'visitor_team'=>$visitor,
