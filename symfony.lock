@@ -103,7 +103,7 @@
         "version": "v1.9.1"
     },
     "nikic/php-parser": {
-        "version": "v4.6.0"
+        "version": "v4.7.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
