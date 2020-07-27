@@ -12,13 +12,18 @@
 
 <ul>
 	{% for match in matches %}
-		<li>{{ match.matchtype.name }}</li>
-        <li>{{ match.localteam }}</li>
-        <li>{{ match.visitorteam }}</li>
+		<li>{{ match.matchtype.name }}</li><br>
+        <li>{{ match.localteam }}</li>vs <br> 
+        <li>{{ match.visitorteam }}</li><br> en date du
+        <li>{{ match.date |date("m/d/Y H:i:s") }}</li><br> pour une durée de 
+        <li>{{ match.duration |date('H:i:s') }}</li><br>
+        {# <li>{{ match.stats }}</li> #}
+        {# <li>{% for comp in match.composition['backer'] %}
+        Position possible : {{comp}}<br>
+        {% endfor %}
+        </li> #}
 	{% endfor %}
 </ul>
-
-
 
 
 
