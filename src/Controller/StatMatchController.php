@@ -24,6 +24,9 @@ class StatMatchController extends AbstractController
         $matchType=$Type->find($idType);
         $type=$matchType->getName();
 
+        $theTeam = $team->getTeams();
+        dump($theTeam[0]);
+
         //affiche score
         $tmp=$team->getStats();
         $score=$tmp[0]["score"];
