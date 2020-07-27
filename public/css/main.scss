@@ -117,17 +117,96 @@ hr {
         .bg-menu {
             background-color: $red;
             display: grid;
+            padding: 1rem calc(1rem + 5vw) 0;
+            border-bottom: 8px solid $blue;
+
+            h3 {
+                grid-column: 2;
+                text-align: right;
+                font-size: 2.25rem;
+                white-space: nowrap;
+            }
 
             .sub-menu {
-               grid-column: 1;
-               display: flex;
-            }
-            div {
-                grid-column: 2;
-                justify-content: right;
-                display: grid;
+                grid-column: 1;
+                grid-row: 2;
+                display: flex;
+                align-self: end;
+                text-transform: uppercase;
+                white-space: nowrap;
+
+                svg {
+                    fill: $red;
+                    margin-right: 1vw;
+                    height: calc(0.3rem + 1vw);
+                }
+
+                li {
+                    filter: drop-shadow(13px 0px 5px #44444426);
+                }
+
+                .li-wrapper {
+                    background-color: $gray;
+                    color: $red;
+                    padding: calc(0.5rem + 1vw) 4rem calc(0.5rem + 1vw) 2rem;
+                    clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
+                    width: auto;
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    align-items: center;
+                    font-size: calc(0.5em + 1vw);
+                }
+
+                li:first-of-type {
+                    z-index: 99;
+                }
+
+                li:not(:first-of-type) {
+                    position: relative;
+                    left: calc(-1.5em - 1vw);
+
+                    .li-wrapper {
+                        padding-left: calc(2rem + 1vw);
+                    }
+                }
+
+                .active {
+                    background-color: $blue;
+                    color: $gray;
+                    z-index: 99;
+
+                    .cls-1 {
+                        fill: $gray;
+                    }
+                }
             }
 
+            .side-menu {
+                grid-column: 2;
+                justify-content: right;
+                display: flex;
+                white-space: nowrap;
+                align-items: flex-end;
+                justify-content: flex-end;
+                align-items: center;
+                color: $gray;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .user-info {
+                    margin-right: 1rem;
+                }
+
+                svg {
+                    height: 0.7rem;
+                    fill: $gray;
+                    width: auto;
+                    margin: 0.25rem;
+                }
+            }
         }
     }
 }
