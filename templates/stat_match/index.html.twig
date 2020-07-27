@@ -9,9 +9,26 @@
 </style>
 
         <center><h1>{{ local_team }} VS {{ visitor_team }} <h1>
-        <p>{{match_type}}</p>
-      
-        <p>{{score}}</p>
+            <p>{{match_type}}</p><br>
+            <p>{{score}}</p>
+            <table>
+                <tr>
+                    <td>Carton rouge</td>
+                    <td>Carton jaune</td>
+                    <td>Essais</td>
+                    <td>Transformation</td>
+                    <td>Pénalités</td>
+                    <td>Drops</td>
+                </tr>
+                <tr> 
+                    <td>{{red}}</td>
+                    <td>{{yellow}}</td>
+                    <td>{{essais}}</td>
+                    <td>{{transformation}}</td>
+                    <td>{{penalite}}</td>
+                    <td>{{drops}}</td>
+                </tr>
+            </table>
         </center>
         
 
