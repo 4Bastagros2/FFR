@@ -21,7 +21,7 @@ class TeamScreenController extends AbstractController
         
         
         $teams = $teamRepo->findAll();
-        dump($teams);
+        // dump($teams);
 
         
 
