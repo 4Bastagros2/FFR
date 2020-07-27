@@ -1,9 +1,48 @@
-<div class="nav-container">
-    <div class="tab-container">
-        <li>
-            <ul>Sélectionner une équipe</ul>
-            <ul>Ajouter une équipe</ul>
-        </li>
+<nav>
+    <div class="sm-menu nav-container">
+
+        <ul>
+            <li><img class="user-portrait" src="{{ asset('img/portrait.png') }}" alt="portrait de l'utilisateur"></li>
+            <li>
+                <ul>
+                    <li class="mb-screen"><a><img class="svg-icon" src="{{ asset('icons/users.svg')}}"
+                                href="">Equipe</a></li>
+                    <li class="mb-screen"><a><img class="svg-icon" src="{{ asset('icons/plus.svg')}}"
+                                href="">Ajouter</a></li>
+                    <li><a><img class="svg-icon" src="{{ asset('icons/signout.svg')}}" alt="=déconnection">
+                            Déconnection
+                        </a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    
-</div>
+
+    <div class="bg-menu tab-container">
+        <ul class="sub-menu">
+            <li class=""><img src="{{ asset('icons/users.svg')}}" href="">Sélectionner une équipe</li>
+            <li class=""><img class="svg-icon" src="{{ asset('icons/plus.svg')}}" href="">Ajouter une équipe</li>
+        </ul>
+        <div>
+            <h3>Nom du club</h3>
+            <div class="user-info">
+                <img src="{{ asset('img/portrait.png') }}" alt="portrait de l'utilisateur">
+                <a>Romain P.</a>
+            </div>
+            <div class="log-out-user">
+                <img src="{{ asset('icons/signout.svg')}}" alt="=déconnection">
+                <a>Se déconnecter</a>
+            </div>
+        </div>
+
+        </ul>
+
+    </div>
+
+
+
+
+
+
+
+    </div>
+</nav>

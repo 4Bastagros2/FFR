@@ -2,6 +2,18 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+@media screen and (min-width: 760px) {
+  body {
+    place-content: center;
+    background-color: #013974;
+    background-image: url(../img/background.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 body {
   display: -ms-grid;
   display: grid;
@@ -14,6 +26,48 @@ body {
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
+}
+
+hr {
+  margin: 0;
+  height: 8px;
+  border: none;
+  background-color: #013974;
+}
+
+.btn-lg {
+  background-color: #F2362F;
+  padding: 16px 20px;
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+  border: none;
+  display: block;
+  width: 165px;
+  margin: 30px auto;
+  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+  text-transform: uppercase;
+}
+
+.btn-lg:hover {
+  background-color: white;
+  color: red;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 760px) {
+  body {
+    place-content: center;
+    background-color: #013974;
+    background-image: url(../img/background.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
 h2 {
@@ -32,14 +86,7 @@ h2 {
   text-align: center;
   background-color: #F2362F;
   color: #E3E8EE;
-  padding: 1rem;
-}
-
-hr {
-  margin: 0;
-  height: 8px;
-  border: none;
-  background-color: #013974;
+  padding: 1.5rem;
 }
 
 .form-wrap {
@@ -106,39 +153,7 @@ hr {
   margin-top: 1rem;
 }
 
-.btn-lg {
-  background-color: #F2362F;
-  padding: 16px 20px;
-  color: white;
-  font-family: 'Roboto Condensed', sans-serif;
-  border: none;
-  display: block;
-  width: 165px;
-  margin: 30px auto;
-  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
-  text-transform: uppercase;
-}
-
-.btn-lg:hover {
-  background-color: white;
-  color: red;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
 @media screen and (min-width: 760px) {
-  body {
-    place-content: center;
-    background-color: #013974;
-    background-image: url(../img/background.png);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
   .log-container {
     max-width: 70vw;
     max-height: 75vh;
