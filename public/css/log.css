@@ -2,6 +2,18 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+@media screen and (min-width: 760px) {
+  body {
+    place-content: center;
+    background-color: #013974;
+    background-image: url(../img/background.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 body {
   display: -ms-grid;
   display: grid;
