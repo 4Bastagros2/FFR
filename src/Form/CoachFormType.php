@@ -13,11 +13,11 @@ class CoachFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles')
+            // ->add('roles')
             ->add('password')
-            ->add('isVerified')
-            ->add('coaches')
-            ->add('finances')
+            // ->add('isVerified')
+            // ->add('coaches')
+            // ->add('finances')
         ;
     }
 
