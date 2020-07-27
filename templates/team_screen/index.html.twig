@@ -9,13 +9,19 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <h1>Hello {{ team_name }}! ✅</h1>
+{% if app.user %}
+    <h2>{{app.user.email}} </h2>
+    <h2>Club : <b>{{ app.user.finances.name }}</b></h2>
+    <div style="display: flex; justify-content:space-around;">
+        {% for team in app.user.coaches %}
+    <div style="padding: 2em; border: 1px solid red; background-color: #aaa"><a>
+            <p>{{ team.id }}</p>
+            <p>{{ team.category }}</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/FFR/src/Controller/TeamScreenController.php'|file_link(0) }}">src/Controller/TeamScreenController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/FFR/templates/team_screen/index.html.twig'|file_link(0) }}">templates/team_screen/index.html.twig</a></code></li>
-    </ul>
+    </a></div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 </div>
 {% endblock %}
