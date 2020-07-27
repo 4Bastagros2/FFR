@@ -30,6 +30,34 @@
                 </tr>
             </table>
         </center>
+        <center><p>liste des jouers</center>
+         <table>
+                <tr>
+                    <td>Prenom</td>
+                    <td>Nom</td>
+                    <td>Carton rouge</td>
+                    <td>Carton jaune</td>
+                    <td>Essais</td>
+                    <td>Transformation</td>
+                    <td>Pénalités</td>
+                    <td>Drops</td>
+                    <td>Temps de jeux</td>
+                </tr>
+                    
+            {% for joueur in joueur %}
+                <tr>
+                    <td>{{ joueur.lestName }}</td>
+                    <td>{{ joueur.firstName }}</td>
+                    <td>{{ joueur.stats[0]["red"] }}</td>
+                    <td>{{ joueur.stats[1]["yellow"] }}</td>
+                    <td>{{ joueur.stats[2]["essais"] }}</td>
+                    <td>{{ joueur.stats[3]["transformation"] }}</td>
+                    <td>{{ joueur.stats[4]["penalite"] }}</td>
+                    <td>{{ joueur.stats[5]["drops"] }}</td>
+                    <td>{{ joueur.stats[6]["tempsdejeu"] }}</td>     
+                </tr>   
+            {% endfor %}
+        </table>
         
 
 {% endblock %}

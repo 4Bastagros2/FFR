@@ -26,8 +26,7 @@ class StatMatchController extends AbstractController
         $matchType=$Type->find($idType);
         $type=$matchType->getName();
 
-        $theTeam = $team->getTeams();
-        dump($theTeam[0]);
+       
 
         //affiche score
         $tmp=$team->getStats();
@@ -45,10 +44,14 @@ class StatMatchController extends AbstractController
         //affiche drops
         $drops=$tmp[6]["drops"];
        
-
+        $theTeam = $team->getTeams()[0]->getId();
+       
+        $joueurs=$teamMatch->find($theTeam)->getPlayers();
         
         
-        dump($teamlocal);
+        
+        
+        
         
         return $this->render('stat_match/index.html.twig', [
             'local_team'=>$local,
@@ -60,8 +63,8 @@ class StatMatchController extends AbstractController
             'essais'=>$essais,
             'transformation'=>$trans,
             'penalite'=>$penalite,
-            'drops'=>$drops
-            
+            'drops'=>$drops,
+            'joueur'=>$joueurs
         ]);
     }
 }
