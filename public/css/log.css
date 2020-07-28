@@ -313,6 +313,10 @@ select {
   font-size: 1rem;
 }
 
+table thead {
+  text-transform: uppercase;
+}
+
 #match-calendar_wrapper input {
   margin-bottom: 1rem;
 }
