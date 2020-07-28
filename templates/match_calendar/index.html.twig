@@ -4,16 +4,18 @@
 
 {% block body %}
 
-{% include 'first_nav.html.twig' %}
+{% include 'main_nav.html.twig' %}
 
 <div class="menu-tab">
+    <center>
         <h4>Calendrier des matches</h4>
-        <button href="add/match" class="btn-lg pointer" type="submit" >+ Ajouter un match</button>
+    </center>
 </div>
 
+<button href="add/match" class="btn-lg pointer" type="submit">+ Ajouter un match</button>
 
 <div class="main-wrapper">
-    <table id="match-calendar" class="stripe hover row-border">
+    <table id="match-calendar" class="stripe hover row-border dt-body-center">
         <thead>
             <tr>
                 <th>Type</th>
@@ -33,10 +35,6 @@
                 <td>vs</td>
                 <td>{{ match.visitorteam }}</td>
                 <td>{{ match.duration |date('H:i:s') }}</td>
-                {% for team in match.teams %}
-                Catégorie : {{ team.id }}
-                Catégorie : {{ team.category }}
-                {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
@@ -57,6 +55,7 @@
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             }
+            
         });
     });
 </script>
