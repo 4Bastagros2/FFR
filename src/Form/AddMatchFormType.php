@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Match;
+use App\Entity\MatchType;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AddMatchFormType extends AbstractType
 {
@@ -18,8 +22,11 @@ class AddMatchFormType extends AbstractType
             ->add('visitor_team')
             ->add('stats')
             ->add('composition')
-            ->add('match_type')
-            ->add('teams')
+            ->add('match_type',EntityType::class,[
+                'class' => MatchType::class,
+                'choice_label' => 'name',
+            ])
+            ->add('Submit', SubmitType::class)
         ;
     }
 
