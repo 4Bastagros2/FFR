@@ -4,7 +4,6 @@ html {
 
 nav {
   width: 100vw;
-  position: fixed;
   bottom: 0;
   color: white;
   font-size: 0.9rem;
@@ -55,8 +54,6 @@ nav {
 body {
   display: -ms-grid;
   display: grid;
-  height: 100vh;
-  width: 100vw;
   background-color: #E3E8EE;
 }
 
@@ -97,17 +94,9 @@ hr {
 }
 
 @media screen and (min-width: 760px) {
-  body {
-    place-content: center;
-    background-color: #013974;
-    background-image: url(../img/background.png);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
   nav {
-    top: 0;
+    -ms-grid-row: 1;
+    grid-row: 1;
   }
   nav .sm-menu {
     display: none;
@@ -116,22 +105,130 @@ hr {
     background-color: #F2362F;
     display: -ms-grid;
     display: grid;
+    padding: 1rem calc(1rem + 5vw) 0;
+    border-bottom: 8px solid #013974;
+  }
+  nav .bg-menu h3 {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    text-align: right;
+    font-size: 2.25rem;
+    white-space: nowrap;
   }
   nav .bg-menu .sub-menu {
     -ms-grid-column: 1;
     grid-column: 1;
+    -ms-grid-row: 2;
+    grid-row: 2;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-item-align: end;
+        align-self: end;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
-  nav .bg-menu div {
+  nav .bg-menu .sub-menu svg {
+    fill: #F2362F;
+    margin-right: 1vw;
+    height: calc(0.3rem + 1vw);
+  }
+  nav .bg-menu .sub-menu li {
+    -webkit-filter: drop-shadow(13px 0px 5px #44444426);
+            filter: drop-shadow(13px 0px 5px #44444426);
+  }
+  nav .bg-menu .sub-menu .li-wrapper {
+    background-color: #E3E8EE;
+    color: #F2362F;
+    padding: calc(0.5rem + 1vw) 4rem calc(0.5rem + 1vw) 2rem;
+    -webkit-clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
+            clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
+    width: auto;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr auto;
+        grid-template-columns: 1fr auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: calc(0.5em + 1vw);
+  }
+  nav .bg-menu .sub-menu li:first-of-type {
+    z-index: 99;
+  }
+  nav .bg-menu .sub-menu li:not(:first-of-type) {
+    position: relative;
+    left: calc(-1.5em - 1vw);
+  }
+  nav .bg-menu .sub-menu li:not(:first-of-type) .li-wrapper {
+    padding-left: calc(2rem + 1vw);
+  }
+  nav .bg-menu .sub-menu .active {
+    background-color: #013974;
+    color: #E3E8EE;
+    z-index: 99;
+  }
+  nav .bg-menu .sub-menu .active .cls-1 {
+    fill: #E3E8EE;
+  }
+  nav .bg-menu .side-menu {
     -ms-grid-column: 2;
     grid-column: 2;
     -webkit-box-pack: right;
         -ms-flex-pack: right;
             justify-content: right;
-    display: -ms-grid;
-    display: grid;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    white-space: nowrap;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: #E3E8EE;
+  }
+  nav .bg-menu .side-menu div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  nav .bg-menu .side-menu .user-info {
+    margin-right: 1rem;
+  }
+  nav .bg-menu .side-menu svg {
+    height: 0.7rem;
+    fill: #E3E8EE;
+    width: auto;
+    margin: 0.25rem;
+  }
+  .menu-tab {
+    -ms-grid-row: 2;
+    grid-row: 2;
+    padding: 1rem calc(1rem + 5vw) 0;
+    background-color: #013974;
+    color: #E3E8EE;
+    font-size: 1.50rem;
+  }
+  .menu-tab h4 {
+    border-bottom: 5px solid #E3E8EE;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-bottom: 1rem;
+  }
+  .main-wrapper {
+    -ms-grid-row: 3;
+    grid-row: 3;
+    background-color: #E3E8EE;
+    padding: 1rem calc(1rem + 5vw) 0;
   }
 }
 /*# sourceMappingURL=main.css.map */
