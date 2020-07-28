@@ -4,12 +4,14 @@
 
 {% block body %}
 
-{% include 'nav.html.twig' %}
+{% include 'first_nav.html.twig' %}
+
 <div class="menu-tab">
-    <center>
-    <h4>Calendrier des matches</h4>
-</center>
+        <h4>Calendrier des matches</h4>
+        <button href="add/match" class="btn-lg pointer" type="submit" >+ Ajouter un match</button>
 </div>
+
+
 <div class="main-wrapper">
     <table id="match-calendar" class="stripe hover row-border">
         <thead>
@@ -51,9 +53,9 @@
 
 <script>
     $(document).ready(function () {
-        $('#match-calendar').DataTable( {
+        $('#match-calendar').DataTable({
             "language": {
-                "url": "../js/french.lang"
+                "url": "{{ asset('js/french.lang') }}"
             }
         });
     });
