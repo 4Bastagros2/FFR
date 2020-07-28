@@ -14,9 +14,9 @@
     <div class="form-wrap">
         <h2>Créer mon compte</h2>
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Adresse email ...'}}) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
+            label: 'Mot de passe', 'attr': {'placeholder': 'Mot de passe !'}
         }) }}
         <div class="agree-terms">
             {{ form_widget(registrationForm.agreeTerms)}}
