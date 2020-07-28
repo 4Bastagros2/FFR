@@ -8,7 +8,7 @@ html {
 
 nav {
     width: 100vw;
-    position: fixed;
+    // position: fixed;
     bottom: 0;
     color: white;
     font-size: 0.9rem;
@@ -55,8 +55,6 @@ nav {
 
 body {
     display: grid;
-    height: 100vh;
-    width: 100vw;
     background-color: $gray;
 }
 
@@ -97,18 +95,8 @@ hr {
 
 
 @media screen and (min-width: 760px) {
-    body {
-        place-content: center;
-        background-color: $blue;
-        background-image: url(../img/background.png);
-        background-blend-mode: overlay;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
-
     nav {
-        top: 0;
+        grid-row: 1;
 
         .sm-menu {
             display: none;
@@ -208,5 +196,25 @@ hr {
                 }
             }
         }
+    }
+
+    .menu-tab {
+        grid-row: 2;
+        padding: 1rem calc(1rem + 5vw) 0;
+        background-color: $blue;
+        color: $gray;
+        font-size: 1.50rem;
+         
+        h4 {
+            border-bottom: 5px solid $gray;
+            width: fit-content;
+            padding-bottom: 1rem;
+        }
+    }
+
+    .main-wrapper {
+        grid-row: 3;
+        background-color: $gray;
+        padding: 1rem calc(1rem + 5vw) 0;
     }
 }

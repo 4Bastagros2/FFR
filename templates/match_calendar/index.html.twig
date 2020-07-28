@@ -5,27 +5,58 @@
 {% block body %}
 
 {% include 'nav.html.twig' %}
+<div class="menu-tab">
+    <center>
+    <h4>Calendrier des matches</h4>
+</center>
+</div>
+<div class="main-wrapper">
+    <table id="match-calendar">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Équipe local</th>
+                <th></th>
+                <th>Équipe adverse</th>
+                <th>Durée</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for match in matches %}
+                <td>{{ match.matchtype.name }}</td>
+                <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
+                <td>{{ match.localteam }}</td>
+                <td>vs</td>
+                <td>{{ match.visitorteam }}</td>
+                <td>{{ match.duration |date('H:i:s') }}</td>
+                {% for team in match.teams %}
+                Catégorie : {{ team.id }}
+                Catégorie : {{ team.category }}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
 
-
-<ul>
-	{% for match in matches %}
-		<li>{{ match.matchtype.name }}</li><br>
-        <li>{{ match.localteam }}</li>vs <br> 
-        <li>{{ match.visitorteam }}</li><br> en date du
-        <li>{{ match.date |date("m/d/Y H:i:s") }}</li><br> pour une durée de 
-        <li>{{ match.duration |date('H:i:s') }}</li><br>
-        {% for team in match.teams %}
-            Catégorie : {{ team.id }}
-            Catégorie : {{ team.category }}
-    	{% endfor %}
         {# <li>{{ match.stats }}</li> #}
         {# <li>{% for comp in match.composition['backer'] %}
         Position possible : {{comp}}<br>
         {% endfor %}
         </li> #}
-	{% endfor %}
-</ul>
 
+        </tbody>
+    </table>
+</div>
 
+<script>
+    $(document).ready(function () {
+        $('#match-calendar').DataTable( {
+            "language": {
+                "url": "../js/french.lang"
+            }
+        });
+    });
+</script>
 
 {% endblock %}
