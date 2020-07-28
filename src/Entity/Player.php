@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PlayerRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\PlayerStats;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PlayerRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=PlayerRepository::class)
@@ -48,6 +49,8 @@ class Player
      * @ORM\Column(type="json", nullable=true)
      */
     private $stats = [];
+
+    private $statsObj;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -146,6 +149,12 @@ class Player
 
         return $this;
     }
+    // public function setStats(?array $stats): self
+    // {
+    //     $this->stats = $stats;
+
+    //     return $this;
+    // }
 
     public function getLicenseNumber(): ?int
     {
