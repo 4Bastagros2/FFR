@@ -31,10 +31,6 @@
                 <td>vs</td>
                 <td>{{ match.visitorteam }}</td>
                 <td>{{ match.duration |date('H:i:s') }}</td>
-                {% for team in match.teams %}
-                Catégorie : {{ team.id }}
-                Catégorie : {{ team.category }}
-                {% endfor %}
             </tr>
             {% endfor %}
         </tbody>

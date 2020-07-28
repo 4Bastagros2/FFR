@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Team;
 use App\Entity\Season;
+use App\Entity\MatchType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,7 +17,12 @@ class FormAddTeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('category')
+        $builder
+        ->add('category')
+        ->add('season',EntityType::class,[
+            'class' => Season::class,
+            'choice_label' => 'season_start',
+            ])
         ->add('Submit', SubmitType::class)
     ;
     }
