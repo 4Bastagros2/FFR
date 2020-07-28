@@ -20,15 +20,15 @@ class TeamScreenController extends AbstractController
         $id = 0;
         
         
-        $teams = $teamRepo->find($id);
-        var_dump($teams);
+        $teams = $teamRepo->findAll();
+        // dump($teams);
 
         
 
     
         return $this->render('team_screen/index.html.twig', [
             'controller_name' => 'TeamScreenController',
-            'team_name' => $teams->getUsers()[0]->getFinances()->getName()
+            'teams' => $teams
         ]);
     }
 }
