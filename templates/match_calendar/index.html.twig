@@ -28,7 +28,7 @@
         </thead>
         <tbody>
             <tr>
-                {% for match in matches %}
+                {% for match in match %}
                 <td>{{ match.matchtype.name }}</td>
                 <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
                 <td>{{ match.localteam }}</td>
