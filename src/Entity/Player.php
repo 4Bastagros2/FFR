@@ -71,6 +71,7 @@ class Player
     {
         $this->play_in = new ArrayCollection();
         $this->is_post = new ArrayCollection();
+        $this->statsObj = new PlayerStats();
     }
 
     public function getId(): ?int
