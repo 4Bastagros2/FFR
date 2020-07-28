@@ -67,6 +67,41 @@ class Player
      */
     private $is_post;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $essais;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $transformations;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $penalites;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $drops;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rouges;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $jaunes;
+
+    /**
+     * @ORM\Column(type="time", nullable=true)
+     */
+    private $temps;
+
     public function __construct()
     {
         $this->play_in = new ArrayCollection();
@@ -217,6 +252,90 @@ class Player
         if ($this->is_post->contains($isPost)) {
             $this->is_post->removeElement($isPost);
         }
+
+        return $this;
+    }
+
+    public function getEssais(): ?int
+    {
+        return $this->essais;
+    }
+
+    public function setEssais(?int $essais): self
+    {
+        $this->essais = $essais;
+
+        return $this;
+    }
+
+    public function getTransformations(): ?int
+    {
+        return $this->transformations;
+    }
+
+    public function setTransformations(?int $transformations): self
+    {
+        $this->transformations = $transformations;
+
+        return $this;
+    }
+
+    public function getPenalites(): ?int
+    {
+        return $this->penalites;
+    }
+
+    public function setPenalites(?int $penalites): self
+    {
+        $this->penalites = $penalites;
+
+        return $this;
+    }
+
+    public function getDrops(): ?int
+    {
+        return $this->drops;
+    }
+
+    public function setDrops(?int $drops): self
+    {
+        $this->drops = $drops;
+
+        return $this;
+    }
+
+    public function getRouges(): ?int
+    {
+        return $this->rouges;
+    }
+
+    public function setRouges(?int $rouges): self
+    {
+        $this->rouges = $rouges;
+
+        return $this;
+    }
+
+    public function getJaunes(): ?int
+    {
+        return $this->jaunes;
+    }
+
+    public function setJaunes(?int $jaunes): self
+    {
+        $this->jaunes = $jaunes;
+
+        return $this;
+    }
+
+    public function getTemps(): ?\DateTimeInterface
+    {
+        return $this->temps;
+    }
+
+    public function setTemps(?\DateTimeInterface $temps): self
+    {
+        $this->temps = $temps;
 
         return $this;
     }
