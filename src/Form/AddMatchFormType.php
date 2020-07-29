@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Team;
+use App\Entity\User;
 use App\Entity\Match;
 use App\Entity\MatchType;
 use Doctrine\ORM\Mapping\Entity;
@@ -18,9 +20,7 @@ class AddMatchFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-        
-        
+       
         $builder
             ->add('date')
             ->add('duration')
@@ -32,12 +32,15 @@ class AddMatchFormType extends AbstractType
             
             // ->add('stats')
             // ->add('composition')
-            ->add('match_type',EntityType::class,[
-                'class' => MatchType::class,
-                'choice_label' => 'name',
-            ])
-            ->add('Team',EntityType::class,[
-                'class' => MatchType::class,
+            // ->add('match_type',EntityType::class,[
+            //     'class' => MatchType::class,
+            //     'choice_label' => 'name',
+            // ])
+            ->add('teams',EntityType::class,[
+                'class' => Team::class,
+                'choices' => $options['teams'],
+                'multiple' => true,
+                'expanded' => false,                
                 'choice_label' => 'category',
             ])
             ->add('Submit', SubmitType::class)
@@ -48,6 +51,7 @@ class AddMatchFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Match::class,
+            'teams' => Collection::class,
         ]);
     }
 }
