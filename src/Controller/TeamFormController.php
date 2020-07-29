@@ -27,12 +27,16 @@ class TeamFormController extends AbstractController
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $form->getData();
+
+            $team->addUser($this->getUser());
     
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($team);
             $entityManager->flush();
+
+
     
             // return $this->redirectToRoute('task_success');
 
