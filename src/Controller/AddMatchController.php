@@ -62,6 +62,13 @@ class AddMatchController extends AbstractController
                 $entityManager->flush();
         
                 // return $this->redirectToRoute('task_success');
+            
+            if($data==1){
+                $localTeam= $user->find($userConnect)->getFinances()->getName();
+                $visitorTeam=$form->get("local_team")->getViewData();
+            }else{
+                $localTeam=$form->get("local_team")->getViewData();
+                $visitorTeam=$user->find($userConnect)->getFinances()->getName();
             }
     
             // return $this->redirectToRoute('task_success');

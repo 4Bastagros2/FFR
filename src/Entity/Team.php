@@ -46,9 +46,9 @@ class Team
 
     public function __construct()
     {
-        $this->play_matches = new ArrayCollection();
-        $this->users = new ArrayCollection();
-        $this->players = new ArrayCollection();
+        // $this->play_matches = new ArrayCollection();
+        // $this->users = new ArrayCollection();
+        // $this->players = new ArrayCollection();
     }
 
     public function getId(): ?int
