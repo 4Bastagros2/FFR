@@ -24,17 +24,14 @@
         </thead>
         <tbody>
             <tr>
-                {% for match in matches %}
+                {% for match in match %}
                 <td>{{ match.matchtype.name }}</td>
                 <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
                 <td>{{ match.localteam }}</td>
                 <td>vs</td>
                 <td>{{ match.visitorteam }}</td>
                 <td>{{ match.duration |date('H:i:s') }}</td>
-                {% for team in match.teams %}
-                Catégorie : {{ team.id }}
-                Catégorie : {{ team.category }}
-                {% endfor %}
+                
             </tr>
             {% endfor %}
         </tbody>
