@@ -3,12 +3,11 @@
 namespace App\Controller;
 use App\Entity\Match;
 use App\Form\AddMatchFormType;
-use App\Repository\ClubRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\MatchRepository;
 use App\Repository\UserRepository;
+use App\Repository\MatchRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AddMatchController extends AbstractController
 {
@@ -17,9 +16,15 @@ class AddMatchController extends AbstractController
      */
     public function index(Request $request,UserRepository $user)
     {
-
+        $userConnect = $this->getUser();
+           
+        $id_user = $user->find($userConnect)->getId();
+        
+        
         $match=new Match();
-        $form = $this->createForm(AddMatchFormType::class, $match);
+        $form = $this->createForm(AddMatchFormType::class, $match,[
+            'id_user'=>$id_user,
+        ]);
 
 
 
@@ -30,10 +35,8 @@ class AddMatchController extends AbstractController
             $task=$form->get('domicile');
            
             $data=$task->getViewData();
-            $userConnect = $this->getUser();
-           
-            $team = $user->find($userConnect)->getCoaches();
-            dump($team);
+            
+            
             if($data==1){
                 $localTeam= $user->find($userConnect)->getFinances()->getName();
                 $visitorTeam=$form->get("local_team")->getViewData();
@@ -54,7 +57,6 @@ class AddMatchController extends AbstractController
         return $this->render('player_form/index.html.twig', [
             'controller_name' => 'AddMatchController',
             'form' => $form->createView(),
-            "user"=>$userConnect->getId()
         ]);
     }
 
