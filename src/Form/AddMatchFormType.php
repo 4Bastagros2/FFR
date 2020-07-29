@@ -9,7 +9,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class AddMatchFormType extends AbstractType
 {
@@ -18,10 +20,14 @@ class AddMatchFormType extends AbstractType
         $builder
             ->add('date')
             ->add('duration')
-            ->add('local_team')
-            ->add('visitor_team')
-            ->add('stats')
-            ->add('composition')
+            ->add('domicile', CheckboxType::class, [
+                'mapped' => false,
+                'required'=>false
+            ])
+            ->add('local_team',TextType::class,['label'=>'Equipe adverse'])
+            // ->add('visitor_team')
+            // ->add('stats')
+            // ->add('composition')
             ->add('match_type',EntityType::class,[
                 'class' => MatchType::class,
                 'choice_label' => 'name',
