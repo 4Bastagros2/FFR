@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Team;
 use App\Repository\TeamRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,7 +16,7 @@ class TeamScreenController extends AbstractController
      */
 
     
-    public function index(TeamRepository $teamRepo)
+    public function index(TeamRepository $teamRepo, TeamRepository $team, UserRepository $user)
     {
         $id = 0;
         
@@ -23,12 +24,16 @@ class TeamScreenController extends AbstractController
         $teams = $teamRepo->findAll();
         // dump($teams);
 
+        $userConnect = $this->getUser();
+        $team = $user->find($userConnect)->getCoaches();
+
         
 
     
         return $this->render('team_screen/index.html.twig', [
             'controller_name' => 'TeamScreenController',
-            'teams' => $teams
+            'teams' => $teams,
+            'team' => $team
         ]);
     }
 }
