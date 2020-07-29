@@ -24,7 +24,7 @@ class FormAddTeamType extends AbstractType
         ->add('category')
         ->add('play_season',EntityType::class,[
             'class' => Season::class,
-            'choice_label' => date('season_start'),
+            'choice_label' => 'name',
             ])
         ->add('Submit', SubmitType::class)
     ;
