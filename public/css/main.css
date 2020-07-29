@@ -2,6 +2,13 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+body {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  background-color: #E3E8EE;
+}
+
 nav {
   width: 100vw;
   bottom: 0;
@@ -51,12 +58,6 @@ nav {
   font-size: 1.8rem;
 }
 
-body {
-  display: -ms-grid;
-  display: grid;
-  background-color: #E3E8EE;
-}
-
 .pointer {
   cursor: pointer;
   -webkit-transition: .2s;
@@ -90,22 +91,98 @@ hr {
 }
 
 .btn-edit {
-  background-color: #013974 !important;
+  background-color: white !important;
+  color: #013974 !important;
 }
 
 .btn-edit:hover {
-  color: #013974 !important;
-  background-color: white !important;
+  color: white !important;
+  background-color: #013974 !important;
 }
 
 .underline {
   text-decoration: underline;
 }
 
+.team-wrapper {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.team-wrapper .team-card {
+  min-width: 200px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-backdrop-filter: blur(3px) opacity(70%) brightness(250%);
+          backdrop-filter: blur(3px) opacity(70%) brightness(250%);
+  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+  background-color: #ffffff91;
+  margin: 1rem;
+}
+
+.team-wrapper .team-card .team-cat {
+  font-size: calc(1.25rem + 0.5vw);
+  text-align: center;
+  margin: 2.5rem auto 1rem;
+}
+
+.team-wrapper .team-card .card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.5rem 0 2rem;
+}
+
+.team-wrapper .team-card .card-body img:nth-child(2) {
+  scale: 130%;
+}
+
+.team-wrapper .team-card .card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.team-wrapper .team-card .card-footer button {
+  margin: 0;
+  -webkit-box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
+}
+
 @media screen and (min-width: 760px) {
+  body {
+    background-color: #013974;
+    background-image: url(../img/background.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -ms-grid-rows: auto 1fr;
+        grid-template-rows: auto 1fr;
+  }
   nav {
     -ms-grid-row: 1;
     grid-row: 1;
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
   }
   nav .sm-menu {
     display: none;
@@ -220,8 +297,13 @@ hr {
   }
   .menu-tab,
   .main-wrapper,
-  .team-wrapper {
+  .team-wrapper,
+  .players-wrapper {
     padding: 1rem calc(1rem + 5vw) 0;
+  }
+  .main-wrapper,
+  .players-wrapper {
+    background-color: #E3E8EE;
   }
   .menu-tab {
     -ms-grid-row: 2;
@@ -243,39 +325,7 @@ hr {
     background-color: #E3E8EE;
   }
   .team-wrapper {
-    -ms-grid-row: 2;
-    grid-row: 2;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .team-wrapper .team-card {
-    min-width: 200px;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-backdrop-filter: blur(3px) opacity(70%) brightness(250%);
-            backdrop-filter: blur(3px) opacity(70%) brightness(250%);
-  }
-  .team-wrapper .team-card .team-cat {
-    font-size: calc(1.25rem + 0.5vw);
-    text-align: center;
-    margin: 5rem;
-  }
-  .team-wrapper .team-card .card-footer {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .team-wrapper .team-card button {
-    margin: 0;
+    place-content: center;
   }
 }
 /*# sourceMappingURL=main.css.map */
