@@ -3,14 +3,18 @@
 {% block title %}Hello ShowTeamController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
+{% include 'first_nav.html.twig' %}
+
+<div class="main-wrapper">
+
+    
 {% for team in team %}
+
     
-    <a href="/match/calendar/{{team.id}}">{{team.category}}</a><br>
+    <a href="/match/calendar/{{team.id}}">{{team.category}}</a>
+
     
-{% endfor %}
+    {% endfor %}
+</div>
 {% endblock %}

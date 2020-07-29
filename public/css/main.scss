@@ -88,6 +88,15 @@ hr {
     color: red;
 }
 
+.btn-edit {
+    background-color: $blue !important;
+}
+
+.btn-edit:hover {
+    color: $blue !important;
+    background-color: white !important;
+}
+
 .underline {
     text-decoration: underline;
 }
@@ -198,13 +207,19 @@ hr {
         }
     }
 
+    .menu-tab,
+    .main-wrapper,
+    .team-wrapper {
+
+        padding: 1rem calc(1rem + 5vw) 0;
+    }
+
     .menu-tab {
         grid-row: 2;
-        padding: 1rem calc(1rem + 5vw) 0;
         background-color: $blue;
         color: $gray;
         font-size: 1.50rem;
-         
+
         h4 {
             border-bottom: 5px solid $gray;
             width: fit-content;
@@ -215,6 +230,32 @@ hr {
     .main-wrapper {
         grid-row: 3;
         background-color: $gray;
-        padding: 1rem calc(1rem + 5vw) 0;
+    }
+
+    .team-wrapper {
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+
+        .team-card {
+            min-width: 200px;
+            display: inline-flex;
+            flex-direction: column;
+            backdrop-filter: blur(3px) opacity(70%) brightness(250%);
+
+            .team-cat {
+                font-size: calc(1.25rem + 0.5vw);
+                text-align: center;
+                margin: 5rem;
+            }
+
+            .card-footer {
+                display: flex;
+            }
+
+            button {
+                margin: 0;
+            }
+        }
     }
 }
