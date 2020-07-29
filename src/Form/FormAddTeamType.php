@@ -17,11 +17,14 @@ class FormAddTeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+
+
+
         $builder
         ->add('category')
-        ->add('season',EntityType::class,[
+        ->add('play_season',EntityType::class,[
             'class' => Season::class,
-            'choice_label' => 'season_start',
+            'choice_label' => date('season_start'),
             ])
         ->add('Submit', SubmitType::class)
     ;
