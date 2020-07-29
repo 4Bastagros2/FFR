@@ -16,10 +16,10 @@ class ShowTeamController extends AbstractController
     {   
 
 
-        //a voir une foi que la conexion est faite
+       
         $userConnect = $this->getUser();
         
-        $team=$user->find($userConnect)->getCoaches();
+        $team = $user->find($userConnect)->getCoaches();
         
         return $this->render('show_team/index.html.twig', [
             'team'=>$team

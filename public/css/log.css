@@ -317,6 +317,10 @@ table thead {
   text-transform: uppercase;
 }
 
+table tr {
+  text-align: center;
+}
+
 #match-calendar_wrapper input {
   margin-bottom: 1rem;
 }
