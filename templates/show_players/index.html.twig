@@ -18,7 +18,7 @@
 	</style>
 
 	{% for player in players %}
-		<li>{{ player.lestName}}&nbsp;{{ player.firstName }}&nbsp{{ player.essais }};&nbsp;{{ player.transformations }}&nbsp;{{ player.penalites }}&nbsp;{{ player.drops }}&nbsp;{{ player.rouges }}&nbsp;{{ player.jaunes }}&nbsp;{{ player.temps|date() }}&nbsp;&nbsp;&nbsp;<strong>équipe:</strong>
+		<li>{{ player.lestName}}&nbsp;{{ player.firstName }}&nbsp;{{ player.essais }}&nbsp;{{ player.transformations }}&nbsp;{{ player.penalites }}&nbsp;{{ player.drops }}&nbsp;{{ player.rouges }}&nbsp;{{ player.jaunes }}&nbsp;&nbsp;&nbsp;<strong>équipe:</strong>
 			{{ team.category}}</li><br>
 
 	{% endfor %}
