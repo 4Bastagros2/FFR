@@ -64,7 +64,7 @@ class AddMatchController extends AbstractController
         
             //     // return $this->redirectToRoute('task_success');
             
-            }
+            
             
             if($data==1){
                 $localTeam= $user->find($connectedUser)->getFinances()->getName();
@@ -109,6 +109,7 @@ class AddMatchController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+}
 
         
-}
+
