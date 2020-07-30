@@ -332,12 +332,14 @@ hr {
 }
 
 .modal-content {
+  position: absolute;
+  top: 0;
   width: 100vw;
   height: 100vh;
-  display: -ms-grid;
-  display: grid;
   place-content: center;
-  background-color: #00000061;
+  background-color: #0000009e;
+  display: none;
+  z-index: 999;
 }
 
 .form_add_team {

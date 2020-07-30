@@ -29,6 +29,8 @@
 
 </div>
 
-<div id="form-modal"></div>
+{% include 'team_form/index.html.twig' with {'form': form} %}
+
+</div>
 {% endif %}
 {% endblock %}

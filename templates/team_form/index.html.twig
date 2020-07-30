@@ -1,34 +1,32 @@
 {% block body %}
 
-{# {{ form(form) }} #}
 
+	{{ form_start(form)}}
 
-{{ form_start(form)}}
+	<div id="myModal" class="modal-content">
 
-<div class="modal-content">
+		<div class="form_add_team">
 
-    <div class="form_add_team">
+			<div>
 
-        <div>
+				{{ form_label(form.category, 'Catégorie') }}
+				{{ form_widget(form.category) }}
 
-            {{ form_label(form.category, 'Catégorie') }}
-            {{ form_widget(form.category) }}
+			</div>
 
-        </div>
+			<div>
 
-        <div>
+				{{ form_label(form.play_season, 'Saison jouée')}}
+				{{ form_widget(form.play_season)}}
 
-            {{ form_label(form.play_season, 'Saison jouée')}}
-            {{ form_widget(form.play_season)}}
+			</div>
 
-        </div>
+			<button type="submit" class="btn-lg pointer">Ajouter</button>
 
-        <button type="submit" class="btn-lg pointer">Ajouter</button>
+		</div>
 
-        {{ form_end(form)}}
+	{{ form_end(form)}}
 
-    </div>
-
-</div>
+	</div>
 
 {% endblock %}
