@@ -19,10 +19,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AddMatchController extends AbstractController
 {
     /**
-     * @Route("/add/match", name="add_match")
+     * @Route("/add/match/{id_match}", name="add_match", defaults={"id_match"=-1})
      */
-    public function index(Request $request, UserRepository $user, TeamRepository $teams)
-    {
+    public function index(Request $request,MatchRepository $matchRep, UserRepository $user, TeamRepository $teams,$id_match)
+    {   
+
+        if($id_match==-1){
+            $match= new Match();
+        }else{
+            $match=$matchRep->find($id_match);
+        }
         $id = $this->getUser()->getId();
 
         $connectedUser = $this->getDoctrine()
@@ -30,7 +36,7 @@ class AddMatchController extends AbstractController
                     ->find($id);
         $userTeams = $connectedUser->getCoaches();
 
-        $match= new Match();
+        
 
         $form = $this->createForm(AddMatchFormType::class, $match,[
             'teams' => $userTeams,
@@ -64,7 +70,7 @@ class AddMatchController extends AbstractController
         
             //     // return $this->redirectToRoute('task_success');
             
-            }
+            
             
             if($data==1){
                 $localTeam= $user->find($connectedUser)->getFinances()->getName();
@@ -109,6 +115,7 @@ class AddMatchController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+}
 
         
-}
+
