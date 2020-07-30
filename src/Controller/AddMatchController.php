@@ -64,7 +64,7 @@ class AddMatchController extends AbstractController
         
             //     // return $this->redirectToRoute('task_success');
             
-            }
+            
             
             if($data==1){
                 $localTeam= $user->find($connectedUser)->getFinances()->getName();
@@ -99,16 +99,16 @@ class AddMatchController extends AbstractController
             
             
             //return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);
+        
+
         }
-
-
 
 
         return $this->render('player_form/index.html.twig', [
             'controller_name' => 'AddMatchController',
             'form' => $form->createView(),
         ]);
-    }
-
+    
+        }}
         
-}
+

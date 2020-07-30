@@ -1,0 +1,42 @@
+.field-position {
+    width: 50px;
+    height: 50px;
+    border: 4px dashed white;
+    background-color: rgba(255, 255, 255, 0.275);
+    opacity: 0.5;
+    border-radius: 5px;
+}
+
+.field-position p {
+    position: absolute;
+    color: white;
+}
+
+.droppable-over {
+    width: 50px;
+    height: 50px;
+    border: 4px dashed green;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.275);
+    border-radius: 5px;
+}
+
+.field-row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+}
+
+#players_list {
+    padding: 20px;
+    width: 80px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    border: 4px dashed rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.275);
+    
+}
