@@ -108,7 +108,8 @@ class AddMatchController extends AbstractController
             'controller_name' => 'AddMatchController',
             'form' => $form->createView(),
         ]);
-    
-        }}
+    }
+}
+
         
 
