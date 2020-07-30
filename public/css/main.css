@@ -251,9 +251,14 @@ hr {
   nav .bg-menu .sub-menu li:not(:first-of-type) {
     position: relative;
     left: calc(-1.5em - 1vw);
+    z-index: 98;
   }
   nav .bg-menu .sub-menu li:not(:first-of-type) .li-wrapper {
     padding-left: calc(2rem + 1vw);
+  }
+  nav .bg-menu .sub-menu li:nth-child(3) {
+    z-index: 97;
+    left: calc(-3.25em - 1vw);
   }
   nav .bg-menu .sub-menu .active {
     background-color: #013974;

@@ -219,10 +219,16 @@ hr {
                 li:not(:first-of-type) {
                     position: relative;
                     left: calc(-1.5em - 1vw);
+                    z-index: 98;
 
                     .li-wrapper {
                         padding-left: calc(2rem + 1vw);
                     }
+                }
+                
+                li:nth-child(3) {
+                    z-index: 97;
+                    left: calc(-3.25em - 1vw);
                 }
 
                 .active {
