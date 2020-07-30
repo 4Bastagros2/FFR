@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MatchCalendarController!{% endblock %}
+{% block title %}Hello MatchCalendarController!
+{% endblock %}
 
 {% block body %}
 {% include 'main_nav.html.twig' %}
@@ -13,9 +14,9 @@
         </center>
     </div>
 
-    
+
     <div class="main-wrapper">
-        <table id="match-calendar" class="stripe hover row-border dt-body-center">
+        <table id="match-calendar" class="stripe hover cell-border dt-body-center">
             <thead>
                 <tr>
                     <th>Type</th>
@@ -38,13 +39,13 @@
                 </tr>
                 {% endfor %}
             </tbody>
-            
+
             {# <li>{{ match.stats }}</li> #}
             {# <li>{% for comp in match.composition['backer'] %}
-                Position possible : {{comp}}<br>
-                {% endfor %}
-            </li> #}
-            
+				                Position possible : {{comp}}<br>
+				                {% endfor %}
+				            </li> #}
+
             </tbody>
         </table>
         <button href="add/match" class="btn-lg pointer" type="submit">+ Ajouter un match</button>
@@ -56,9 +57,13 @@
         $('#match-calendar').DataTable({
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
-            }
+            },
+            "columnDefs": [
+                {
+                    "orderable": false,
+                    "targets": 3
+                }
+            ]
         });
     });
-</script>
-
-{% endblock %}
+</script>{% endblock %}

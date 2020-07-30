@@ -1,4 +1,4 @@
-// @import "main";
+@import "variable";
 
 h2 {
     font-size: 1.50rem;
@@ -75,18 +75,33 @@ select {
 }
 
 table {
+
+    th,
+    td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
     thead {
         text-transform: uppercase;
     }
 
-    tr {
-        // text-align: center;
+    tbody {
+        font-family: 'Roboto condensed', sans-serif;
+        font-weight: 300;
     }
+
 }
 
+#players-list_wrapper,
 #match-calendar_wrapper {
+
+    table {
+        margin-bottom: 1.5rem;
+    }
+
     input {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 }
 
