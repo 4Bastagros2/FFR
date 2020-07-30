@@ -1,0 +1,31 @@
+@import "main";
+
+.modal-content {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    place-content: center;
+    background-color: #0000009e;
+    display: none;
+    z-index: 999;
+}
+
+.form_add_team {
+    background-color: $gray;
+    padding: 2rem;
+    display: grid;
+    border-top: 4px solid $red;
+
+    div {
+        display: grid;
+        text-align: center;
+        padding: .5rem;
+    }
+
+    select {
+        padding: .55rem;
+        width: fit-content;
+        margin: auto;
+    }
+}

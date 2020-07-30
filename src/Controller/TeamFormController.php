@@ -44,7 +44,7 @@ class TeamFormController extends AbstractController
 
         return $this->render('team_form/index.html.twig', [
             'controller_name' => 'TeamFormController',
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 }
