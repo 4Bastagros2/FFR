@@ -1,5 +1,9 @@
 @import "main";
 
+#modal {
+    display: none;
+}
+
 .modal-content {
     position: absolute;
     top: 0;
@@ -7,8 +11,8 @@
     height: 100vh;
     place-content: center;
     background-color: #0000009e;
-    display: none;
     z-index: 999;
+    display: grid;
 }
 
 .form_add_team {
@@ -20,7 +24,7 @@
     div {
         display: grid;
         text-align: center;
-        padding: .5rem;
+        padding: .5rem .5rem .25rem;;
     }
 
     select {

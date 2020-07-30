@@ -73,10 +73,10 @@
 <script>
     $(function () {
         $('.add-team-btn').click(function () {
-            $('.modal-content').css('display', 'grid')
+            $('#modal').fadeIn()
         });
-        $('.modal-content').click(function () {
-            $('.modal-content').css('display', 'none')
+        $('#close').click(function () {
+            $('.modal-content').fadeOut()
         });
     });
 </script>

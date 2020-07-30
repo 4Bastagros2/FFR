@@ -1,36 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sélectionnez une équipe{% endblock %}
+{% block title %}Sélectionnez une équipe
+{% endblock %}
 
 {% block body %}
 
-{% include 'first_nav.html.twig' %}
+	{% include 'first_nav.html.twig' %}
 
-{% if app.user %}
-<div class="team-wrapper">
-    {% for team in app.user.coaches %}
-    <a href="/show/players/{{ team.id }}">
-        <div class="team-card">
-            <div class="card-header">
-                <p class="team-cat">{{ team.category }}</p>
-            </div>
-            <div class="card-body">
-                <img src="{{asset('img/portrait.png')}}" alt="">
-                <img src="{{asset('img/portrait.png')}}" alt="">
-                <img src="{{asset('img/portrait.png')}}" alt="">
-            </div>
-            <div class="card-footer">
-                <button class="btn-lg btn-edit pointer" href="">Modifier</button>
-                <button class="btn-lg pointer" href="">Supprimer</button>
-            </div>
-        </div>
-    </a>
-    {% endfor %}
+	{% if app.user %}
+		<div class="team-wrapper">
+			{% for team in app.user.coaches %}
+				<a href="/show/players/{{ team.id }}">
+					<div class="team-card">
+						<div class="card-header">
+							<p class="team-cat">{{ team.category }}</p>
+						</div>
+						<div class="card-body">
+							<img src="{{asset('img/portrait.png')}}" alt="">
+							<img src="{{asset('img/portrait.png')}}" alt="">
+							<img src="{{asset('img/portrait.png')}}" alt="">
+						</div>
+						<div class="card-footer">
+							<button class="btn-lg btn-edit pointer" href="">Modifier</button>
+							<button class="btn-lg pointer" href="">Supprimer</button>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
 
-</div>
+		</div>
 
-{% include 'team_form/index.html.twig' with {'form': form} %}
+		<div id="modal">
 
-</div>
-{% endif %}
+			{% include 'team_form/index.html.twig' with {'form': form} %}
+
+		</div>
+	{% endif %}
 {% endblock %}

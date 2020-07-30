@@ -331,6 +331,10 @@ hr {
   }
 }
 
+#modal {
+  display: none;
+}
+
 .modal-content {
   position: absolute;
   top: 0;
@@ -338,8 +342,9 @@ hr {
   height: 100vh;
   place-content: center;
   background-color: #0000009e;
-  display: none;
   z-index: 999;
+  display: -ms-grid;
+  display: grid;
 }
 
 .form_add_team {
@@ -354,7 +359,7 @@ hr {
   display: -ms-grid;
   display: grid;
   text-align: center;
-  padding: .5rem;
+  padding: .5rem .5rem .25rem;
 }
 
 .form_add_team select {
