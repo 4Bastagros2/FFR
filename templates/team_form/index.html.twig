@@ -1,15 +1,11 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello TeamFormController!
-{% endblock %}
-
 {% block body %}
 
-
 {# {{ form(form) }} #}
-<div id="form-modal">
 
-    {{ form_start(form)}}
+
+{{ form_start(form)}}
+
+<div class="modal-content">
 
     <div class="form_add_team">
 
@@ -35,4 +31,4 @@
 
 </div>
 
-    {% endblock %}
+{% endblock %}
