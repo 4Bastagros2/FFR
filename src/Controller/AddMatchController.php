@@ -56,16 +56,16 @@ class AddMatchController extends AbstractController
             //     // but, the original `$task` variable has also been updated
                 $task = $form->getData();
         
-            //     // ... perform some action, such as saving the task to the database
-            //     // for example, if Task is a Doctrine entity, save it!
-            //     // $entityManager = $this->getDoctrine()->getManager();
-            //     // $entityManager->persist($match);
-            //     // $entityManager->flush();
+                // ... perform some action, such as saving the task to the database
+                // for example, if Task is a Doctrine entity, save it!
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($match);
+                $entityManager->flush();
         
             //     // return $this->redirectToRoute('task_success');
             
-            // }
-
+            }
+            
             if($data==1){
                 $localTeam= $user->find($connectedUser)->getFinances()->getName();
                 $visitorTeam=$form->get("local_team")->getViewData();
@@ -112,4 +112,3 @@ class AddMatchController extends AbstractController
 
         
 }
-
