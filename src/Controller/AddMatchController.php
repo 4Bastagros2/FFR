@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+use DateTime;
+use App\Entity\Team;
 use App\Entity\User;
 use App\Entity\Match;
 use App\Form\AddMatchFormType;
@@ -46,13 +48,12 @@ class AddMatchController extends AbstractController
             $data=$task->getViewData();
             
            
-            $team = $user->find($userConnect)->getCoaches();
-            dump($team);
-            $form->handleRequest($request);
+          
+           
             // if ($form->isSubmitted() && $form->isValid()) {
-            if ($form->isSubmitted()) {
-                // $form->getData() holds the submitted values
-                // but, the original `$task` variable has also been updated
+            // if ($form->isSubmitted()) {
+            //     // $form->getData() holds the submitted values
+            //     // but, the original `$task` variable has also been updated
                 $task = $form->getData();
         
                 // ... perform some action, such as saving the task to the database
@@ -61,10 +62,10 @@ class AddMatchController extends AbstractController
                 $entityManager->persist($match);
                 $entityManager->flush();
         
-                // return $this->redirectToRoute('task_success');
+            //     // return $this->redirectToRoute('task_success');
             
             }
-
+            
             if($data==1){
                 $localTeam= $user->find($connectedUser)->getFinances()->getName();
                 $visitorTeam=$form->get("local_team")->getViewData();
@@ -72,8 +73,32 @@ class AddMatchController extends AbstractController
                 $localTeam=$form->get("local_team")->getViewData();
                 $visitorTeam=$user->find($connectedUser)->getFinances()->getName();
             }
-    
-            // return $this->redirectToRoute('task_success');
+            
+            
+            
+            
+            $match->setLocalTeam($localTeam);
+            $match->setVisitorTeam($visitorTeam);
+            
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($match);
+            $entityManager->flush();
+            
+            $match->addTeam($this->getDoctrine()
+            ->getRepository(Team::class)
+            ->find($form->get('teams')->getViewData()[0]));
+            
+           
+
+            $teams->find($form->get('teams')->getViewData()[0])->addPlayMatch($match);
+            
+           dump($form->get('teams')->getViewData()[0]);
+            
+            $entityManager->persist($match);
+            $entityManager->flush();
+            
+            
+            //return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);
         }
 
 
@@ -87,4 +112,3 @@ class AddMatchController extends AbstractController
 
         
 }
-

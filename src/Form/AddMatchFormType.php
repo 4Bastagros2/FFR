@@ -32,10 +32,10 @@ class AddMatchFormType extends AbstractType
             
             // ->add('stats')
             // ->add('composition')
-            // ->add('match_type',EntityType::class,[
-            //     'class' => MatchType::class,
-            //     'choice_label' => 'name',
-            // ])
+            ->add('match_type',EntityType::class,[
+                'class' => MatchType::class,
+                'choice_label' => 'name',
+            ])
             ->add('teams',EntityType::class,[
                 'class' => Team::class,
                 'choices' => $options['teams'],

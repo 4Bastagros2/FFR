@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Post;
 use App\Entity\Team;
 use App\Entity\Player;
 use Symfony\Component\Form\AbstractType;
@@ -23,7 +24,17 @@ class PlayerFormType extends AbstractType
             ->add('stats')
             ->add('license_number')
             // ->add('play_in')
-            ->add('is_post')
+            ->add('is_post', EntityType::class, [
+                // looks for choices from this entity
+                'class' => Post::class,
+            
+                // uses the User.username property as the visible option string
+                'choice_label' => 'post',
+            
+                // used to render a select box, check boxes or radios
+                'multiple' => true,
+                'expanded' => true,
+            ])
             ->add('play_in', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Team::class,
