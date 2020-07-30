@@ -1,25 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ShowPlayersController!
+{% block title %}Liste des joueurs
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
 
-	{% for player in players %}
-		<li>{{ player.lestName}}&nbsp;{{ player.firstName }}&nbsp;{{ player.essais }}&nbsp;{{ player.transformations }}&nbsp;{{ player.penalites }}&nbsp;{{ player.drops }}&nbsp;{{ player.rouges }}&nbsp;{{ player.jaunes }}&nbsp;&nbsp;&nbsp;<strong>équipe:</strong>
-			{{ team.category}}</li><br>
+{% include 'main_nav.html.twig' %}
 
-	{% endfor %}
+<div class="body-wrapper">
+
+	<div class="menu-tab">
+		<center>
+			<h4>Listes des joueurs</h4>
+		</center>
+	</div>
+
+	<div class="main-wrapper">
+
+		<table id="players-list" class="stripe hover row-border dt-justify">
+
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Essais</th>
+					<th>transformations</th>
+					<th>Pénalités</th>
+					<th>Drops</th>
+					<th>Cartons rouges</th>
+					<th>Cartons jaunes</th>
+					<th>Temps de jeu</th>
+					<th>Catégorie</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for player in players %}
+				<tr>
+					<td>{{ player.lestName}}</td>
+					<td>{{ player.firstName }}</td>
+					<td>{{ player.essais }}</td>
+					<td>{{ player.transformations }}</td>
+					<td>{{ player.penalites }}</td>
+					<td>{{ player.drops }}</td>
+					<td>{{ player.rouges }}</td>
+					<td>{{ player.jaunes }}</td>
+					<td>{{ player.temps|date() }}</td>
+					<td>{{ team.category}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		$('#players-list').DataTable({
+			"language": {
+				"url": "{{ asset('js/french.lang') }}"
+			},
+		});
+	});
+</script>
+
 {% endblock %}

@@ -6,6 +6,12 @@ html {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+body {
+    min-height: 100vh;
+    display: grid;
+    background-color: $gray;
+}
+
 nav {
     width: 100vw;
     // position: fixed;
@@ -13,6 +19,7 @@ nav {
     color: white;
     font-size: 0.9rem;
     box-shadow: 0px 0px 5px 0px #000000ad;
+
 }
 
 .bg-menu {
@@ -52,12 +59,6 @@ nav {
     }
 }
 
-
-body {
-    display: grid;
-    background-color: $gray;
-}
-
 .pointer {
     cursor: pointer;
     transition: .2s;
@@ -89,23 +90,77 @@ hr {
 }
 
 .btn-edit {
-    background-color: $blue !important;
+    background-color: white !important;
+    color: $blue !important;
 }
 
 .btn-edit:hover {
-    color: $blue !important;
-    background-color: white !important;
+    color: white !important;
+    background-color: $blue !important;
 }
 
 .underline {
     text-decoration: underline;
 }
 
+.team-wrapper {
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
+    .team-card {
+        min-width: 200px;
+        display: inline-flex;
+        flex-direction: column;
+        backdrop-filter: blur(3px) opacity(70%) brightness(250%);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
+        background-color: #ffffff91;
+        margin: 1rem;
+
+        .team-cat {
+            font-size: calc(1.25rem + 0.5vw);
+            text-align: center;
+            margin: 2.5rem auto 1rem;
+        }
+
+        .card-body {
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 0 2rem;
+
+            img:nth-child(2) {
+                scale: 130%
+            }
+        }
+
+        .card-footer {
+            display: flex;
+
+            button {
+                margin: 0;
+                box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+    }
+}
 
 @media screen and (min-width: 760px) {
+    body {
+        background-color: #013974;
+        background-image: url(../img/background.png);
+        background-blend-mode: overlay;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        grid-template-rows: auto 1fr;
+    }
+
     nav {
         grid-row: 1;
+        align-self: start;
 
         .sm-menu {
             display: none;
@@ -208,10 +263,18 @@ hr {
     }
 
     .menu-tab,
-    .main-wrapper,
     .team-wrapper {
-
         padding: 1rem calc(1rem + 5vw) 0;
+    }
+
+    .main-wrapper,
+    .players-wrapper {
+        padding: 2.5rem calc(1rem + 5vw);
+    }
+
+    .main-wrapper,
+    .players-wrapper {
+        background-color: $gray;
     }
 
     .menu-tab {
@@ -233,29 +296,6 @@ hr {
     }
 
     .team-wrapper {
-        grid-row: 2;
-        display: flex;
-        justify-content: center;
-
-        .team-card {
-            min-width: 200px;
-            display: inline-flex;
-            flex-direction: column;
-            backdrop-filter: blur(3px) opacity(70%) brightness(250%);
-
-            .team-cat {
-                font-size: calc(1.25rem + 0.5vw);
-                text-align: center;
-                margin: 5rem;
-            }
-
-            .card-footer {
-                display: flex;
-            }
-
-            button {
-                margin: 0;
-            }
-        }
+        place-content: center;
     }
 }

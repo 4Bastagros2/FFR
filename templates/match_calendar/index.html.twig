@@ -3,50 +3,52 @@
 {% block title %}Hello MatchCalendarController!{% endblock %}
 
 {% block body %}
-
 {% include 'main_nav.html.twig' %}
 
-<div class="menu-tab">
-    <center>
-        <h4>Calendrier des matches</h4>
-    </center>
-</div>
+<div class="body-wrapper">
 
-<button href="add/match" class="btn-lg pointer" type="submit">+ Ajouter un match</button>
+    <div class="menu-tab">
+        <center>
+            <h4>Calendrier des matches</h4>
+        </center>
+    </div>
 
-<div class="main-wrapper">
-    <table id="match-calendar" class="stripe hover row-border dt-body-center">
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Date</th>
-                <th>Équipe local</th>
-                <th></th>
-                <th>Équipe adverse</th>
-                <th>Durée</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                {% for match in match %}
-                <td>{{ match.matchtype.name }}</td>
-                <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
-                <td>{{ match.localteam }}</td>
-                <td>vs</td>
-                <td>{{ match.visitorteam }}</td>
-                <td>{{ match.duration |date('H:i:s') }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-
-        {# <li>{{ match.stats }}</li> #}
-        {# <li>{% for comp in match.composition['backer'] %}
-        Position possible : {{comp}}<br>
-        {% endfor %}
-        </li> #}
-
-        </tbody>
-    </table>
+    
+    <div class="main-wrapper">
+        <table id="match-calendar" class="stripe hover row-border dt-body-center">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Équipe local</th>
+                    <th></th>
+                    <th>Équipe adverse</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for match in match %}
+                    <td>{{ match.matchtype.name }}</td>
+                    <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
+                    <td>{{ match.localteam }}</td>
+                    <td>vs</td>
+                    <td>{{ match.visitorteam }}</td>
+                    <td>{{ match.duration |date('H:i:s') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+            {# <li>{{ match.stats }}</li> #}
+            {# <li>{% for comp in match.composition['backer'] %}
+                Position possible : {{comp}}<br>
+                {% endfor %}
+            </li> #}
+            
+            </tbody>
+        </table>
+        <button href="add/match" class="btn-lg pointer" type="submit">+ Ajouter un match</button>
+    </div>
 </div>
 
 <script>
