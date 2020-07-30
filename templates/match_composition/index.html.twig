@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatchCompositionController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <h1>Hello {{ controller_name }}! ✅</h1>
+<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; background-image: url('{{ asset('img/field.png') }}'); width: 602px; height: 851px">
+        <div class="droppable field-row" style="display: flex; flex-direction: row; align-content: center; justify-content: space-around; width: 602px;">
+            <div class="droppable field-position" id="1" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">1</div>
+            <div class="droppable field-position" id="2" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">2</div>
+            <div class="droppable field-position" id="3" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">3</div>
+        </div>
+        <div class="droppable field-row" style="display: flex; flex-direction: row; align-content: center; justify-content: space-around; width: 60%;">
+            <div class="droppable field-position" id="4" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">4</div>
+            <div class="droppable field-position" id="5" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">5</div>
+        </div>
+        <div class="droppable field-row" style="display: flex; flex-direction: row; align-content: center; justify-content: space-around; width: 602px;">
+            <div class="droppable field-position" id="6" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">6</div>
+            <div class="droppable field-position" id="8" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">8</div>
+            <div class="droppable field-position" id="7" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">7</div>
+        </div>
+        <div class="droppable field-row" style="display: flex; flex-direction: row; align-content: center; justify-content: space-around; width: 60%;">
+            <div class="droppable field-position" id="9" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">9</div>
+            <div class="droppable field-position" id="10" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">10</div>
+        </div>
+        <div class="droppable field-row" style="display: flex; flex-direction: row; align-content: center; justify-content: space-around; width: 602px;">
+            <div class="droppable field-position" id="11" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">11</div>
+            <div class="droppable field-position" id="12" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">12</div>
+            <div class="droppable field-position" id="13" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">13</div>
+            <div class="droppable field-position" id="14" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">14</div>
+        </div>
+        <div class="droppable field-row" style="display: flex; flex-direction: row; align-content: center; justify-content: space-around; width: 602px;">
+            <div class="droppable field-position" id="15" style="width: 50px; height: 50px; border: 4px dashed white; opacity: 0.5; background-color: rgba(255,255,255,0.275); border-radius: 5px;">15</div>
+        </div>
+    </div>
+
+    <div id="players_list">
+    {% include 'match_composition/playercard.html.twig' with {'id': 1, 'name': 'Robert'} %}
+    {% include 'match_composition/playercard.html.twig' with {'id': 2, 'name': 'JJJ'} %}
+    {% include 'match_composition/playercard.html.twig' with {'id': 3, 'name': 'Pol'} %}
+    </div>
+
+
+<div>
+
+
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('js/composition.js') }}">
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+{% endblock %}
