@@ -58,19 +58,19 @@ class AddMatchController extends AbstractController
                 // ... perform some action, such as saving the task to the database
                 // for example, if Task is a Doctrine entity, save it!
                 $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($player);
+                $entityManager->persist($match);
                 $entityManager->flush();
         
                 // return $this->redirectToRoute('task_success');
             
             }
-
+            
             if($data==1){
                 $localTeam= $user->find($userConnect)->getFinances()->getName();
                 $visitorTeam=$form->get("local_team")->getViewData();
             }else{
                 $localTeam=$form->get("local_team")->getViewData();
-                $visitorTeam=$user->find($userConnect)->getFinances()->getName();
+                $visitorTeam=$user->find($connectedUser)->getFinances()->getName();
             }
     
             // return $this->redirectToRoute('task_success');
@@ -87,4 +87,3 @@ class AddMatchController extends AbstractController
 
         
 }
-

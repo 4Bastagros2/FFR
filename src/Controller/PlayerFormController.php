@@ -25,7 +25,7 @@ class PlayerFormController extends AbstractController
         }
         // ...
 
-
+           
 
         // $form = $this->createForm(PlayerFormType::class, $playerForm);
         $form = $this->createForm(PlayerFormType::class, $player);
@@ -38,6 +38,9 @@ class PlayerFormController extends AbstractController
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $form->getData();
+
+            // $player->addIsPost($form->get('is_post')->getViewData());
+            
     
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
