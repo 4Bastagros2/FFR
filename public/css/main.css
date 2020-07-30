@@ -296,10 +296,12 @@ hr {
     margin: 0.25rem;
   }
   .menu-tab,
-  .main-wrapper,
-  .team-wrapper,
-  .players-wrapper {
+  .team-wrapper {
     padding: 1rem calc(1rem + 5vw) 0;
+  }
+  .main-wrapper,
+  .players-wrapper {
+    padding: 2.5rem calc(1rem + 5vw);
   }
   .main-wrapper,
   .players-wrapper {
