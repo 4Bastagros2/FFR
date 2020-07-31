@@ -1,8 +1,8 @@
 $(function(){
 
+var id_match = $('.global').data('idMatch');
 
-
-var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 $('.draggable').draggable({
     helper: "clone",
@@ -40,22 +40,31 @@ $('.draggable').draggable({
         // $(ui.draggable).one('shown.bs.popover', function(e) 
         // {
           //   $(".jail").css('visibility', 'visible');
+          console.log('----------------------------');
+          console.log(positions);
           
-          
-          id_player = $(ui.draggable).attr('id');
-          id_position = $(this).attr('id');
-          prev_position = ui.draggable.parent().attr('id');
+          console.log('---------------------------- id player');
+          id_player = $(ui.draggable).data('idPlayer');
+          console.log(id_player);
+          id_position = $(this).data('idPosition');
+          prev_position = ui.draggable.parent().data('idPosition');
           prev_player = positions[id_position];
           // console.log('id_player:'+id_player+' id_position')
-          if(prev_player){
-            $(previous).append($('#player'+prev_player));            
+          console.log('[data-id-player="'+prev_player+'"]');
+          if(prev_player>0){
+            positions[prev_position] = prev_player;
+            $(previous).append($('[data-id-player="'+prev_player+'"]'));            
+          } else {
+            positions[prev_position] = 0;
           }
           $(this).append(ui.draggable.css({
-              position: 'relative'
+            position: 'relative'
             // background: 'green'
           }));
           positions[id_position] = id_player;
           
+          console.log(positions);
+          console.log('----------------------------');
           //   $('#btn-cancel').one('click', function(e){
         //     // alert('cancel');
         //     $(previous)
@@ -69,19 +78,19 @@ $('.draggable').draggable({
           
         //   $('#btn-confirm').one('click', function() {
         //     // alert('confirm');
-        //     fetch(`/position/${id}/${idcard}`, {
-        //       method: 'POST',
-        //     }).then(function() 
-        //     {     
-        //         // bootbox.alert({
-        //         //   message: "Mise à jour de la position ok!",
-        //         //   className: 'rubberBand animated',
-        //         //   size: 'small'
-        //         // });
-        //         // $('[data-toggle="popover"]').popover('hide');
-        //         $(".jail").css('visibility', 'hidden');
-        //       });
-        //     });
+            fetch(`/match/update/composition/${id_match}`, {
+              method: 'POST',
+            }).then(function() 
+            {     
+                // bootbox.alert({
+                //   message: "Mise à jour de la position ok!",
+                //   className: 'rubberBand animated',
+                //   size: 'small'
+                // });
+                // $('[data-toggle="popover"]').popover('hide');
+                // $(".jail").css('visibility', 'hidden');
+              });
+            // });
     
         // });
   
