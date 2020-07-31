@@ -21,7 +21,7 @@ label,
 input {
   font-family: 'Roboto', sans-serif;
   font-size: 1.15rem;
-  margin: .75rem .25em;
+  margin: .75rem auto;
 }
 
 input {
@@ -39,10 +39,10 @@ input:focus-within {
 }
 
 input[type=checkbox] {
-  margin: .75rem .25em;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  margin: .75rem .25em !important;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
 }
 
 select {
@@ -77,6 +77,8 @@ select {
 
 .form-wrap .agree-terms label {
   font-size: 1rem;
+  width: auto;
+  margin: .75rem;
 }
 
 table th,
