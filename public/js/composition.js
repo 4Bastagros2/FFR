@@ -1,3 +1,9 @@
+$(function(){
+
+
+
+var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
 $('.draggable').draggable({
     helper: "clone",
     containment: "document",
@@ -20,29 +26,37 @@ $('.draggable').draggable({
       // idcard = $(this).attr('id');
       previous = ui.draggable.parent();
 
-      $(previous).append($('.player_card', previous));
-      console.log($('.player_card', previous).attr('id')+$('.player_card', previous).html());
-
-      $(this)
-      .append(ui.draggable.css({
-        position: 'relative'
-        // background: 'green'
-      }));
-  
-      $(".global").data('idcard', idcard);
-  
+      // console.log($('.player_card', previous).attr('id')+$('.player_card', previous).html());
+      
+      
+      // $(".global").data('idcard', idcard);
+      
       // console.log(this);
       // console.log(previous);
-  
-  
+      
+      
       if(!$(this).is($(previous)))
       {
         // $(ui.draggable).one('shown.bs.popover', function(e) 
         // {
-        //   $(".jail").css('visibility', 'visible');
-    
-    
-        //   $('#btn-cancel').one('click', function(e){
+          //   $(".jail").css('visibility', 'visible');
+          
+          
+          id_player = $(ui.draggable).attr('id');
+          id_position = $(this).attr('id');
+          prev_position = ui.draggable.parent().attr('id');
+          prev_player = positions[id_position];
+          // console.log('id_player:'+id_player+' id_position')
+          if(prev_player){
+            $(previous).append($('#player'+prev_player));            
+          }
+          $(this).append(ui.draggable.css({
+              position: 'relative'
+            // background: 'green'
+          }));
+          positions[id_position] = id_player;
+          
+          //   $('#btn-cancel').one('click', function(e){
         //     // alert('cancel');
         //     $(previous)
         //     .append(ui.draggable.css({
@@ -85,7 +99,7 @@ window.onload = function() {
     init();
 };
 // Tooltips Initialization
-$(function () {
+
     
     // alert("blah");
     // main.classList.add("loading");
@@ -122,7 +136,7 @@ $(function () {
     //     });
   
     // });
-  });
+
   
   
   
@@ -147,3 +161,6 @@ $(function () {
   
     //   }
     // }
+
+
+  });
