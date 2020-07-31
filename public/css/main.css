@@ -258,7 +258,7 @@ a.btn-lg {
   nav .bg-menu .sub-menu .li-wrapper {
     background-color: #E3E8EE;
     color: #F2362F;
-    padding: calc(0.5rem + 1vw) 4rem calc(0.5rem + 1vw) 2rem;
+    padding: calc(0.5rem + 1vw) 4rem calc(0.45rem + 1vw) 2rem;
     -webkit-clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
             clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
     width: auto;
