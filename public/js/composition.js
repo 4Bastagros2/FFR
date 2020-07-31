@@ -16,20 +16,23 @@ $('.draggable').draggable({
     accept: '.draggable',
     drop: function(event, ui) {
   
-      id = $(".global").data('id');
-      idcard = $(this).attr('id');
+      id = $(ui.draggable).data('id');
+      // idcard = $(this).attr('id');
       previous = ui.draggable.parent();
-  
+
+      $(previous).append($('.player_card', previous));
+      console.log($('.player_card', previous).attr('id')+$('.player_card', previous).html());
+
       $(this)
       .append(ui.draggable.css({
-        position: 'relative',
-        background: 'green'
+        position: 'relative'
+        // background: 'green'
       }));
   
       $(".global").data('idcard', idcard);
   
-      console.log(this);
-      console.log(previous);
+      // console.log(this);
+      // console.log(previous);
   
   
       if(!$(this).is($(previous)))
