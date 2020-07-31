@@ -52,7 +52,7 @@ class TeamScreenController extends AbstractController
 
         $userConnect = $this->getUser();
         $team = $user->find($userConnect)->getCoaches();
-
+        
     
         return $this->render('team_screen/index.html.twig', [
             'controller_name' => 'TeamScreenController',

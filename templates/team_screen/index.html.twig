@@ -10,7 +10,7 @@
 	{% if app.user %}
 		<div class="team-wrapper">
 			{% for team in app.user.coaches %}
-				<a href="/show/players/{{ team.id }}">
+				<a href="/match/calendar/{{ team.id }}">
 					<div class="team-card">
 						<div class="card-header">
 							<p class="team-cat">{{ team.category }}</p>

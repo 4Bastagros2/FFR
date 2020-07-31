@@ -28,15 +28,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    {% for match in match %}
-                    <td>{{ match.matchtype.name }}</td>
-                    <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
-                    <td>{{ match.localteam }}</td>
-                    <td>vs</td>
-                    <td>{{ match.visitorteam }}</td>
-                    <td>{{ match.duration |date('H:i:s') }}</td>
-                </tr>
+               
+                {% for match in match %}
+                     <tr>
+                        
+                        <td><a href="">{{ match.matchtype.name }}</a></td>
+                        <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
+                        <td>{{ match.localteam }}</td>
+                        <td>vs</td>
+                        <td>{{ match.visitorteam }}</td>
+                        <td>{{ match.duration |date('H:i:s') }}</td>
+                        
+                    </tr>
                 {% endfor %}
             </tbody>
 
