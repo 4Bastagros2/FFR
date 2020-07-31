@@ -2,6 +2,10 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 body {
   min-height: 100vh;
   display: -ms-grid;
@@ -175,6 +179,23 @@ a.btn-lg {
 
 .body-wrapper {
   background-color: #E3E8EE;
+}
+
+.add-team-btn {
+  display: block;
+  width: 90px;
+  height: 90px;
+  background: #F2362F;
+  border-radius: 50%;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #E3E8EE;
+  position: fixed;
+  bottom: 20px;
+  font-family: 'roboto', sans-serif;
 }
 
 @media screen and (min-width: 760px) {
