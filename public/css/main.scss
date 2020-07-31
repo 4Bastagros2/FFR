@@ -98,6 +98,11 @@ hr {
     background-color: $blue !important;
 }
 
+a.btn-lg {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 .underline {
     text-decoration: underline;
 }
@@ -225,7 +230,7 @@ hr {
                         padding-left: calc(2rem + 1vw);
                     }
                 }
-                
+
                 li:nth-child(3) {
                     z-index: 97;
                     left: calc(-3.25em - 1vw);

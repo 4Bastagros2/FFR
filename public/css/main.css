@@ -102,6 +102,11 @@ hr {
   background-color: #013974 !important;
 }
 
+a.btn-lg {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 .underline {
   text-decoration: underline;
 }
