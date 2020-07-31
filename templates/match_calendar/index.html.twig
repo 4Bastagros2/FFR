@@ -28,15 +28,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    {% for match in match %}
-                    <td>{{ match.matchtype.name }}</td>
-                    <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
-                    <td>{{ match.localteam }}</td>
-                    <td>vs</td>
-                    <td>{{ match.visitorteam }}</td>
-                    <td>{{ match.duration |date('H:i:s') }}</td>
-                </tr>
+               
+                {% for match in match %}
+                     <tr>
+                        
+                        <td><a href="/stat/match/">{{ match.matchtype.name }}</a></td>
+                        <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
+                        <td>{{ match.localteam }}</td>
+                        <td>vs</td>
+                        <td>{{ match.visitorteam }}</td>
+                        <td>{{ match.duration |date('H:i:s') }}</td>
+                        
+                    </tr>
                 {% endfor %}
             </tbody>
 
@@ -48,7 +51,7 @@
 
             </tbody>
         </table>
-        <button href="add/match" class="btn-lg pointer" type="submit">+ Ajouter un match</button>
+        <a href="/add/match/{{ id }}" class="btn-lg pointer" type="submit">+ Ajouter un match</a>
     </div>
 </div>
 
