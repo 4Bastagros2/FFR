@@ -1,4 +1,4 @@
-<nav>
+<div id="nav">
     <div class="sm-menu nav-container">
 
         <ul>
@@ -12,7 +12,8 @@
                         <a><img class="svg-icon" src="{{ asset('icons/plus.svg')}}" href="">Ajouter</a>
                     </li>
                     <li>
-                        <a href="/logout"><img class="svg-icon" src="{{ asset('icons/signout.svg')}}" alt="=déconnection">
+                        <a href="/logout"><img class="svg-icon" src="{{ asset('icons/signout.svg')}}"
+                                alt="=déconnection">
                             Déconnection
                         </a>
                     </li>
@@ -45,9 +46,10 @@
                         </svg>Ajouter un joueur
                 </a>
             </li>
+            </li>
         </ul>
-        <h3>{{ app.user.finances.name }}</h3>
         <div class="side-menu">
+            <h3>{{ app.user.finances.name }}</h3>
             <div class="user-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewbox="0 0 36 36">
                     <path id="Icon_awesome-user-alt" data-name="Icon awesome-user-alt" class="cls-1"
@@ -66,9 +68,8 @@
         </div>
 
         </ul>
-
-</nav>
-
+    </div>
+</div>
 <script>
     $(function () {
         $('.add-team-btn').click(function () {
@@ -77,5 +78,4 @@
         $('#close').click(function () {
             $('.modal-content').fadeOut()
         });
-    });
-</script>
+    });</script>

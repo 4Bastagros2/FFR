@@ -1,5 +1,5 @@
 html {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 h1 {
@@ -13,7 +13,7 @@ body {
   background-color: #E3E8EE;
 }
 
-nav {
+#nav {
   bottom: 0;
   color: white;
   font-size: 0.9rem;
@@ -79,7 +79,7 @@ hr {
   background-color: #F2362F;
   padding: 16px 20px;
   color: white;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif !important;
   border: none;
   display: block;
   width: 165px;
@@ -208,30 +208,30 @@ a.btn-lg {
     -ms-grid-rows: auto 1fr;
         grid-template-rows: auto 1fr;
   }
-  nav {
+  #nav {
     -ms-grid-row: 1;
     grid-row: 1;
     -ms-flex-item-align: start;
         -ms-grid-row-align: start;
         align-self: start;
   }
-  nav .sm-menu {
+  #nav .sm-menu {
     display: none;
   }
-  nav .bg-menu {
+  #nav .bg-menu {
     background-color: #F2362F;
     display: -ms-grid;
     display: grid;
     border-bottom: 8px solid #013974;
   }
-  nav .bg-menu h3 {
+  #nav .bg-menu h3 {
     -ms-grid-column: 2;
     grid-column: 2;
     text-align: right;
     font-size: 2.25rem;
     white-space: nowrap;
   }
-  nav .bg-menu .sub-menu {
+  #nav .bg-menu .sub-menu {
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 2;
@@ -244,16 +244,16 @@ a.btn-lg {
     text-transform: uppercase;
     white-space: nowrap;
   }
-  nav .bg-menu .sub-menu svg {
+  #nav .bg-menu .sub-menu svg {
     fill: #F2362F;
     margin-right: 1vw;
     height: calc(0.3rem + 1vw);
   }
-  nav .bg-menu .sub-menu li {
+  #nav .bg-menu .sub-menu li {
     -webkit-filter: drop-shadow(13px 0px 5px #44444426);
             filter: drop-shadow(13px 0px 5px #44444426);
   }
-  nav .bg-menu .sub-menu .li-wrapper {
+  #nav .bg-menu .sub-menu .li-wrapper {
     background-color: #E3E8EE;
     color: #F2362F;
     padding: calc(0.5rem + 1vw) 4rem calc(0.45rem + 1vw) 2rem;
@@ -269,30 +269,30 @@ a.btn-lg {
             align-items: center;
     font-size: calc(0.5em + 1vw);
   }
-  nav .bg-menu .sub-menu li:first-of-type {
+  #nav .bg-menu .sub-menu li:first-of-type {
     z-index: 99;
   }
-  nav .bg-menu .sub-menu li:not(:first-of-type) {
+  #nav .bg-menu .sub-menu li:not(:first-of-type) {
     position: relative;
     left: calc(-1.5em - 1vw);
     z-index: 98;
   }
-  nav .bg-menu .sub-menu li:not(:first-of-type) .li-wrapper {
+  #nav .bg-menu .sub-menu li:not(:first-of-type) .li-wrapper {
     padding-left: calc(2rem + 1vw);
   }
-  nav .bg-menu .sub-menu li:nth-child(3) {
+  #nav .bg-menu .sub-menu li:nth-child(3) {
     z-index: 97;
     left: calc(-3.25em - 1vw);
   }
-  nav .bg-menu .sub-menu .active {
+  #nav .bg-menu .sub-menu .active {
     background-color: #013974;
     color: #E3E8EE;
     z-index: 99;
   }
-  nav .bg-menu .sub-menu .active svg {
+  #nav .bg-menu .sub-menu .active svg {
     fill: #E3E8EE;
   }
-  nav .bg-menu .side-menu {
+  #nav .bg-menu .side-menu {
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 1;
@@ -308,7 +308,7 @@ a.btn-lg {
             align-items: flex-end;
     padding: calc(0.45rem + 1vw) 2rem;
   }
-  nav .bg-menu .side-menu div {
+  #nav .bg-menu .side-menu div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -317,7 +317,7 @@ a.btn-lg {
             align-items: center;
     margin-left: 1rem;
   }
-  nav .bg-menu .side-menu svg {
+  #nav .bg-menu .side-menu svg {
     height: 0.7rem;
     fill: #E3E8EE;
     width: auto;

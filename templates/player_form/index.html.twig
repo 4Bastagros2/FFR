@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}Hello PlayerFormController!
 {% endblock %}
@@ -7,74 +8,62 @@
 
 {% include 'first_nav.html.twig' %}
 
-<div class="body-wrapper">
+<div class="main-wrapper">
 
-	<div class="main-wrapper">
+	<div class="container">
 
 		<a href="/team/screen" class="dis-block p-b-20">&larr; Retour</a>
 
 		{{ form_start(form, {'attr': {'id': 'player_form'}}) }}
-
 		<div class="form-row">
-			<div class="form-col">
+			<div class="form-group col-xs-12 col-sm-6">
 				{{ form_label(form.lest_name, 'Nom' ) }}
 				{{ form_widget(form.lest_name) }}
 			</div>
-
-			<div class="form-col">
+			<div class="form-group col-xs-12 col-sm-6">
 				{{ form_label(form.first_name, 'Prénom' ) }}
 				{{ form_widget(form.first_name) }}
 			</div>
 		</div>
 		<div class="form-row">
-			<div class="form-col">
+			<div class="form-group col-xs-12 col-md-6">
 				{{ form_label(form.picture, 'Portrait' ) }}
 				{{ form_widget(form.picture) }}
 			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-col">
-				{{ form_label(form.birth_date, 'Date de naissance' ) }}
-				{{ form_widget(form.birth_date) }}
-			</div>
-
-			<div class="form-col">
-				{{ form_label(form.club_entry_date, 'Date d\entrée au club' ) }}
-				{{ form_widget(form.club_entry_date) }}
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-col">
-				{{ form_label(form.is_post, 'Poste occupé' ) }}
-				{{ form_widget(form.is_post) }}
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-col">
-				{{ form_label(form.stats, 'Statistiques' ) }}
-				{{ form_widget(form.stats) }}
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-col">
+			<div class="form-group col-xs-12 col-md-6">
 				{{ form_label(form.license_number, 'License n° ' ) }}
 				{{ form_widget(form.license_number) }}
 			</div>
 		</div>
 		<div class="form-row">
-			<div class="form-col">
-				{{ form_label(form.play_in, 'Joue en' ) }}
-				{{ form_widget(form.play_in) }}
+			<div class="form-group col-xs-12 col-sm-6">
+				<div class="form-row">
+					<div class="form-group col-xs-12 col-md-6">
+						{{ form_label(form.is_post, 'Poste occupé' ) }}
+						{{ form_widget(form.is_post) }}
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						{{ form_label(form.play_in, 'Joue en' ) }}
+						{{ form_widget(form.play_in) }}
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6">
+				{{ form_label(form.birth_date, 'Date de naissance' ) }}
+				{{ form_widget(form.birth_date) }}
+				{{ form_label(form.club_entry_date, 'Date d\entrée au club' ) }}
+				{{ form_widget(form.club_entry_date) }}
+				{{ form_label(form.stats, 'Statistiques' ) }}
+				{{ form_widget(form.stats) }}
 			</div>
 		</div>
 
-		<button type="submit" class="btn-lg pointer m-t-10 m-b-10" name="player_form[Submit]">+ Ajouter</button>
-
-		{{ form_end(form)}}
-
 	</div>
 
+	
+	<button type="submit" class="btn-lg pointer m-t-10 m-b-10" name="player_form[Submit]">+ Ajouter</button>
+	
+	{{ form_end(form)}}
+	
 </div>
-
-<script></script>
 {% endblock %}

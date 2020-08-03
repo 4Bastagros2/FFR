@@ -19,7 +19,6 @@ h2 {
 
 label,
 input {
-  font-family: 'Roboto', sans-serif;
   font-size: 1.15rem;
   margin: .75rem auto;
 }
@@ -37,11 +36,8 @@ input:focus-within {
   border: 0.5px solid #013974;
 }
 
-input[type=checkbox] {
-  margin: .75rem .25em !important;
-  width: -webkit-fit-content !important;
-  width: -moz-fit-content !important;
-  width: fit-content !important;
+.form-check-input {
+  margin-top: .9rem;
 }
 
 select {
@@ -81,27 +77,6 @@ select {
   margin: .75rem;
 }
 
-.form-row {
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 20px;
-  margin-bottom: 20px;
-}
-
-.form-col {
-  display: -ms-grid;
-  display: grid;
-}
-
-.form-col label {
-  margin: 0.5rem 0;
-}
-
-.form-col input {
-  margin: 0;
-}
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -109,7 +84,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -147,14 +121,6 @@ table tbody {
   display: -ms-grid;
   display: grid;
   margin-top: 1rem;
-}
-
-#player_form {
-  display: -ms-grid;
-  display: grid;
-  place-content: center;
-  max-width: 40vw;
-  margin: auto;
 }
 
 @media screen and (min-width: 760px) {
