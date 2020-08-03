@@ -23,6 +23,11 @@ body {
     font-weight: bold;
 }
 
+a {
+    border-radius: 0 !important;
+    white-space: nowrap !important;
+}
+
 a:hover {
     text-decoration: none;
 }
@@ -187,7 +192,7 @@ a.btn-lg {
     width: 70px;
     height: 70px;
     background: #F2362FA8;
-    border-radius: 50%;
+    border-radius: 50% !important;
     display: grid;
     place-content: center;
     font-size: 2.5rem;
@@ -284,6 +289,11 @@ a.btn-lg {
                     left: calc(-3.25em - 1vw);
                 }
 
+                li:nth-child(4) {
+                    z-index: 96;
+                    left: calc(-5.5em - 1vw);
+                }
+
                 .active {
                     background-color: $blue;
                     color: $gray;
@@ -361,5 +371,13 @@ a.btn-lg {
 
     .team-wrapper {
         place-content: center;
+    }
+}
+
+@media screen and (min-width: 1120px) {
+    .side-menu {
+        justify-content: flex-end;
+        flex-direction: column;
+        grid-row: 2 !important;
     }
 }

@@ -22,6 +22,11 @@ body {
   font-weight: bold;
 }
 
+a {
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -213,7 +218,7 @@ a.btn-lg {
   width: 70px;
   height: 70px;
   background: #F2362FA8;
-  border-radius: 50%;
+  border-radius: 50% !important;
   display: -ms-grid;
   display: grid;
   place-content: center;
@@ -316,6 +321,10 @@ a.btn-lg {
     z-index: 97;
     left: calc(-3.25em - 1vw);
   }
+  #nav .bg-menu .sub-menu li:nth-child(4) {
+    z-index: 96;
+    left: calc(-5.5em - 1vw);
+  }
   #nav .bg-menu .sub-menu .active {
     background-color: #013974;
     color: #E3E8EE;
@@ -386,6 +395,20 @@ a.btn-lg {
   }
   .team-wrapper {
     place-content: center;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .side-menu {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-grid-row: 2 !important;
+    grid-row: 2 !important;
   }
 }
 /*# sourceMappingURL=main.css.map */
