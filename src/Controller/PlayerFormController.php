@@ -7,15 +7,18 @@ use App\Form\PlayerFormType;
 use App\Repository\PlayerRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 class PlayerFormController extends AbstractController
 {
     /**
      * @Route("/player/form/{id}", name="player_form", defaults={"id"=-1})
      */
-    public function index(PlayerRepository $PlayerRepo, Request $request, $id)
+    public function index(PlayerRepository $PlayerRepo, Request $request, $id, SluggerInterface $slugger)
     {
 
         if($id == -1)
@@ -26,7 +29,7 @@ class PlayerFormController extends AbstractController
         }
         // ...
 
-           
+        $player = new Player();
 
         // $form = $this->createForm(PlayerFormType::class, $playerForm);
         $form = $this->createForm(PlayerFormType::class, $player);
@@ -35,25 +38,50 @@ class PlayerFormController extends AbstractController
 
         $form->handleRequest($request);
         // if ($form->isSubmitted() && $form->isValid()) {
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $task = $form->getData();
+            $task = $form['picture']->getData();
+            // $task1 = $form->get('picture')->getData();
 
             // $player->addIsPost($form->get('is_post')->getViewData());
             
     
-            // ... perform some action, such as saving the task to the database
+            if ($task) {
+                $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
+
+                try {
+                    $task->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $player->setPicture($newFilename);
+
+
+                            // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();
-    
-            // return $this->redirectToRoute('task_success');
+            }
+
+            // ... persist the $product variable or any other work
+
+            return $this->redirect($this->generateUrl('player_form'));
         }
 
 
-
+            // return $this->redirectToRoute('task_success');
+        
 
 
         return $this->render('player_form/index.html.twig', [
