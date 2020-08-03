@@ -24,7 +24,7 @@ class MatchCompositionController extends AbstractController
 
         $compo = $match->getComposition();
 
-        dump($compo);
+        // dump($compo);
 
         $team = $match->getTeams()[0];
         $players = $team->getPlayers();
@@ -41,7 +41,8 @@ class MatchCompositionController extends AbstractController
         }
 
         // dump($players);
-        dump($bench);
+        // dump($bench);
+        dump(json_encode($bench));
         
 
         return $this->render('match_composition/index.html.twig', [
@@ -62,8 +63,9 @@ class MatchCompositionController extends AbstractController
         
         dump($request);
         $match=$matchRep->find($id_match);
-        $match->setComposition($request->request->get('composition'));
-        dump($request->request->get('composition'));
+        $compo = json_decode($request->request->get('composition'));
+        $match->setComposition($compo);
+        dump($compo);
         
         $entityManager->persist($match);
         $entityManager->flush();

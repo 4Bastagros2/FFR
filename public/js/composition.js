@@ -4,7 +4,7 @@ var id_match = $('.global').data('idMatch');
 
 // var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var positions = JSON.parse(document.getElementById("composition").value);
-// console.log(positions);
+console.log('positions : '+positions);
 
 for (i= 1; i<17 ; i++) {
   if(positions[i]>0) {
@@ -49,7 +49,7 @@ $('.draggable').draggable({
         // $(ui.draggable).one('shown.bs.popover', function(e) 
         // {
           //   $(".jail").css('visibility', 'visible');
-          console.log('----------------------------');
+          console.log('positions : ----------------------------');
           console.log(positions);
           
           console.log('---------------------------- id player');
@@ -75,25 +75,27 @@ $('.draggable').draggable({
           console.log(positions);
           console.log('----------------------------');
           //   $('#btn-cancel').one('click', function(e){
-        //     // alert('cancel');
-        //     $(previous)
-        //     .append(ui.draggable.css({
-        //       position: 'relative',
-        //       background: 'green'
-        //     }));          
-        //     // $('[data-toggle="popover"]').popover('hide');
-        //     $(".jail").css('visibility', 'hidden');
-        //   });
-          
-        //   $('#btn-confirm').one('click', function() {
-        //     // alert('confirm');
+            //     // alert('cancel');
+            //     $(previous)
+            //     .append(ui.draggable.css({
+              //       position: 'relative',
+              //       background: 'green'
+              //     }));          
+              //     // $('[data-toggle="popover"]').popover('hide');
+              //     $(".jail").css('visibility', 'hidden');
+              //   });
+              
+              //   $('#btn-confirm').one('click', function() {
+                //     // alert('confirm');
+                console.log('---------------------------- id player');
         $.ajax({
           method: "POST",
           url: `/match/composition/update/${id_match}`,
-          data: { composition: positions }
+          data: { composition: JSON.stringify(positions) }
         })
           .done(function( msg ) {
-            alert( "composition sauvée : " + msg );
+            // alert( "composition sauvée : " + msg );
+            alert( "composition sauvée : " + id_match );
           });
 
 
