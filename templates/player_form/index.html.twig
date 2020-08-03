@@ -11,18 +11,70 @@
 
 	<div class="main-wrapper">
 
-		{{ form_start(form) }}
+		<a href="/team/screen" class="dis-block p-b-20">&larr; Retour</a>
 
+		{{ form_start(form, {'attr': {'id': 'player_form'}}) }}
 
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.lest_name, 'Nom' ) }}
+				{{ form_widget(form.lest_name) }}
+			</div>
+
+			<div class="form-col">
+				{{ form_label(form.first_name, 'Prénom' ) }}
+				{{ form_widget(form.first_name) }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.picture, 'Portrait' ) }}
+				{{ form_widget(form.picture) }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.birth_date, 'Date de naissance' ) }}
+				{{ form_widget(form.birth_date) }}
+			</div>
+
+			<div class="form-col">
+				{{ form_label(form.club_entry_date, 'Date d\entrée au club' ) }}
+				{{ form_widget(form.club_entry_date) }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.is_post, 'Poste occupé' ) }}
+				{{ form_widget(form.is_post) }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.stats, 'Statistiques' ) }}
+				{{ form_widget(form.stats) }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.license_number, 'License n° ' ) }}
+				{{ form_widget(form.license_number) }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-col">
+				{{ form_label(form.play_in, 'Joue en' ) }}
+				{{ form_widget(form.play_in) }}
+			</div>
+		</div>
+
+		<button type="submit" class="btn-lg pointer m-t-10 m-b-10" name="player_form[Submit]">+ Ajouter</button>
 
 		{{ form_end(form)}}
 
 	</div>
 
-
-
-</div>
 </div>
 
-
+<script></script>
 {% endblock %}
