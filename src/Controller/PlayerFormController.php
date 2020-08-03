@@ -7,6 +7,7 @@ use App\Form\PlayerFormType;
 use App\Repository\PlayerRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PlayerFormController extends AbstractController
@@ -50,6 +51,7 @@ class PlayerFormController extends AbstractController
     
             // return $this->redirectToRoute('task_success');
         }
+
 
 
 
