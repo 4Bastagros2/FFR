@@ -23,18 +23,33 @@ class MatchCompositionController extends AbstractController
         $match=$matchRep->find($id_match);
 
         $compo = $match->getComposition();
+
+        dump($compo);
+
         $team = $match->getTeams()[0];
         $players = $team->getPlayers();
 
+        $bench = [];
+
         foreach ($players as $player)
         {
-                
+                if(!in_array($player->getId(), $compo))
+                {
+                    dump('player in bench'.$player->getId());
+                    $bench[] = $player;
+                }
         }
+
+        // dump($players);
+        dump($bench);
         
 
         return $this->render('match_composition/index.html.twig', [
             'controller_name' => 'MatchCompositionController',
             'id_match' => $id_match,
+            'players' => $players,
+            'bench' => $bench,
+            'composition' => json_encode($compo),
         ]);
     }
 

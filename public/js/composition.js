@@ -2,7 +2,16 @@ $(function(){
 
 var id_match = $('.global').data('idMatch');
 
-var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+// var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var positions = JSON.parse(document.getElementById("composition").value);
+// console.log(positions);
+
+for (i= 1; i<17 ; i++) {
+  if(positions[i]>0) {
+    $('[data-id-position="'+i+'"]').append($('[data-id-player="'+positions[i]+'"]'));   
+  }
+}
+
 
 $('.draggable').draggable({
     helper: "clone",
@@ -112,11 +121,23 @@ $('.draggable').draggable({
     }
   });
   
-  function init() {  
-}
-window.onload = function() {
-    init();
-};
+
+
+
+// initialisation joueurs
+
+  
+
+
+
+
+
+
+
+
+
+
+
 // Tooltips Initialization
 
     

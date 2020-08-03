@@ -12,6 +12,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+<input type='hidden' id="composition" value='{{ composition }}'/>
 
 <div class="example-wrapper global" data-id-match="1">
 
@@ -48,9 +49,9 @@
     </div>
 
     <div data-id-position="players_list" class="droppable">
-    {% include 'match_composition/playercard.html.twig' with {'id': 1, 'name': 'Robert'} %}
-    {% include 'match_composition/playercard.html.twig' with {'id': 2, 'name': 'JJJ'} %}
-    {% include 'match_composition/playercard.html.twig' with {'id': 3, 'name': 'Pol'} %}
+    {% for player in players %}
+        {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'name': player.firstname} %}
+    {% endfor %}
     </div>
 
 
