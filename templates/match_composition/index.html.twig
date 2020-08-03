@@ -12,41 +12,42 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+
+<div class="example-wrapper global" data-id-match="1">
 
     <h1>Hello {{ controller_name }}! ✅</h1>
 <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; background-image: url('{{ asset('img/field.png') }}'); width: 602px; height: 851px">
         <div class="field-row" style="width: 602px;">
-            <div class="droppable field-position" id="1"><p>1</p></div>
-            <div class="droppable field-position" id="2"><p>2</p></div>
-            <div class="droppable field-position" id="3"><p>3</p></div>
+            <div class="droppable field-position" data-id-position="1"><p>1</p></div>
+            <div class="droppable field-position" data-id-position="2"><p>2</p></div>
+            <div class="droppable field-position" data-id-position="3"><p>3</p></div>
         </div>
         <div class="field-row" style="width: 60%;">
-            <div class="droppable field-position" id="4"><p>4</p></div>
-            <div class="droppable field-position" id="5"><p>5</p></div>
+            <div class="droppable field-position" data-id-position="4"><p>4</p></div>
+            <div class="droppable field-position" data-id-position="5"><p>5</p></div>
         </div>
         <div class="field-row" style="width: 602px;">
-            <div class="droppable field-position" id="6"><p>6</p></div>
-            <div class="droppable field-position" id="8"><p>8</p></div>
-            <div class="droppable field-position" id="7"><p>7</p></div>
+            <div class="droppable field-position" data-id-position="6"><p>6</p></div>
+            <div class="droppable field-position" data-id-position="8"><p>8</p></div>
+            <div class="droppable field-position" data-id-position="7"><p>7</p></div>
         </div>
         <div class="field-row" style="width: 60%;">
-            <div class="droppable field-position" id="9"><p>9</p></div>
-            <div class="droppable field-position" id="10"><p>10</p></div>
+            <div class="droppable field-position" data-id-position="9"><p>9</p></div>
+            <div class="droppable field-position" data-id-position="10"><p>10</p></div>
         </div>
         <div class="field-row" style="width: 602px;">
-            <div class="droppable field-position" id="11"><p>11</p></div>
-            <div class="droppable field-position" id="12"><p>12</p></div>
-            <div class="droppable field-position" id="13"><p>13</p></div>
-            <div class="droppable field-position" id="14"><p>14</p></div>
+            <div class="droppable field-position" data-id-position="11"><p>11</p></div>
+            <div class="droppable field-position" data-id-position="12"><p>12</p></div>
+            <div class="droppable field-position" data-id-position="13"><p>13</p></div>
+            <div class="droppable field-position" data-id-position="14"><p>14</p></div>
         </div>
         <div class="field-row" style="width: 602px;">
-            <div class="droppable field-position" id="15"><p>15</p></div>
+            <div class="droppable field-position" data-id-position="15"><p>15</p></div>
         </div>
     </div>
 
-    <div id="players_list" class="droppable">
+    <div data-id-position="players_list" class="droppable">
     {% include 'match_composition/playercard.html.twig' with {'id': 1, 'name': 'Robert'} %}
     {% include 'match_composition/playercard.html.twig' with {'id': 2, 'name': 'JJJ'} %}
     {% include 'match_composition/playercard.html.twig' with {'id': 3, 'name': 'Pol'} %}

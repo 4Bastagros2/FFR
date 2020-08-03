@@ -15,7 +15,6 @@ body {
 }
 
 nav {
-    width: 100vw;
     // position: fixed;
     bottom: 0;
     color: white;
@@ -327,6 +326,8 @@ a.btn-lg {
     .main-wrapper {
         grid-row: 3;
         background-color: $gray;
+        // display: grid;
+        // place-content: center;
     }
 
     .team-wrapper {
