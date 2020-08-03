@@ -20,7 +20,13 @@ class MatchCompositionController extends AbstractController
     public function index(MatchRepository $matchRep, $id_match)
     {
         
+
+
         $match=$matchRep->find($id_match);
+
+        if(date("Y-m-d H:i:s") > $match->getDate())
+            return $this->redirect($this->generateUrl('stats_match'));
+
 
         $compo = $match->getComposition();
 

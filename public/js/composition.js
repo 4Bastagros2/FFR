@@ -61,7 +61,7 @@ $('.draggable').draggable({
           // console.log('id_player:'+id_player+' id_position')
           console.log('[data-id-player="'+prev_player+'"]');
           if(prev_player>0){
-            positions[prev_position] = prev_player;
+            if(prev_position>0) positions[prev_position] = prev_player;
             $(previous).append($('[data-id-player="'+prev_player+'"]'));            
           } else {
             positions[prev_position] = 0;
@@ -70,7 +70,7 @@ $('.draggable').draggable({
             position: 'relative'
             // background: 'green'
           }));
-          positions[id_position] = id_player;
+          if(id_position>0) positions[id_position] = id_player;
           
           console.log(positions);
           console.log('----------------------------');
@@ -95,7 +95,7 @@ $('.draggable').draggable({
         })
           .done(function( msg ) {
             // alert( "composition sauvée : " + msg );
-            alert( "composition sauvée : " + id_match );
+            // alert( "composition sauvée : " + id_match );
           });
 
 
