@@ -152,11 +152,11 @@ a.btn-lg {
             padding: 3rem;
 
             img {
-                scale: 150%;
+                transform: scale(1.5);
             }
 
             img:nth-child(2) {
-                scale: 200%;
+                transform: scale(2);
                 position: relative;
                 z-index: 99;
                 margin: 0 .5rem;

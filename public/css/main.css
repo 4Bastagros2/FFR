@@ -177,11 +177,13 @@ a.btn-lg {
 }
 
 .team-wrapper .team-card .card-body img {
-  scale: 150%;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .team-wrapper .team-card .card-body img:nth-child(2) {
-  scale: 200%;
+  -webkit-transform: scale(2);
+          transform: scale(2);
   position: relative;
   z-index: 99;
   margin: 0 .5rem;
