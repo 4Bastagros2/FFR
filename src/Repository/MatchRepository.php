@@ -47,4 +47,13 @@ class MatchRepository extends ServiceEntityRepository
         ;
     }
     */
+
+  public function count($value){
+      
+      
+      return $this->createQueryBuilder('m')
+            ->orderBy('m.id','DESC')
+            ->getQuery()
+            ->getResult();
+  }
 }
