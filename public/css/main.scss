@@ -295,12 +295,16 @@ a.btn-lg {
                 }
 
                 .active {
-                    background-color: $blue;
-                    color: $gray;
-                    z-index: 99;
+                    z-index: 999 !important;
+                    position: relative;
 
-                    svg {
-                        fill: $gray;
+                    .li-wrapper {
+                        background-color: $blue;
+                        color: $gray;
+
+                        svg {
+                            fill: $gray;
+                        }
                     }
                 }
             }

@@ -326,11 +326,14 @@ a.btn-lg {
     left: calc(-5.5em - 1vw);
   }
   #nav .bg-menu .sub-menu .active {
+    z-index: 999 !important;
+    position: relative;
+  }
+  #nav .bg-menu .sub-menu .active .li-wrapper {
     background-color: #013974;
     color: #E3E8EE;
-    z-index: 99;
   }
-  #nav .bg-menu .sub-menu .active svg {
+  #nav .bg-menu .sub-menu .active .li-wrapper svg {
     fill: #E3E8EE;
   }
   #nav .bg-menu .side-menu {
