@@ -78,10 +78,20 @@ $('.draggable').draggable({
           
         //   $('#btn-confirm').one('click', function() {
         //     // alert('confirm');
-            fetch(`/match/update/composition/${id_match}`, {
-              method: 'POST',
-            }).then(function() 
-            {     
+        $.ajax({
+          method: "POST",
+          url: `/match/composition/update/${id_match}`,
+          data: { composition: positions }
+        })
+          .done(function( msg ) {
+            alert( "composition sauvée : " + msg );
+          });
+
+
+            // $post(`/match/composition/update/${id_match}`, {
+            //   method: 'POST',
+            // }).then(function() 
+            // {     
                 // bootbox.alert({
                 //   message: "Mise à jour de la position ok!",
                 //   className: 'rubberBand animated',
@@ -89,7 +99,7 @@ $('.draggable').draggable({
                 // });
                 // $('[data-toggle="popover"]').popover('hide');
                 // $(".jail").css('visibility', 'hidden');
-              });
+              // });
             // });
     
         // });

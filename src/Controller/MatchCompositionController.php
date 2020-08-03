@@ -15,12 +15,22 @@ class MatchCompositionController extends AbstractController
     private $composition;
 
     /**
-     * @Route("/match/update/composition/{id_match}", name="match_composition")
+     * @Route("/match/composition/{id_match}", name="match_composition")
      */
     public function index(MatchRepository $matchRep, $id_match)
     {
         
         $match=$matchRep->find($id_match);
+
+        $compo = $match->getComposition();
+        $team = $match->getTeams()[0];
+        $players = $team->getPlayers();
+
+        foreach ($players as $player)
+        {
+                
+        }
+        
 
         return $this->render('match_composition/index.html.twig', [
             'controller_name' => 'MatchCompositionController',
@@ -30,14 +40,19 @@ class MatchCompositionController extends AbstractController
 
 
     /**
-     * @Route("/match/composition/update/{id}", methods={"POST"})
+     * @Route("/match/composition/update/{id_match}", name="match_composition_update")
      */
-    public function update(Request $request, MatchRepository $matchRep, $id) {
-
-        $match=$matchRep->find($id_match);
-        $manager->setComposition($request   );
+    public function update(Request $request, MatchRepository $matchRep, $id_match) {
+        $entityManager = $this->getDoctrine()->getManager();
         
-        $manager->flush();
+        dump($request);
+        $match=$matchRep->find($id_match);
+        $match->setComposition($request->request->get('composition'));
+        dump($request->request->get('composition'));
+        
+        $entityManager->persist($match);
+        $entityManager->flush();
+
         $response = new Response();
         return $response;
       }

@@ -80,9 +80,6 @@ class AddMatchController extends AbstractController
                 $visitorTeam=$user->find($connectedUser)->getFinances()->getName();
             }
             
-            
-            
-            
             $match->setLocalTeam($localTeam);
             $match->setVisitorTeam($visitorTeam);
             
@@ -110,7 +107,7 @@ class AddMatchController extends AbstractController
         }
 
 
-        return $this->render('player_form/index.html.twig', [
+        return $this->render('add_match/index.html.twig', [
             'controller_name' => 'AddMatchController',
             'form' => $form->createView(),
         ]);
