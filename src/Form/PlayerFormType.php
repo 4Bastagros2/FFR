@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PlayerFormType extends AbstractType
 {
@@ -18,7 +19,7 @@ class PlayerFormType extends AbstractType
         $builder
             ->add('lest_name')
             ->add('first_name')
-            ->add('picture')
+            ->add('picture', FileType::class)
             ->add('birth_date')
             ->add('club_entry_date')
             ->add('stats')
