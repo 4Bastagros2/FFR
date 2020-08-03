@@ -23,7 +23,7 @@
                     <th>Date</th>
                     <th>Équipe local</th>
                     <th></th>
-                    <th>Équipe adverse</th>
+                    <th>Équipe visiteur</th>
                     <th>Durée</th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                 {% for match in match %}
                      <tr>
                         
-                        <td><a href="">{{ match.matchtype.name }}</a></td>
+                        <td><a href="/stat/match/{{ match_id.id }}">{{ match.matchtype.name }}<br><small>voir détails</small></a></td>
                         <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
                         <td>{{ match.localteam }}</td>
                         <td>vs</td>
@@ -41,6 +41,8 @@
                         
                     </tr>
                 {% endfor %}
+                
+                
             </tbody>
 
             {# <li>{{ match.stats }}</li> #}
@@ -55,7 +57,20 @@
 
     </div>
 </div>
+<!-- la suite -->
+<!-- pour guillaume -->
+{% for resultat in resultat %}
+    {% if resultat == 1 %}
+    <p>win</p>
+    {% endif %}
+    {% if resultat == 2 %}
+    <p>loser</p>
+    {% endif %}
+    {% if resultat == 0 %}
+    <p>egalite</p>
+    {% endif %}
 
+{% endfor %}
 <script>
     $(document).ready(function () {
         $('#match-calendar').DataTable({
