@@ -196,7 +196,7 @@ a.btn-lg {
         .bg-menu {
             background-color: $red;
             display: grid;
-            padding: 1rem 1rem 0 0;
+            // padding: 1rem 1rem 0 0;
             border-bottom: 8px solid $blue;
 
             h3 {
@@ -267,22 +267,22 @@ a.btn-lg {
             }
 
             .side-menu {
-                grid-column: 2;
-                justify-content: right;
+                grid-column: 1;
+                grid-row: 1;
+                color: $gray;
+                background-color: $red;
+                // justify-content: right;
                 display: flex;
+                // flex-direction: column;
                 white-space: nowrap;
                 align-items: flex-end;
-                justify-content: flex-end;
-                align-items: center;
-                color: $gray;
+                // align-items: center;
+                padding: calc(0.45rem + 1vw) 2rem;
 
                 div {
                     display: flex;
                     align-items: center;
-                }
-
-                .user-info {
-                    margin-right: 1rem;
+                    margin-left: 1rem;
                 }
 
                 svg {
