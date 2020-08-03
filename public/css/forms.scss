@@ -151,6 +151,8 @@ table {
 #player_form {
     display: grid;
     place-content: center;
+    max-width: 40vw;
+    margin: auto;
 }
 
 @media screen and (min-width: 760px) {

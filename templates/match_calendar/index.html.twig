@@ -4,70 +4,67 @@
 {% endblock %}
 
 {% block body %}
-{% include 'main_nav.html.twig' %}
+	{% include 'main_nav.html.twig' %}
 
-<div class="body-wrapper">
+	<div class="body-wrapper">
 
-    <div class="menu-tab">
-        <center>
-            <h4>Calendrier des matches</h4>
-        </center>
-    </div>
+		<div class="menu-tab">
+			<center>
+				<h4>Calendrier des matches</h4>
+			</center>
+		</div>
 
 
-    <div class="main-wrapper">
-        <table id="match-calendar" class="stripe hover cell-border dt-body-center">
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Date</th>
-                    <th>Équipe local</th>
-                    <th></th>
-                    <th>Équipe adverse</th>
-                    <th>Durée</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-                {% for match in match %}
-                     <tr>
-                        
-                        <td><a href="">{{ match.matchtype.name }}</a></td>
-                        <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
-                        <td>{{ match.localteam }}</td>
-                        <td>vs</td>
-                        <td>{{ match.visitorteam }}</td>
-                        <td>{{ match.duration |date('H:i:s') }}</td>
-                        
-                    </tr>
-                {% endfor %}
-            </tbody>
+		<div class="main-wrapper">
+			<table id="match-calendar" class="responsive stripe hover cell-border dt-body-center">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Date</th>
+						<th>Équipe local</th>
+						<th></th>
+						<th>Équipe adverse</th>
+						<th>Durée</th>
+					</tr>
+				</thead>
+				<tbody>
 
-            {# <li>{{ match.stats }}</li> #}
-            {# <li>{% for comp in match.composition['backer'] %}
-				                Position possible : {{comp}}<br>
-				                {% endfor %}
-				            </li> #}
+					{% for match in match %}
+						<tr>
 
-            </tbody>
-        </table>
-        <a href="{{ path('add_match') }}" class="btn-lg pointer">+ Ajouter un match</a>
+							<td>
+								<a href="">{{ match.matchtype.name }}</a>
+							</td>
+							<td>{{ match.date |date("m/d/Y H:i:s") }}</td>
+							<td>{{ match.localteam }}</td>
+							<td>vs</td>
+							<td>{{ match.visitorteam }}</td>
+							<td>{{ match.duration |date('H:i:s') }}</td>
 
-    </div>
+						</tr>
+					{% endfor %}
+				</tbody>
+
+				{# <li>{{ match.stats }}</li> #}
+				{# <li>{% for comp in match.composition['backer'] %}
+								                Position possible : {{comp}}<br>
+								                {% endfor %}
+								            </li> #}
+
+			</tbody>
+		</table>
+		<a href="{{ path('add_match') }}" class="btn-lg pointer">+ Ajouter un match</a>
+
+	</div>
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('#match-calendar').DataTable({
-            "language": {
-                "url": "{{ asset('js/french.lang') }}"
-            },
-            "columnDefs": [
-                {
-                    "orderable": false,
-                    "targets": 3
-                }
-            ]
-        });
-    });
+	$(document).ready(function () {
+$('#match-calendar').DataTable({
+"language": {
+"url": "{{ asset('js/french.lang') }}"
+},
+responsive: true
+});
+});
 </script>{% endblock %}

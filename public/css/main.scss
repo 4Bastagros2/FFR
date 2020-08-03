@@ -196,7 +196,7 @@ a.btn-lg {
         .bg-menu {
             background-color: $red;
             display: grid;
-            padding: 1rem calc(1rem + 5vw) 0;
+            padding: 1rem 4vw 0;
             border-bottom: 8px solid $blue;
 
             h3 {
@@ -260,7 +260,7 @@ a.btn-lg {
                     color: $gray;
                     z-index: 99;
 
-                    .cls-1 {
+                    svg {
                         fill: $gray;
                     }
                 }
@@ -297,12 +297,12 @@ a.btn-lg {
 
     .menu-tab,
     .team-wrapper {
-        padding: 1rem calc(1rem + 5vw) 0;
+        padding: 1rem 4vw 0;
     }
 
     .main-wrapper,
     .players-wrapper {
-        padding: 2.5rem calc(1rem + 5vw);
+        padding: 2.5rem 4vw;
     }
 
     .main-wrapper,

@@ -222,7 +222,7 @@ a.btn-lg {
     background-color: #F2362F;
     display: -ms-grid;
     display: grid;
-    padding: 1rem calc(1rem + 5vw) 0;
+    padding: 1rem 4vw 0;
     border-bottom: 8px solid #013974;
   }
   nav .bg-menu h3 {
@@ -290,7 +290,7 @@ a.btn-lg {
     color: #E3E8EE;
     z-index: 99;
   }
-  nav .bg-menu .sub-menu .active .cls-1 {
+  nav .bg-menu .sub-menu .active svg {
     fill: #E3E8EE;
   }
   nav .bg-menu .side-menu {
@@ -333,11 +333,11 @@ a.btn-lg {
   }
   .menu-tab,
   .team-wrapper {
-    padding: 1rem calc(1rem + 5vw) 0;
+    padding: 1rem 4vw 0;
   }
   .main-wrapper,
   .players-wrapper {
-    padding: 2.5rem calc(1rem + 5vw);
+    padding: 2.5rem 4vw;
   }
   .main-wrapper,
   .players-wrapper {
