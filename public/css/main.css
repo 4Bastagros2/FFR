@@ -291,8 +291,8 @@ a.btn-lg {
     height: calc(0.3rem + 1vw);
   }
   #nav .bg-menu .sub-menu li {
-    -webkit-filter: drop-shadow(13px 0px 5px #44444426);
-            filter: drop-shadow(13px 0px 5px #44444426);
+    -webkit-filter: drop-shadow(13px 0px 5px #44444426) drop-shadow(-14px 0px 5px #44444426);
+            filter: drop-shadow(13px 0px 5px #44444426) drop-shadow(-14px 0px 5px #44444426);
   }
   #nav .bg-menu .sub-menu .li-wrapper {
     background-color: #E3E8EE;
