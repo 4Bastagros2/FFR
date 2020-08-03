@@ -16,17 +16,15 @@ class MatchCalendarController extends AbstractController
      */
     public function index(MatchRepository $match, MatchTypeRepository $type,TeamRepository $team,$id_team)
     {
-        $match_id=$team->find($id_team)->getPlayMatches();
+        $match=$team->find($id_team)->getPlayMatches();
+        $match_id=$team->find($id_team);
         
-        $id=$match_id[0]->getId();
        
 
         
         return $this->render('match_calendar/index.html.twig', [
-            'match'=>$match_id,
-            'id'=> $id
-          
-         
+            'match'=>$match,
+            'match_id'=>$match_id
         ]);
     }
 }
