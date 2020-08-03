@@ -154,6 +154,11 @@ table {
 //     margin: auto;
 // }
 
+#add_match_form_date,
+#add_match_form_duration {
+    flex-flow: nowrap;
+}
+
 @media screen and (min-width: 760px) {
     .log-wrap {
         height: 100vh;

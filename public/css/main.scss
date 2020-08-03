@@ -23,6 +23,10 @@ body {
     font-weight: bold;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .bg-menu {
     display: none;
 }
@@ -72,6 +76,10 @@ hr {
     background-color: $blue;
 }
 
+button {
+    border-radius: 0 !important;
+}
+
 .btn-lg {
     background-color: $red;
     padding: 16px 20px;
@@ -112,9 +120,15 @@ a.btn-lg {
 
 .team-wrapper {
     grid-row: 2;
-    display: flex;
+    display: grid;
     justify-content: center;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    grid-template-rows: 1fr auto;
+
+    .team-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
     .team-card {
         min-width: 200px;
@@ -128,23 +142,33 @@ a.btn-lg {
         .team-cat {
             font-size: calc(1.25rem + 0.5vw);
             text-align: center;
-            margin: 2.5rem auto 1rem;
+            margin: .5rem auto;
+            font-weight: bold;
         }
 
         .card-body {
             display: flex;
             justify-content: center;
-            padding: 1.5rem 0 2rem;
+            padding: 3rem;
+
+            img {
+                scale: 150%;
+            }
 
             img:nth-child(2) {
-                scale: 130%
+                scale: 200%;
+                position: relative;
+                z-index: 99;
+                margin: 0 .5rem;
             }
         }
 
         .card-footer {
             display: flex;
+            padding: 0;
 
             button {
+                font-size: 1rem !important;
                 margin: 0;
                 box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
             }
@@ -158,19 +182,26 @@ a.btn-lg {
 }
 
 .add-team-btn {
+    font-family: sans-serif !important;
     display: block;
-    width: 90px;
-    height: 90px;
-    background: $red;
+    width: 70px;
+    height: 70px;
+    background: #F2362FA8;
     border-radius: 50%;
     display: grid;
     place-content: center;
     font-size: 2.5rem;
     font-weight: bold;
-    color: $gray;
-    position: fixed;
-    bottom: 20px;
+    color: $gray !important;
+    margin: 1rem auto;
+    left: calc(20px + .5vw);
     font-family: 'roboto', sans-serif;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.34);
+    transition: .3s;
+}
+
+.add-team-btn:hover {
+    background-color: $red;
 }
 
 @media screen and (min-width: 760px) {
@@ -230,10 +261,8 @@ a.btn-lg {
                     padding: calc(0.5rem + 1vw) 4rem calc(0.45rem + 1vw) 2rem;
                     clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
                     width: auto;
-                    display: grid;
-                    grid-template-columns: 1fr auto;
-                    align-items: center;
                     font-size: calc(0.5em + 1vw);
+                    display: flex;
                 }
 
                 li:first-of-type {
@@ -277,7 +306,7 @@ a.btn-lg {
                 white-space: nowrap;
                 align-items: flex-end;
                 // align-items: center;
-                padding: calc(0.45rem + 1vw) 2rem;
+                padding: calc(0.45rem + 1vw) 2.55rem;
 
                 div {
                     display: flex;
@@ -324,7 +353,7 @@ a.btn-lg {
     }
 
     .main-wrapper {
-        grid-row: 3;
+        // grid-row: 3;
         background-color: $gray;
         // display: grid;
         // place-content: center;

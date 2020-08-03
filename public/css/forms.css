@@ -123,6 +123,12 @@ table tbody {
   margin-top: 1rem;
 }
 
+#add_match_form_date,
+#add_match_form_duration {
+  -ms-flex-flow: nowrap;
+      flex-flow: nowrap;
+}
+
 @media screen and (min-width: 760px) {
   .log-wrap {
     height: 100vh;

@@ -22,6 +22,10 @@ body {
   font-weight: bold;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .bg-menu {
   display: none;
 }
@@ -75,6 +79,10 @@ hr {
   background-color: #013974;
 }
 
+button {
+  border-radius: 0 !important;
+}
+
 .btn-lg {
   background-color: #F2362F;
   padding: 16px 20px;
@@ -117,14 +125,21 @@ a.btn-lg {
 .team-wrapper {
   -ms-grid-row: 2;
   grid-row: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-grid-rows: 1fr auto;
+      grid-template-rows: 1fr auto;
+}
+
+.team-wrapper .team-grid {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .team-wrapper .team-card {
@@ -147,7 +162,8 @@ a.btn-lg {
 .team-wrapper .team-card .team-cat {
   font-size: calc(1.25rem + 0.5vw);
   text-align: center;
-  margin: 2.5rem auto 1rem;
+  margin: .5rem auto;
+  font-weight: bold;
 }
 
 .team-wrapper .team-card .card-body {
@@ -157,20 +173,29 @@ a.btn-lg {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1.5rem 0 2rem;
+  padding: 3rem;
+}
+
+.team-wrapper .team-card .card-body img {
+  scale: 150%;
 }
 
 .team-wrapper .team-card .card-body img:nth-child(2) {
-  scale: 130%;
+  scale: 200%;
+  position: relative;
+  z-index: 99;
+  margin: 0 .5rem;
 }
 
 .team-wrapper .team-card .card-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0;
 }
 
 .team-wrapper .team-card .card-footer button {
+  font-size: 1rem !important;
   margin: 0;
   -webkit-box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
@@ -181,20 +206,29 @@ a.btn-lg {
 }
 
 .add-team-btn {
+  font-family: sans-serif !important;
   display: block;
-  width: 90px;
-  height: 90px;
-  background: #F2362F;
+  width: 70px;
+  height: 70px;
+  background: #F2362FA8;
   border-radius: 50%;
   display: -ms-grid;
   display: grid;
   place-content: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #E3E8EE;
-  position: fixed;
-  bottom: 20px;
+  color: #E3E8EE !important;
+  margin: 1rem auto;
+  left: calc(20px + .5vw);
   font-family: 'roboto', sans-serif;
+  -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.34);
+          box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.34);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.add-team-btn:hover {
+  background-color: #F2362F;
 }
 
 @media screen and (min-width: 760px) {
@@ -260,14 +294,10 @@ a.btn-lg {
     -webkit-clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
             clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
     width: auto;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr auto;
-        grid-template-columns: 1fr auto;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     font-size: calc(0.5em + 1vw);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
   #nav .bg-menu .sub-menu li:first-of-type {
     z-index: 99;
@@ -306,7 +336,7 @@ a.btn-lg {
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
-    padding: calc(0.45rem + 1vw) 2rem;
+    padding: calc(0.45rem + 1vw) 2.55rem;
   }
   #nav .bg-menu .side-menu div {
     display: -webkit-box;
@@ -350,8 +380,6 @@ a.btn-lg {
     padding-bottom: 1rem;
   }
   .main-wrapper {
-    -ms-grid-row: 3;
-    grid-row: 3;
     background-color: #E3E8EE;
   }
   .team-wrapper {
