@@ -61,6 +61,15 @@ class Match
      */
     private $teams;
 
+    private $score;
+    private $reds;
+    private $yellows;
+    private $essais;
+    private $transformations;
+    private $penalites;
+    private $drops;
+
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
@@ -181,6 +190,166 @@ class Match
             $this->teams->removeElement($team);
             $team->removePlayMatch($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of score
+     */ 
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Set the value of score
+     *
+     * @return  self
+     */ 
+    public function setScore($score)
+    {
+        $this->score = $score;
+        $tmpStats = $this->getStats();
+        $tmpStats['score'] = $score;
+        $this->setStats($tmpStats);
+        return $this;
+    }
+
+    /**
+     * Get the value of reds
+     */ 
+    public function getReds()
+    {
+        return $this->reds;
+    }
+
+    /**
+     * Set the value of reds
+     *
+     * @return  self
+     */ 
+    public function setReds($reds)
+    {
+        $this->reds = $reds;
+        $tmpStats = $this->getStats();
+        $tmpStats['reds'] = $score;
+        $this->setStats($tmpStats);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of yellows
+     */ 
+    public function getYellows()
+    {
+        return $this->yellows;
+    }
+
+    /**
+     * Set the value of yellows
+     *
+     * @return  self
+     */ 
+    public function setYellows($yellows)
+    {
+        $this->yellows = $yellows;
+        $tmpStats = $this->getStats();
+        $tmpStats['yellows'] = $score;
+        $this->setStats($tmpStats);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of essais
+     */ 
+    public function getEssais()
+    {
+        return $this->essais;
+    }
+
+    /**
+     * Set the value of essais
+     *
+     * @return  self
+     */ 
+    public function setEssais($essais)
+    {
+        $this->essais = $essais;
+        $tmpStats = $this->getStats();
+        $tmpStats['essais'] = $score;
+        $this->setStats($tmpStats);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of transformations
+     */ 
+    public function getTransformations()
+    {
+        return $this->transformations;
+    }
+
+    /**
+     * Set the value of transformations
+     *
+     * @return  self
+     */ 
+    public function setTransformations($transformations)
+    {
+        $this->transformations = $transformations;
+        $tmpStats = $this->getStats();
+        $tmpStats['transformations'] = $score;
+        $this->setStats($tmpStats);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of penalites
+     */ 
+    public function getPenalites()
+    {
+        return $this->penalites;
+    }
+
+    /**
+     * Set the value of penalites
+     *
+     * @return  self
+     */ 
+    public function setPenalites($penalites)
+    {
+        $this->penalites = $penalites;
+        $tmpStats = $this->getStats();
+        $tmpStats['penalites'] = $score;
+        $this->setStats($tmpStats);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of drops
+     */ 
+    public function getDrops()
+    {
+        return $this->drops;
+    }
+
+    /**
+     * Set the value of drops
+     *
+     * @return  self
+     */ 
+    public function setDrops($drops)
+    {
+        $this->drops = $drops;
+        $tmpStats = $this->getStats();
+        $tmpStats['drops'] = $score;
+        $this->setStats($tmpStats);
 
         return $this;
     }
