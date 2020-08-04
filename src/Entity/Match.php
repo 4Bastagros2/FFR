@@ -64,6 +64,8 @@ class Match
     public function __construct()
     {
         $this->teams = new ArrayCollection();
+        $compo = json_decode("[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]");
+        $this->setComposition($compo);
     }
 
     public function getId(): ?int
