@@ -7,10 +7,9 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-        <center><h1>{{ local_team }} VS {{ visitor_team }} <h1>
-            <p>{{match_type}}</p><br>
-            <p>{{score}}</p>
+    {{ form(form) }}
+        <center><h1> <h1>
+           
             <table>
                 <tr>
                     <td>Carton rouge</td>
@@ -21,16 +20,16 @@
                     <td>Drops</td>
                 </tr>
                 <tr> 
-                    <td>{{red}}</td>
+                    {# <td>{{red}}</td>
                     <td>{{yellow}}</td>
                     <td>{{essais}}</td>
                     <td>{{transformation}}</td>
                     <td>{{penalite}}</td>
-                    <td>{{drops}}</td>
+                    <td>{{drops}}</td> #}
                 </tr>
             </table>
         </center>
-        <center><p>liste des jouers</center>
+        <center><p>liste des joueurs</center>
          <table>
                 <tr>
                     <td>Prenom</td>
@@ -41,22 +40,10 @@
                     <td>Transformation</td>
                     <td>Pénalités</td>
                     <td>Drops</td>
-                    <td>Temps de jeux</td>
+                    {# <td>Temps de jeux</td> #}
                 </tr>
                     
-            {% for joueur in joueur %}
-                <tr>
-                    <td>{{ joueur.lestName }}</td>
-                    <td>{{ joueur.firstName }}</td>
-                    <td>{{ joueur.stats[0]["red"] }}</td>
-                    <td>{{ joueur.stats[1]["yellow"] }}</td>
-                    <td>{{ joueur.stats[2]["essais"] }}</td>
-                    <td>{{ joueur.stats[3]["transformation"] }}</td>
-                    <td>{{ joueur.stats[4]["penalite"] }}</td>
-                    <td>{{ joueur.stats[5]["drops"] }}</td>
-                    <td>{{ joueur.stats[6]["tempsdejeu"] }}</td>     
-                </tr>   
-            {% endfor %}
+           
         </table>
         
 
