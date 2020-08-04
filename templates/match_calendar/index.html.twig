@@ -59,6 +59,7 @@
 </div>
 <!-- la suite -->
 <!-- pour guillaume -->
+<!-- recap 5 dernier match-->
 {% for resultat in resultat %}
     {% if resultat == 1 %}
     <p>win</p>
@@ -70,6 +71,13 @@
     <p>egalite</p>
     {% endif %}
 
+{% endfor %}
+
+<!-- 5 meilleurs buteurs-->
+{% for meilleur_buteur in meilleur_buteur %}
+    {{ meilleur_buteur.0 }} <!-- Le 0 affiche le last name -->
+    {{ meilleur_buteur.1 }} <!-- le 1 affiche le first name -->
+    {{ meilleur_buteur.2 }}<br><!-- le 2 affiche le nombre de point total de la saison mis par le joueur --> 
 {% endfor %}
 <script>
     $(document).ready(function () {
