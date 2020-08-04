@@ -30,7 +30,9 @@ class AddMatchFormType extends AbstractType
             ])
             ->add('local_team',TextType::class,['label'=>'Equipe adverse'])
             
-            // ->add('stats')
+            // ->add('stats', EntityType::class,[
+            //     'class' => Match::class,
+            // ])
             // ->add('composition')
             ->add('match_type',EntityType::class,[
                 'class' => MatchType::class,
