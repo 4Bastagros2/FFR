@@ -1,7 +1,7 @@
 @import 'variable';
 
 html {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 h1 {
@@ -14,13 +14,22 @@ body {
     background-color: $gray;
 }
 
-nav {
+#nav {
     // position: fixed;
     bottom: 0;
     color: white;
     font-size: 0.9rem;
     box-shadow: 0px 0px 5px 0px #000000ad;
     font-weight: bold;
+}
+
+a {
+    border-radius: 0 !important;
+    white-space: nowrap !important;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .bg-menu {
@@ -72,11 +81,15 @@ hr {
     background-color: $blue;
 }
 
+button {
+    border-radius: 0 !important;
+}
+
 .btn-lg {
     background-color: $red;
     padding: 16px 20px;
     color: white;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif !important;
     border: none;
     display: block;
     width: 165px;
@@ -112,9 +125,15 @@ a.btn-lg {
 
 .team-wrapper {
     grid-row: 2;
-    display: flex;
+    display: grid;
     justify-content: center;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    grid-template-rows: 1fr auto;
+
+    .team-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
     .team-card {
         min-width: 200px;
@@ -128,23 +147,33 @@ a.btn-lg {
         .team-cat {
             font-size: calc(1.25rem + 0.5vw);
             text-align: center;
-            margin: 2.5rem auto 1rem;
+            margin: .5rem auto;
+            font-weight: bold;
         }
 
         .card-body {
             display: flex;
             justify-content: center;
-            padding: 1.5rem 0 2rem;
+            padding: 3rem;
+
+            img {
+                transform: scale(1.5);
+            }
 
             img:nth-child(2) {
-                scale: 130%
+                transform: scale(2);
+                position: relative;
+                z-index: 99;
+                margin: 0 .5rem;
             }
         }
 
         .card-footer {
             display: flex;
+            padding: 0;
 
             button {
+                font-size: 1rem !important;
                 margin: 0;
                 box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
             }
@@ -158,19 +187,26 @@ a.btn-lg {
 }
 
 .add-team-btn {
+    font-family: sans-serif !important;
     display: block;
-    width: 90px;
-    height: 90px;
-    background: $red;
-    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background: #F2362FA8;
+    border-radius: 50% !important;
     display: grid;
     place-content: center;
     font-size: 2.5rem;
     font-weight: bold;
-    color: $gray;
-    position: fixed;
-    bottom: 20px;
+    color: $gray !important;
+    margin: 1rem auto;
+    left: calc(20px + .5vw);
     font-family: 'roboto', sans-serif;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.34);
+    transition: .3s;
+}
+
+.add-team-btn:hover {
+    background-color: $red;
 }
 
 @media screen and (min-width: 760px) {
@@ -185,7 +221,7 @@ a.btn-lg {
         grid-template-rows: auto 1fr;
     }
 
-    nav {
+    #nav {
         grid-row: 1;
         align-self: start;
 
@@ -196,7 +232,7 @@ a.btn-lg {
         .bg-menu {
             background-color: $red;
             display: grid;
-            padding: 1rem calc(1rem + 5vw) 0;
+            // padding: 1rem 1rem 0 0;
             border-bottom: 8px solid $blue;
 
             h3 {
@@ -221,7 +257,7 @@ a.btn-lg {
                 }
 
                 li {
-                    filter: drop-shadow(13px 0px 5px #44444426);
+                    filter: drop-shadow(13px 0px 5px #44444426) drop-shadow(-14px 0px 5px #44444426);
                 }
 
                 .li-wrapper {
@@ -230,10 +266,8 @@ a.btn-lg {
                     padding: calc(0.5rem + 1vw) 4rem calc(0.45rem + 1vw) 2rem;
                     clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
                     width: auto;
-                    display: grid;
-                    grid-template-columns: 1fr auto;
-                    align-items: center;
                     font-size: calc(0.5em + 1vw);
+                    display: flex;
                 }
 
                 li:first-of-type {
@@ -255,34 +289,43 @@ a.btn-lg {
                     left: calc(-3.25em - 1vw);
                 }
 
-                .active {
-                    background-color: $blue;
-                    color: $gray;
-                    z-index: 99;
+                li:nth-child(4) {
+                    z-index: 96;
+                    left: calc(-5.5em - 1vw);
+                }
 
-                    .cls-1 {
-                        fill: $gray;
+                .active {
+                    z-index: 999 !important;
+                    position: relative;
+
+                    .li-wrapper {
+                        background-color: $blue;
+                        color: $gray;
+
+                        svg {
+                            fill: $gray;
+                        }
                     }
                 }
             }
 
             .side-menu {
-                grid-column: 2;
-                justify-content: right;
+                grid-column: 1;
+                grid-row: 1;
+                color: $gray;
+                background-color: $red;
+                // justify-content: right;
                 display: flex;
+                // flex-direction: column;
                 white-space: nowrap;
                 align-items: flex-end;
-                justify-content: flex-end;
-                align-items: center;
-                color: $gray;
+                // align-items: center;
+                padding: calc(0.45rem + 1vw) 2.55rem;
 
                 div {
                     display: flex;
                     align-items: center;
-                }
-
-                .user-info {
-                    margin-right: 1rem;
+                    margin-left: 1rem;
                 }
 
                 svg {
@@ -297,12 +340,12 @@ a.btn-lg {
 
     .menu-tab,
     .team-wrapper {
-        padding: 1rem calc(1rem + 5vw) 0;
+        padding: 1rem 4vw 0;
     }
 
     .main-wrapper,
     .players-wrapper {
-        padding: 2.5rem calc(1rem + 5vw);
+        padding: 2.5rem 4vw;
     }
 
     .main-wrapper,
@@ -324,7 +367,7 @@ a.btn-lg {
     }
 
     .main-wrapper {
-        grid-row: 3;
+        // grid-row: 3;
         background-color: $gray;
         // display: grid;
         // place-content: center;
@@ -332,5 +375,13 @@ a.btn-lg {
 
     .team-wrapper {
         place-content: center;
+    }
+}
+
+@media screen and (min-width: 1120px) {
+    .side-menu {
+        justify-content: flex-end;
+        flex-direction: column;
+        grid-row: 2 !important;
     }
 }

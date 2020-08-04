@@ -1,12 +1,54 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-{{ form(form) }}
+
+{% include 'main_nav.html.twig' %}
+
+<div class="main-wrapper">
+
+    <div class="container">
+
+        <a href="/team/screen" class="dis-block p-b-20">&larr; Retour</a>
+
+        {{ form_start(form, {'attr': {'id': 'add_match'}}) }}
+
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                {{ form_label(form.date, 'Date du match' ) }}
+                {{ form_widget(form.date) }}
+            </div>
+            <div class="form-group col-md-4">
+                {{ form_label(form.duration, 'Durée' ) }}
+                {{ form_widget(form.duration) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {# {{ form_label(form.domicile, 'Cocher si à domicile' ) }} #}
+            {{ form_row(form.domicile) }}
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-4">
+                {{ form_label(form.local_team, 'Équipe adverse' ) }}
+                {{ form_widget(form.local_team) }}
+            </div>
+            <div class="form-group col-sm-4">
+                {{ form_label(form.match_type, 'Catégorie de match' ) }}
+                {{ form_widget(form.match_type) }}
+            </div>
+            <div class="form-group col-sm-4">
+                {{ form_label(form.teams, 'Équipe' ) }}
+                {{ form_widget(form.teams) }}
+            </div>
+        </div>
+
+        {{ form_end(form)}}
+
+    </div>
+
+</div>
+
 
 {% endblock %}

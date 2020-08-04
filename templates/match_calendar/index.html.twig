@@ -16,7 +16,7 @@
 
 
     <div class="main-wrapper">
-        <table id="match-calendar" class="stripe hover cell-border dt-body-center">
+        <table id="match-calendar" class="responsive stripe hover cell-border dt-body-center">
             <thead>
                 <tr>
                     <th>Type</th>
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-               
+
                 {% for match in match %}
                      <tr>
                         
@@ -47,9 +47,9 @@
 
             {# <li>{{ match.stats }}</li> #}
             {# <li>{% for comp in match.composition['backer'] %}
-				                Position possible : {{comp}}<br>
-				                {% endfor %}
-				            </li> #}
+												                Position possible : {{comp}}<br>
+												                {% endfor %}
+												            </li> #}
 
             </tbody>
         </table>
@@ -77,12 +77,8 @@
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             },
-            "columnDefs": [
-                {
-                    "orderable": false,
-                    "targets": 3
-                }
-            ]
+            responsive: true,
+            autoWidth: false,
         });
     });
 </script>{% endblock %}

@@ -1,5 +1,5 @@
 html {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 h1 {
@@ -13,13 +13,22 @@ body {
   background-color: #E3E8EE;
 }
 
-nav {
+#nav {
   bottom: 0;
   color: white;
   font-size: 0.9rem;
   -webkit-box-shadow: 0px 0px 5px 0px #000000ad;
           box-shadow: 0px 0px 5px 0px #000000ad;
   font-weight: bold;
+}
+
+a {
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .bg-menu {
@@ -75,11 +84,15 @@ hr {
   background-color: #013974;
 }
 
+button {
+  border-radius: 0 !important;
+}
+
 .btn-lg {
   background-color: #F2362F;
   padding: 16px 20px;
   color: white;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif !important;
   border: none;
   display: block;
   width: 165px;
@@ -117,14 +130,21 @@ a.btn-lg {
 .team-wrapper {
   -ms-grid-row: 2;
   grid-row: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-grid-rows: 1fr auto;
+      grid-template-rows: 1fr auto;
+}
+
+.team-wrapper .team-grid {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .team-wrapper .team-card {
@@ -147,7 +167,8 @@ a.btn-lg {
 .team-wrapper .team-card .team-cat {
   font-size: calc(1.25rem + 0.5vw);
   text-align: center;
-  margin: 2.5rem auto 1rem;
+  margin: .5rem auto;
+  font-weight: bold;
 }
 
 .team-wrapper .team-card .card-body {
@@ -157,20 +178,31 @@ a.btn-lg {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1.5rem 0 2rem;
+  padding: 3rem;
+}
+
+.team-wrapper .team-card .card-body img {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .team-wrapper .team-card .card-body img:nth-child(2) {
-  scale: 130%;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  position: relative;
+  z-index: 99;
+  margin: 0 .5rem;
 }
 
 .team-wrapper .team-card .card-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0;
 }
 
 .team-wrapper .team-card .card-footer button {
+  font-size: 1rem !important;
   margin: 0;
   -webkit-box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
@@ -181,20 +213,29 @@ a.btn-lg {
 }
 
 .add-team-btn {
+  font-family: sans-serif !important;
   display: block;
-  width: 90px;
-  height: 90px;
-  background: #F2362F;
-  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: #F2362FA8;
+  border-radius: 50% !important;
   display: -ms-grid;
   display: grid;
   place-content: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #E3E8EE;
-  position: fixed;
-  bottom: 20px;
+  color: #E3E8EE !important;
+  margin: 1rem auto;
+  left: calc(20px + .5vw);
   font-family: 'roboto', sans-serif;
+  -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.34);
+          box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.34);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.add-team-btn:hover {
+  background-color: #F2362F;
 }
 
 @media screen and (min-width: 760px) {
@@ -208,31 +249,30 @@ a.btn-lg {
     -ms-grid-rows: auto 1fr;
         grid-template-rows: auto 1fr;
   }
-  nav {
+  #nav {
     -ms-grid-row: 1;
     grid-row: 1;
     -ms-flex-item-align: start;
         -ms-grid-row-align: start;
         align-self: start;
   }
-  nav .sm-menu {
+  #nav .sm-menu {
     display: none;
   }
-  nav .bg-menu {
+  #nav .bg-menu {
     background-color: #F2362F;
     display: -ms-grid;
     display: grid;
-    padding: 1rem calc(1rem + 5vw) 0;
     border-bottom: 8px solid #013974;
   }
-  nav .bg-menu h3 {
+  #nav .bg-menu h3 {
     -ms-grid-column: 2;
     grid-column: 2;
     text-align: right;
     font-size: 2.25rem;
     white-space: nowrap;
   }
-  nav .bg-menu .sub-menu {
+  #nav .bg-menu .sub-menu {
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 2;
@@ -245,60 +285,64 @@ a.btn-lg {
     text-transform: uppercase;
     white-space: nowrap;
   }
-  nav .bg-menu .sub-menu svg {
+  #nav .bg-menu .sub-menu svg {
     fill: #F2362F;
     margin-right: 1vw;
     height: calc(0.3rem + 1vw);
   }
-  nav .bg-menu .sub-menu li {
-    -webkit-filter: drop-shadow(13px 0px 5px #44444426);
-            filter: drop-shadow(13px 0px 5px #44444426);
+  #nav .bg-menu .sub-menu li {
+    -webkit-filter: drop-shadow(13px 0px 5px #44444426) drop-shadow(-14px 0px 5px #44444426);
+            filter: drop-shadow(13px 0px 5px #44444426) drop-shadow(-14px 0px 5px #44444426);
   }
-  nav .bg-menu .sub-menu .li-wrapper {
+  #nav .bg-menu .sub-menu .li-wrapper {
     background-color: #E3E8EE;
     color: #F2362F;
     padding: calc(0.5rem + 1vw) 4rem calc(0.45rem + 1vw) 2rem;
     -webkit-clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
             clip-path: polygon(0px 0px, 93% 0px, 100% 100%, 0% 100%);
     width: auto;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr auto;
-        grid-template-columns: 1fr auto;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     font-size: calc(0.5em + 1vw);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
-  nav .bg-menu .sub-menu li:first-of-type {
+  #nav .bg-menu .sub-menu li:first-of-type {
     z-index: 99;
   }
-  nav .bg-menu .sub-menu li:not(:first-of-type) {
+  #nav .bg-menu .sub-menu li:not(:first-of-type) {
     position: relative;
     left: calc(-1.5em - 1vw);
     z-index: 98;
   }
-  nav .bg-menu .sub-menu li:not(:first-of-type) .li-wrapper {
+  #nav .bg-menu .sub-menu li:not(:first-of-type) .li-wrapper {
     padding-left: calc(2rem + 1vw);
   }
-  nav .bg-menu .sub-menu li:nth-child(3) {
+  #nav .bg-menu .sub-menu li:nth-child(3) {
     z-index: 97;
     left: calc(-3.25em - 1vw);
   }
-  nav .bg-menu .sub-menu .active {
+  #nav .bg-menu .sub-menu li:nth-child(4) {
+    z-index: 96;
+    left: calc(-5.5em - 1vw);
+  }
+  #nav .bg-menu .sub-menu .active {
+    z-index: 999 !important;
+    position: relative;
+  }
+  #nav .bg-menu .sub-menu .active .li-wrapper {
     background-color: #013974;
     color: #E3E8EE;
-    z-index: 99;
   }
-  nav .bg-menu .sub-menu .active .cls-1 {
+  #nav .bg-menu .sub-menu .active .li-wrapper svg {
     fill: #E3E8EE;
   }
-  nav .bg-menu .side-menu {
-    -ms-grid-column: 2;
-    grid-column: 2;
-    -webkit-box-pack: right;
-        -ms-flex-pack: right;
-            justify-content: right;
+  #nav .bg-menu .side-menu {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    color: #E3E8EE;
+    background-color: #F2362F;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -306,26 +350,18 @@ a.btn-lg {
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    color: #E3E8EE;
+    padding: calc(0.45rem + 1vw) 2.55rem;
   }
-  nav .bg-menu .side-menu div {
+  #nav .bg-menu .side-menu div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin-left: 1rem;
   }
-  nav .bg-menu .side-menu .user-info {
-    margin-right: 1rem;
-  }
-  nav .bg-menu .side-menu svg {
+  #nav .bg-menu .side-menu svg {
     height: 0.7rem;
     fill: #E3E8EE;
     width: auto;
@@ -333,11 +369,11 @@ a.btn-lg {
   }
   .menu-tab,
   .team-wrapper {
-    padding: 1rem calc(1rem + 5vw) 0;
+    padding: 1rem 4vw 0;
   }
   .main-wrapper,
   .players-wrapper {
-    padding: 2.5rem calc(1rem + 5vw);
+    padding: 2.5rem 4vw;
   }
   .main-wrapper,
   .players-wrapper {
@@ -358,12 +394,24 @@ a.btn-lg {
     padding-bottom: 1rem;
   }
   .main-wrapper {
-    -ms-grid-row: 3;
-    grid-row: 3;
     background-color: #E3E8EE;
   }
   .team-wrapper {
     place-content: center;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .side-menu {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-grid-row: 2 !important;
+    grid-row: 2 !important;
   }
 }
 /*# sourceMappingURL=main.css.map */

@@ -17,7 +17,7 @@
 
 	<div class="main-wrapper">
 
-		<table id="players-list" class="stripe hover cell-border dt-justify">
+		<table id="players-list" class="responsive stripe hover cell-border dt-justify">
 
 			<thead>
 				<tr>
@@ -62,14 +62,7 @@
 				"url": "{{ asset('js/french.lang') }}"
 			},
 			responsive: true,
-			// responsive: {
-			// 	details: {
-			// 		display: $.fn.dataTable.Responsive.display.childRowImmediate
-			// 	}
-			// },
-			fixedColumns: {
-				leftColumns: 2
-			}
+			autoWidth: false
 		});
 	});
 </script>
