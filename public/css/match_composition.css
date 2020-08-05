@@ -11,6 +11,7 @@
   display: -ms-grid;
   display: grid;
   place-content: center;
+  position: relative;
 }
 
 .field-position div {
@@ -18,8 +19,10 @@
 }
 
 .field-position .field-number {
+  position: absolute;
   color: white;
-  position: fixed;
+  top: 5px;
+  left: 5px;
 }
 
 .droppable-over {
@@ -59,6 +62,8 @@
       justify-content: space-around;
   border: 4px dashed #013974;
   background-color: #e3e8ee;
+  min-width: 3rem;
+  min-height: 3rem;
 }
 
 .player_card {
@@ -69,16 +74,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50px;
-  max-height: 70px;
+  width: 60px;
+  height: auto;
   border: 2px solid #F2362F;
-  background-color: rgba(255, 0, 0, 0.275);
   margin: .5rem;
+  z-index: 99;
 }
 
 .player_card img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  width: 56px;
 }
 
 .player_id {
@@ -94,6 +98,7 @@
   position: absolute;
   -webkit-box-shadow: 0px 0px 8px #44444426;
           box-shadow: 0px 0px 8px #44444426;
+  z-index: 100;
 }
 
 table {
