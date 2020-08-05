@@ -233,7 +233,7 @@ class Match
     {
         $this->reds = $reds;
         $tmpStats = $this->getStats();
-        $tmpStats['reds'] = $score;
+        $tmpStats['reds'] = $reds;
         $this->setStats($tmpStats);
 
         return $this;
@@ -256,7 +256,7 @@ class Match
     {
         $this->yellows = $yellows;
         $tmpStats = $this->getStats();
-        $tmpStats['yellows'] = $score;
+        $tmpStats['yellows'] = $yellows;
         $this->setStats($tmpStats);
 
         return $this;
@@ -279,7 +279,7 @@ class Match
     {
         $this->essais = $essais;
         $tmpStats = $this->getStats();
-        $tmpStats['essais'] = $score;
+        $tmpStats['essais'] = $essais;
         $this->setStats($tmpStats);
 
         return $this;
@@ -302,7 +302,7 @@ class Match
     {
         $this->transformations = $transformations;
         $tmpStats = $this->getStats();
-        $tmpStats['transformations'] = $score;
+        $tmpStats['transformations'] = $transformations;
         $this->setStats($tmpStats);
 
         return $this;
@@ -325,7 +325,7 @@ class Match
     {
         $this->penalites = $penalites;
         $tmpStats = $this->getStats();
-        $tmpStats['penalites'] = $score;
+        $tmpStats['penalites'] = $penalites;
         $this->setStats($tmpStats);
 
         return $this;
@@ -348,7 +348,7 @@ class Match
     {
         $this->drops = $drops;
         $tmpStats = $this->getStats();
-        $tmpStats['drops'] = $score;
+        $tmpStats['drops'] = $drops;
         $this->setStats($tmpStats);
 
         return $this;

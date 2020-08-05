@@ -58,7 +58,9 @@ class StatMatchController extends AbstractController
 
         $Match = new Match();
         $form = $this->createForm(MatchStatsType::class, $Match);
-        $form->handleRequest($request);
+        // $form->handleRequest($request);
+        $form->submit($request->request->get('match_stats'), false);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
 
