@@ -108,7 +108,8 @@ class MatchCalendarController extends AbstractController
             'match'=>$match,
             'match_id'=>$match_id,
             'resultat'=>$resultat,
-            'meilleur_buteur'=>$stat
+            'meilleur_buteur'=>$stat,
+            'id_team' => $id_team,
         ]);
     }
 }
