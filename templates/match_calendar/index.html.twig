@@ -4,7 +4,9 @@
 {% endblock %}
 
 {% block body %}
-{% include 'main_nav.html.twig' %}
+				{{ dump(id_team) }}
+
+{% include 'main_nav.html.twig' with {'id_team': id_team} %}
 
 <div class="body-wrapper">
 
