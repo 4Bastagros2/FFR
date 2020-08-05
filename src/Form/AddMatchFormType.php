@@ -38,13 +38,13 @@ class AddMatchFormType extends AbstractType
                 'class' => MatchType::class,
                 'choice_label' => 'name',
             ])
-            ->add('teams',EntityType::class,[
-                'class' => Team::class,
-                'choices' => $options['teams'],    
-                'choice_label' => 'category',
-                'multiple' => true,
-                'expanded' => false,  
-            ])
+            // ->add('teams',EntityType::class,[
+            //     'class' => Team::class,
+            //     'choices' => $options['teams'],    
+            //     'choice_label' => 'category',
+            //     'multiple' => true,
+            //     'expanded' => false,  
+            // ])
             ->add('Submit', SubmitType::class)
         ;
     }
