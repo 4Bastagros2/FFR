@@ -19,9 +19,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AddMatchController extends AbstractController
 {
     /**
-     * @Route("/add/match/{id_match}", name="add_match", defaults={"id_match"=-1})
+     * @Route("/add/match/{id_team}{id_match}", name="add_match", defaults={"id_match"=-1})
      */
-    public function index(Request $request,MatchRepository $matchRep, UserRepository $user, TeamRepository $teams,$id_match)
+    public function index(Request $request,MatchRepository $matchRep, UserRepository $user, TeamRepository $teams,$id_match, $id_team)
     {   
 
         if($id_match==-1){
@@ -110,7 +110,7 @@ class AddMatchController extends AbstractController
         return $this->render('add_match/index.html.twig', [
             'controller_name' => 'AddMatchController',
             'form' => $form->createView(),
-            'idteam' => -1,
+            'idteam' => $id_team,
         ]);
     }
 }
