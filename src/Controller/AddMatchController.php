@@ -87,15 +87,14 @@ class AddMatchController extends AbstractController
             $entityManager->persist($match);
             $entityManager->flush();
             
-            $match->addTeam($this->getDoctrine()
-            ->getRepository(Team::class)
-            ->find($form->get('teams')->getViewData()[0]));
+            $match->addTeam( $this->getDoctrine()->getRepository(Team::class)->find($id_team) );
+            // ->find($form->get('teams')->getViewData()[0]));
             
            
 
-            $teams->find($form->get('teams')->getViewData()[0])->addPlayMatch($match);
+            $teams->find($id_team)->addPlayMatch($match);
             
-           dump($form->get('teams')->getViewData()[0]);
+           
             
             $entityManager->persist($match);
             $entityManager->flush();
