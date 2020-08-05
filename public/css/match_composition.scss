@@ -12,15 +12,18 @@ margin: 0 .5rem;
     border-radius: 5px;
     display: grid;
     place-content: center;
-
+    position: relative;
+    
     div {
         background-color: $gray;
     }
 }
 
 .field-position .field-number {
+    position: absolute;
     color: white;
-    position: fixed;
+    top: 5px;
+    left: 5px;
 }
 
 .droppable-over {
@@ -46,19 +49,21 @@ margin: 0 .5rem;
     justify-content: space-around;
     border: 4px dashed rgb(1, 57, 116);
     background-color: rgb(227, 232, 238);
+    min-width: 3rem;
+    min-height: 3rem;
 }
 
 .player_card {
     display: flex;
     flex-direction: column;
-    width: 50px;
-    max-height: 70px;
+    width: 60px;
+    height: auto;
     border: 2px solid $red;
-    background-color: rgba(255, 0, 0, 0.275);
     margin: .5rem;
+    z-index: 99;
 
     img {
-        object-fit: cover;
+        width: 56px;
     }
 }
 
@@ -73,7 +78,8 @@ margin: 0 .5rem;
 .stats-modal-hidden {
     display: none;
     position: absolute;
-    box-shadow: (0px 0px 8px #44444426)
+    box-shadow: (0px 0px 8px #44444426);
+    z-index: 100;
 }
 
 table {

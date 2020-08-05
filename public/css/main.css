@@ -412,7 +412,10 @@ a.btn-lg {
     place-content: center;
   }
   .dashboard {
-    grid-auto-flow: column;
+    -ms-grid-columns: 1fr auto;
+        grid-template-columns: 1fr auto;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
   }
   .dashboard .dashboard-content {
     display: -ms-grid;
