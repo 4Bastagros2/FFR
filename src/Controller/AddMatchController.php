@@ -110,6 +110,7 @@ class AddMatchController extends AbstractController
         return $this->render('add_match/index.html.twig', [
             'controller_name' => 'AddMatchController',
             'form' => $form->createView(),
+            'idteams' => -1,
         ]);
     }
 }
