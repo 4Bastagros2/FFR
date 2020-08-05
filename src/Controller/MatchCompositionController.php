@@ -19,6 +19,16 @@ class MatchCompositionController extends AbstractController
      */
     public function index(MatchRepository $matchRep, $id_match)
     {
+        $date=$matchRep->find($id_match)->getDate()->format('Y-m-d H:i:s');
+        $today=date('Y-m-d H:i:s');
+        ;
+        dump($date);
+        dump($today);
+        if($today>$date){
+            $return = $this->redirectToRoute('stat_match',["id"=>$id_match]);
+        }else{
+
+        
         
 
 
@@ -51,10 +61,10 @@ class MatchCompositionController extends AbstractController
 
         // dump($players);
         // dump($bench);
-        dump(json_encode($bench));
+        // dump(json_encode($bench));
         
 
-        return $this->render('match_composition/index.html.twig', [
+        $return = $this->render('match_composition/index.html.twig', [
             'controller_name' => 'MatchCompositionController',
             'id_match' => $id_match,
             'players' => $players,
@@ -63,6 +73,8 @@ class MatchCompositionController extends AbstractController
             'idteam' => $id_team,
         ]);
     }
+    return $return;
+}
 
 
     /**
