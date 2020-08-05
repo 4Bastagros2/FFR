@@ -1,0 +1,32 @@
+<div class="player{{id}}-stats-modal stats-modal-hidden">
+    <table id="player-stats-modal-table">
+            <tr>
+                <td class="head">Essais</td>
+                <td class="body">{{ essais }}</td>
+            </tr>
+            <tr>
+                <td class="head">transformations</td>
+                <td class="body">{{ transformations }}</td>
+            </tr>
+            <tr>
+                <td class="head">Pénalités</td>
+                <td class="body">{{ penalites }}</td>
+            </tr>
+            <tr>
+                <td class="head">Drops</td>
+                <td class="body">{{ drops }}</td>
+            </tr>
+            <tr>
+                <td class="head">Cartons rouges</td>
+                <td class="body">{{ rouges }}</td>
+            </tr>
+            <tr>
+                <td class="head">Cartons jaunes</td>
+                <td class="body">{{ jaunes }}</td>
+            </tr>
+                <td class="head">Temps de jeu</td>
+                <td class="body">{{ player.temps|date() }}</td>
+            </tr>
+    
+    </table>
+</div>

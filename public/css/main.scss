@@ -8,6 +8,12 @@ h1 {
     font-weight: bold;
 }
 
+h4 {
+    font-weight: bold;
+    font-size: 1.25rem;
+
+}
+
 body {
     min-height: 100vh;
     display: grid;
@@ -209,6 +215,10 @@ a.btn-lg {
     background-color: $red;
 }
 
+.dashboard {
+    display: grid;
+}
+
 @media screen and (min-width: 760px) {
     body {
         background-color: #013974;
@@ -375,6 +385,16 @@ a.btn-lg {
 
     .team-wrapper {
         place-content: center;
+    }
+
+    .dashboard {
+        grid-auto-flow: column;
+
+        .dashboard-content {
+            display: grid;
+            text-align: center;
+            padding: 1rem;
+        }
     }
 }
 
