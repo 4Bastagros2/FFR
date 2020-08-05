@@ -8,6 +8,12 @@ h1 {
     font-weight: bold;
 }
 
+h4 {
+    font-weight: bold;
+    font-size: 1.25rem;
+
+}
+
 body {
     min-height: 100vh;
     display: grid;
@@ -92,7 +98,7 @@ button {
     font-family: 'Roboto Condensed', sans-serif !important;
     border: none;
     display: block;
-    width: 165px;
+    width: max-content;
     margin: 30px auto;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
     text-transform: uppercase;
@@ -207,6 +213,10 @@ a.btn-lg {
 
 .add-team-btn:hover {
     background-color: $red;
+}
+
+.dashboard {
+    display: grid;
 }
 
 @media screen and (min-width: 760px) {
@@ -375,6 +385,16 @@ a.btn-lg {
 
     .team-wrapper {
         place-content: center;
+    }
+
+    .dashboard {
+        grid-auto-flow: column;
+
+        .dashboard-content {
+            display: grid;
+            text-align: center;
+            padding: 1rem;
+        }
     }
 }
 

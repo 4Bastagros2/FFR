@@ -18,6 +18,39 @@
 
 
     <div class="main-wrapper">
+        <div class="dashboard">
+            <div class="dashboard-content">
+                <h4>Résultat des 5 derniers matches</h4>
+                <!-- la suite -->
+                <!-- pour guillaume -->
+                <!-- recap 5 dernier match-->
+                {% for resultat in resultat %}
+                {% if resultat == 1 %}
+                <p>win</p>
+                {% endif %}
+                {% if resultat == 2 %}
+                <p>loser</p>
+                {% endif %}
+                {% if resultat == 0 %}
+                <p>egalite</p>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+
+            <div class="dashboard-content">
+                <h4>Les derniers buteurs</h4>
+                <!-- 5 meilleurs buteurs-->
+                {% for meilleur_buteur in meilleur_buteur %}
+                {{ meilleur_buteur.0 }}
+                <!-- Le 0 affiche le last name -->
+                {{ meilleur_buteur.1 }}
+                <!-- le 1 affiche le first name -->
+                {{ meilleur_buteur.2 }}<br><!-- le 2 affiche le nombre de point total de la saison mis par le joueur -->
+                {% endfor %}
+            </div>
+        </div>
+
         <table id="match-calendar" class="responsive stripe hover cell-border dt-body-center">
             <thead>
                 <tr>
@@ -32,19 +65,20 @@
             <tbody>
 
                 {% for match in match %}
-                     <tr>
-                        
-                        <td><a href="/stat/match/{{ match_id.id }}">{{ match.matchtype.name }}<br><small>voir détails</small></a></td>
-                        <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
-                        <td>{{ match.localteam }}</td>
-                        <td>vs</td>
-                        <td>{{ match.visitorteam }}</td>
-                        <td>{{ match.duration |date('H:i:s') }}</td>
-                        
-                    </tr>
+                <tr>
+
+                    <td><a href="/stat/match/{{ match_id.id }}">{{ match.matchtype.name }}<br><small>voir
+                                détails</small></a></td>
+                    <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
+                    <td>{{ match.localteam }}</td>
+                    <td>vs</td>
+                    <td>{{ match.visitorteam }}</td>
+                    <td>{{ match.duration |date('H:i:s') }}</td>
+
+                </tr>
                 {% endfor %}
-                
-                
+
+
             </tbody>
 
             {# <li>{{ match.stats }}</li> #}
@@ -59,28 +93,10 @@
 
     </div>
 </div>
-<!-- la suite -->
-<!-- pour guillaume -->
-<!-- recap 5 dernier match-->
-{% for resultat in resultat %}
-    {% if resultat == 1 %}
-    <p>win</p>
-    {% endif %}
-    {% if resultat == 2 %}
-    <p>loser</p>
-    {% endif %}
-    {% if resultat == 0 %}
-    <p>egalite</p>
-    {% endif %}
 
-{% endfor %}
 
-<!-- 5 meilleurs buteurs-->
-{% for meilleur_buteur in meilleur_buteur %}
-    {{ meilleur_buteur.0 }} <!-- Le 0 affiche le last name -->
-    {{ meilleur_buteur.1 }} <!-- le 1 affiche le first name -->
-    {{ meilleur_buteur.2 }}<br><!-- le 2 affiche le nombre de point total de la saison mis par le joueur --> 
-{% endfor %}
+
+
 <script>
     $(document).ready(function () {
         $('#match-calendar').DataTable({
@@ -91,4 +107,5 @@
             autoWidth: false,
         });
     });
-</script>{% endblock %}
+</script>
+{% endblock %}
