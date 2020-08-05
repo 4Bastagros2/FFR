@@ -19,43 +19,33 @@ class StatMatchController extends AbstractController
     /**
      * @Route("/stat/match/{id}", name="stat_match")
      */
-    public function index(MatchRepository $Match, MatchTypeRepository $Type,TeamRepository $teamMatch, Request $request, SluggerInterface $slugger, $id)
+    public function index(MatchRepository $matchRep, MatchTypeRepository $Type,TeamRepository $teamMatch, Request $request, SluggerInterface $slugger, $id)
     {   
         //affiche team local
-        $team = $Match->find($id);
-        $local=$team->getLocalTeam();
+        $match = $matchRep->find($id);
+        dump($match);
+        $local = $match->getLocalTeam();
         //affiche team visiteur
-        $visitor=$team->getVisitorTeam();
+        $visitor = $match->getVisitorTeam();
         //affiche type de match
-        $idType=$team->getMatchType();
-        $matchType=$Type->find($idType);
-        $type=$matchType->getName();
-
+        $type = $match->getMatchType();
+        $type_name = $type->getName();
+        $teams = $match->getTeams();
+        $score = $match->getScore();
+        $reds = $match->getReds();
+        $yellows = $match->getYellows();
+        $essais = $match->getEssais();
+        $transformations = $match->getTransformations();
+        $penalites = $match->getPenalites();
+        $drops = $match->getDrops();
        
-
-        //affiche score
-        // $tmp=$team->getStats()[0];
-        // dump($tmp);
-        // $score=$tmp["score"];
-        // //affiche carton rouge
-        // $red=$tmp[1]["red"];
-        // //affiche carton jaune
-        // $yellow=$tmp[2]["yellow"];
-        // //affiche essais
-        // $essais=$tmp[3]["essais"];
-        // //affiche transformation
-        // $trans=$tmp[4]["transformation"];
-        // //affiche penalite
-        // $penalite=$tmp[5]["penalite"];
-        // //affiche drops
-        // $drops=$tmp[6]["drops"];
+        $team = $teams[0];
+        $team_id = $team->getId();
        
-        $theTeam = $team->getTeams()[0]->getId();
-       
-        $joueurs=$teamMatch->find($theTeam)->getPlayers();
+        $joueurs = $team->getPlayers();
 
-        $Match = new Match();
-        $form = $this->createForm(MatchStatsType::class, $Match);
+        // $Match = new Match();
+        $form = $this->createForm(MatchStatsType::class, $match);
         // $form->handleRequest($request);
         $form->submit($request->request->get('match_stats'), false);
 
@@ -69,7 +59,7 @@ class StatMatchController extends AbstractController
 
 
         $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($Match);
+            $entityManager->persist($match);
             $entityManager->flush();
 
 
