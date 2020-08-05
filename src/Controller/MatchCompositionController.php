@@ -33,6 +33,9 @@ class MatchCompositionController extends AbstractController
         // dump($compo);
 
         $team = $match->getTeams()[0];
+
+        $id_team = $team->getId();
+
         $players = $team->getPlayers();
 
         $bench = [];
@@ -41,7 +44,7 @@ class MatchCompositionController extends AbstractController
         {
                 if(!in_array($player->getId(), $compo))
                 {
-                    dump('player in bench'.$player->getId());
+                    // dump('player in bench'.$player->getId());
                     $bench[] = $player;
                 }
         }
@@ -57,6 +60,7 @@ class MatchCompositionController extends AbstractController
             'players' => $players,
             'bench' => $bench,
             'composition' => json_encode($compo),
+            'idteam' => $id_team,
         ]);
     }
 

@@ -34,9 +34,9 @@ class StatMatchController extends AbstractController
        
 
         //affiche score
-        $tmp=$team->getStats()[0];
-        dump($tmp);
-        $score=$tmp["score"];
+        // $tmp=$team->getStats()[0];
+        // dump($tmp);
+        // $score=$tmp["score"];
         // //affiche carton rouge
         // $red=$tmp[1]["red"];
         // //affiche carton jaune
@@ -53,8 +53,6 @@ class StatMatchController extends AbstractController
         $theTeam = $team->getTeams()[0]->getId();
        
         $joueurs=$teamMatch->find($theTeam)->getPlayers();
-
-
 
         $Match = new Match();
         $form = $this->createForm(MatchStatsType::class, $Match);
