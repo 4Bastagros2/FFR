@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShowPlayersController extends AbstractController
 {
     /**
-     * @Route("/show/players/{id_team}/", name="show_players")
+     * @Route("/show/players/{id_team}", name="show_players")
      */
     public function index(TeamRepository $teamrepo, $id_team)
     {
@@ -21,6 +21,7 @@ class ShowPlayersController extends AbstractController
             'controller_name' => 'ShowPlayersController',
             "players" => $thisPlayers,
             "team" => $thisTeam,
+            "idteam" => $id_team,
         ]);
     }
 }

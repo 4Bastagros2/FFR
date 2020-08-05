@@ -1,5 +1,6 @@
 {% set route = app.request.get('_route') %}
 
+
 <div id="nav">
 	<div class="sm-menu nav-container">
 
@@ -28,7 +29,7 @@
 		<ul class="sub-menu">
 
 			<li class="{{ 'match' in route ? 'active' }}">
-				<a href="/match/calendar/">
+				<a href="/match/calendar/{{idteam}}">
 					<!-- <div class="li-wrapper {% if app.request.attributes.get('_route') starts with 'match' %}active{% endif %}"> -->
 					<div class="li-wrapper {{ 'match' in route ? 'active' }}">
 						<svg xmlns="http://www.w3.org/2000/svg" width="40.5" height="36" viewbox="0 0 40.5 36">
@@ -41,7 +42,7 @@
 			</li>
 
 			<li class="{{ 'player' in route ? 'active' }}">
-				<a href="/show/players/{{ id_team }}">
+				<a href="/show/players/{{idteam}}">
 					<div class="li-wrapper ">
 						<svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewbox="0 0 45 31.5">
 							<path id="Icon_awesome-users" data-name="Icon awesome-users" class="cls-1"
