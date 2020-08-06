@@ -36,7 +36,7 @@
                         {% for match in match %}
                         <tr>
 
-                            <td><a href="/stat/match/{{ match_id.id }}">{{ match.matchtype.name }}<br><small>voir
+                            <td><a href="/stat/match/{{ match.id }}">{{ match.matchtype.name }}<br><small>voir
                                         détails</small></a></td>
                             <td>{{ match.date |date("m/d/Y H:i:s") }}</td>
                             <td>{{ match.localteam }}</td>
