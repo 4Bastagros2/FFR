@@ -29,7 +29,6 @@ class PlayerFormController extends AbstractController
         }
         // ...
 
-        $player = new Player();
 
         // $form = $this->createForm(PlayerFormType::class, $playerForm);
         $form = $this->createForm(PlayerFormType::class, $player);
@@ -50,8 +49,14 @@ class PlayerFormController extends AbstractController
             if ($task) {
                 $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
+                $safeFilename = "player".$id;
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
+
+
+
+
+
+
 
                 try {
                     $task->move(
