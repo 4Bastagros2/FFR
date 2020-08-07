@@ -22,11 +22,12 @@ class AddMatchFormType extends AbstractType
     {
        
         $builder
-            ->add('date')
-            ->add('duration')
+            ->add('date',TextType::class,['label'=>'Date du match : '])
+            ->add('duration',TextType::class,['label'=>'Durée du match'])
             ->add('domicile', CheckboxType::class, [
                 'mapped' => false,
-                'required'=>false
+                'required'=>false,
+                'label'=>'Coché si vous jouez a domicile'
             ])
             ->add('local_team',TextType::class,['label'=>'Equipe adverse'])
             
@@ -37,6 +38,7 @@ class AddMatchFormType extends AbstractType
             ->add('match_type',EntityType::class,[
                 'class' => MatchType::class,
                 'choice_label' => 'name',
+                'label'=>'Type de match'
             ])
             // ->add('teams',EntityType::class,[
             //     'class' => Team::class,
