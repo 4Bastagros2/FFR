@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CoachFormType extends AbstractType
 {
@@ -14,10 +15,11 @@ class CoachFormType extends AbstractType
         $builder
             ->add('email')
             // ->add('roles')
-            ->add('password')
+            // ->add('password')
             // ->add('isVerified')
             // ->add('coaches')
             // ->add('finances')
+            ->add('Submit', SubmitType::class)
         ;
     }
 
