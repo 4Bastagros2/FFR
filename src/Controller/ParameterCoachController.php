@@ -17,27 +17,20 @@ class ParameterCoachController extends AbstractController
     /**
      * @Route("/parameter/coach", name="parameter_coach")
      */
-    public function index(UserRepository $UserRepo, TeamRepository $teams, Request $request, SluggerInterface $slugger)
+
+    //  recuperer email, verifie que c est un un doublon
+    // verifie l existence du user
+    // chercher l id du detenteur du compte 
+    // regarder l id du connecter et l ajouter 
+    // ajouter l id_team du connecter avec l id du mail ci dessus 
+
+
+    public function index(UserReposintory $UserRepo, TeamRepository $teams, Request $request, SluggerInterface $slugger)
     {
-        $id = $this->getUser()->getId();
-
-        $connectedUser = $this->getDoctrine()
-                    ->getRepository(User::class)
-                    ->find($id);
-        $userTeams = $connectedUser->getCoaches();
-
-        $form = $this->createForm(CoachFormType::class, $userTeams);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted()) 
-        {
-            $data->getViewData();
-            $task = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($userTeams);
-                $entityManager->flush();
-        }
+        $mail = $UserRepo->findOneBy(array($email=>"email"));
+        dump($mail);
+        
+        
 
         return $this->render('parameter_coach/index.html.twig', [
             'controller_name' => 'ParameterCoachController',
