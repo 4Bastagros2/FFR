@@ -6,6 +6,8 @@ class PlayerStats
 {
     // essais transformations penalites drops rouge jaune temps_joué
 
+    private $match_id;
+
     private $essais;
     private $transformations;
     private $penalites;
@@ -21,7 +23,7 @@ class PlayerStats
     /**
      * Get the value of essais
      */ 
-    public function getEssais()
+    public function getEssais($match_id)
     {
         return $this->essais;
     }
@@ -31,7 +33,7 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setEssais($essais)
+    public function setEssais($match_id, $essais)
     {
         $this->essais = $essais;
 

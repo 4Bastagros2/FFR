@@ -67,39 +67,12 @@ class Player
      */
     private $is_post;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $essais;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $transformations;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $penalites;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $drops;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $rouges;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $jaunes;
-
-    /**
-     * @ORM\Column(type="time", nullable=true)
-     */
     private $temps;
 
     public function __construct()
@@ -256,60 +229,60 @@ class Player
         return $this;
     }
 
-    public function getEssais(): ?int
+    public function getEssais($id): ?int
     {
         return $this->essais;
     }
 
-    public function setEssais(?int $essais): self
+    public function setEssais($id, ?int $essais): self
     {
         $this->essais = $essais;
 
         return $this;
     }
 
-    public function getTransformations(): ?int
+    public function getTransformations($id): ?int
     {
         return $this->transformations;
     }
 
-    public function setTransformations(?int $transformations): self
+    public function setTransformations($id, ?int $transformations): self
     {
         $this->transformations = $transformations;
 
         return $this;
     }
 
-    public function getPenalites(): ?int
+    public function getPenalites($id): ?int
     {
         return $this->penalites;
     }
 
-    public function setPenalites(?int $penalites): self
+    public function setPenalites($id, ?int $penalites): self
     {
         $this->penalites = $penalites;
 
         return $this;
     }
 
-    public function getDrops(): ?int
+    public function getDrops($id): ?int
     {
         return $this->drops;
     }
 
-    public function setDrops(?int $drops): self
+    public function setDrops($id, ?int $drops): self
     {
         $this->drops = $drops;
 
         return $this;
     }
 
-    public function getRouges(): ?int
+    public function getRouges($id): ?int
     {
         return $this->rouges;
     }
 
-    public function setRouges(?int $rouges): self
+    public function setRouges($id, ?int $rouges): self
     {
         $this->rouges = $rouges;
 
