@@ -229,7 +229,7 @@ class Player
         return $this;
     }
 
-    public function getEssais($id): ?int
+    public function getEssais(): ?int
     {
         return $this->essais;
     }
@@ -241,7 +241,7 @@ class Player
         return $this;
     }
 
-    public function getTransformations($id): ?int
+    public function getTransformations(): ?int
     {
         return $this->transformations;
     }
@@ -253,7 +253,7 @@ class Player
         return $this;
     }
 
-    public function getPenalites($id): ?int
+    public function getPenalites(): ?int
     {
         return $this->penalites;
     }
@@ -265,7 +265,7 @@ class Player
         return $this;
     }
 
-    public function getDrops($id): ?int
+    public function getDrops(): ?int
     {
         return $this->drops;
     }
@@ -277,7 +277,7 @@ class Player
         return $this;
     }
 
-    public function getRouges($id): ?int
+    public function getRouges(): ?int
     {
         return $this->rouges;
     }
