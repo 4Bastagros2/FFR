@@ -25,7 +25,7 @@ class PlayerStats
      */ 
     public function getEssais($match_id)
     {
-        return $this->essais;
+        return $this->essais[$match_id];
     }
 
     /**
@@ -35,7 +35,10 @@ class PlayerStats
      */ 
     public function setEssais($match_id, $essais)
     {
-        $this->essais = $essais;
+        $this->essais[$match_id] = $essais;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['essais'] = $essais;
+        $this->setStats($tmpStats);
 
         return $this;
     }
@@ -43,7 +46,7 @@ class PlayerStats
     /**
      * Get the value of transformations
      */ 
-    public function getTransformations()
+    public function getTransformations($match_id)
     {
         return $this->transformations;
     }
@@ -53,9 +56,12 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setTransformations($transformations)
+    public function setTransformations($match_id, $transformations)
     {
-        $this->transformations = $transformations;
+        $this->transformations[$match_id] = $transformations;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['transformations'] = $transformations;
+        $this->setStats($tmpStats);
 
         return $this;
     }
@@ -63,9 +69,9 @@ class PlayerStats
     /**
      * Get the value of penalites
      */ 
-    public function getPenalites()
+    public function getPenalites($match_id)
     {
-        return $this->penalites;
+        return $this->penalites[$match_id];
     }
 
     /**
@@ -73,9 +79,12 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setPenalites($penalites)
+    public function setPenalites($match_id, $penalites)
     {
-        $this->penalites = $penalites;
+        $this->penalites[$match_id] = $penalites;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['penalites'] = $penalites;
+        $this->setStats($tmpStats);
 
         return $this;
     }
@@ -83,9 +92,9 @@ class PlayerStats
     /**
      * Get the value of drops
      */ 
-    public function getDrops()
+    public function getDrops($match_id)
     {
-        return $this->drops;
+        return $this->drops[$match_id];
     }
 
     /**
@@ -93,9 +102,12 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setDrops($drops)
+    public function setDrops($match_id, $drops)
     {
-        $this->drops = $drops;
+        $this->drops[$match_id] = $drops;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['drops'] = $drops;
+        $this->setStats($tmpStats);
 
         return $this;
     }
@@ -103,9 +115,9 @@ class PlayerStats
     /**
      * Get the value of rouge
      */ 
-    public function getRouge()
+    public function getRouge($match_id)
     {
-        return $this->rouge;
+        return $this->rouge[$match_id];
     }
 
     /**
@@ -113,9 +125,12 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setRouge($rouge)
+    public function setRouge($match_id, $rouge)
     {
-        $this->rouge = $rouge;
+        $this->rouge[$match_id] = $rouge;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['rouge'] = $rouge;
+        $this->setStats($tmpStats);
 
         return $this;
     }
@@ -123,9 +138,9 @@ class PlayerStats
     /**
      * Get the value of jaune
      */ 
-    public function getJaune()
+    public function getJaune($match_id)
     {
-        return $this->jaune;
+        return $this->jaune[$match_id];
     }
 
     /**
@@ -133,9 +148,12 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setJaune($jaune)
+    public function setJaune($match_id, $jaune)
     {
-        $this->jaune = $jaune;
+        $this->jaune[$match_id] = $jaune;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['jaune'] = $jaune;
+        $this->setStats($tmpStats);
 
         return $this;
     }
@@ -143,9 +161,9 @@ class PlayerStats
     /**
      * Get the value of temps
      */ 
-    public function getTemps()
+    public function getTemps($match_id)
     {
-        return $this->temps;
+        return $this->temps[$match_id];
     }
 
     /**
@@ -153,9 +171,12 @@ class PlayerStats
      *
      * @return  self
      */ 
-    public function setTemps($temps)
+    public function setTemps($match_id, $temps)
     {
-        $this->temps = $temps;
+        $this->temps[$match_id] = $temps;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['temps'] = $temps;
+        $this->setStats($tmpStats);
 
         return $this;
     }

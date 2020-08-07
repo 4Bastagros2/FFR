@@ -87,10 +87,13 @@ class MatchCalendarController extends AbstractController
             
             while($z!=0){
                 if(isset($team->find($id_team)->getPlayers()[$i])){
+
+                    $current_match_id = $team->find($id_team)->getPlayMatches()[$y]->getId();
+
                     $joueur[$i] = $team->find($id_team)->getPlayers()[$i];
                     $stat[$i][0]=$joueur[$i]->getLestName();
                     $stat[$i][1]=$joueur[$i]->getFirstName();
-                    $stat[$i][2]=$joueur[$i]->getEssais()*5+$joueur[$i]->getTransformations()*2+$joueur[$i]->getDrops()*3+$joueur[$i]->getPenalites()*3;
+                    // $stat[$i][2]=$joueur[$i]->getEssais($current_match_id)*5+$joueur[$i]->getTransformations($current_match_id)*2+$joueur[$i]->getDrops($current_match_id)*3+$joueur[$i]->getPenalites($current_match_id)*3;
                     
                     $i++;
                     if($i==5){

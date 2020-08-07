@@ -22,7 +22,7 @@ class PlayerFormType extends AbstractType
             ->add('picture', FileType::class, array('data_class' => null))
             ->add('birth_date')
             ->add('club_entry_date')
-            ->add('stats')
+            // ->add('stats')
             ->add('license_number')
             // ->add('play_in')
             ->add('is_post', EntityType::class, [

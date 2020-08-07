@@ -50,7 +50,7 @@ class Player
      */
     private $stats = [];
 
-    private $statsObj;
+    // private $statsObj;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -67,19 +67,20 @@ class Player
      */
     private $is_post;
 
-    private $essais;
-    private $transformations;
-    private $penalites;
-    private $drops;
-    private $rouges;
-    private $jaunes;
-    private $temps;
+    private $essais = [];
+    private $transformations = [];
+    private $penalites = [];
+    private $drops = [];
+    private $rouges = [];
+    private $jaunes = [];
+    private $temps = [];
 
     public function __construct()
     {
         $this->play_in = new ArrayCollection();
         $this->is_post = new ArrayCollection();
-        $this->statsObj = new PlayerStats();
+        $this->stats = [];
+        // $this->statsObj = new PlayerStats();
     }
 
     public function getId(): ?int
@@ -229,86 +230,255 @@ class Player
         return $this;
     }
 
-    public function getEssais($id): ?int
+        /**
+     * Get the value of essais
+     */ 
+    public function getEssais($match_id)
     {
-        return $this->essais;
+        return isset($this->essais[$match_id]) ? $this->essais[$match_id] : 0;
     }
 
-    public function setEssais($id, ?int $essais): self
+        /**
+     * Get the total of essais
+     */ 
+    public function getTotalEssais()
     {
-        $this->essais = $essais;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['essais'];
+        }
+            
+        return $total;
+    }
+
+    /**
+     * Set the value of essais
+     *
+     * @return  self
+     */ 
+    public function setEssais($match_id, $essais)
+    {
+        $this->essais[$match_id] = $essais;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['essais'] = $essais;
+        $this->setStats($tmpStats);
 
         return $this;
     }
 
-    public function getTransformations($id): ?int
+    /**
+     * Get the value of transformations
+     */ 
+    public function getTransformations($match_id)
     {
-        return $this->transformations;
+        return isset($this->transformations[$match_id]) ? $this->transformations[$match_id] : 0;
     }
 
-    public function setTransformations($id, ?int $transformations): self
+    /**
+     * Get the total of transformations
+     */ 
+    public function getTotalTransformations()
     {
-        $this->transformations = $transformations;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['transformations'];
+        }
+        return $total;
+    }
+
+    /**
+     * Set the value of transformations
+     *
+     * @return  self
+     */ 
+    public function setTransformations($match_id, $transformations)
+    {
+        $this->transformations[$match_id] = $transformations;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['transformations'] = $transformations;
+        $this->setStats($tmpStats);
 
         return $this;
     }
 
-    public function getPenalites($id): ?int
+    /**
+     * Get the value of penalites
+     */ 
+    public function getPenalites($match_id)
     {
-        return $this->penalites;
+        return isset($this->penalites[$match_id]) ? $this->penalites[$match_id] : 0;
     }
 
-    public function setPenalites($id, ?int $penalites): self
+    /**
+     * Get the total of penalites
+     */ 
+    public function getTotalPenalites()
     {
-        $this->penalites = $penalites;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['penalites'];
+        }
+        return $total;
+    }
+
+    /**
+     * Set the value of penalites
+     *
+     * @return  self
+     */ 
+    public function setPenalites($match_id, $penalites)
+    {
+        $this->penalites[$match_id] = $penalites;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['penalites'] = $penalites;
+        $this->setStats($tmpStats);
 
         return $this;
     }
 
-    public function getDrops($id): ?int
+    /**
+     * Get the value of drops
+     */ 
+    public function getDrops($match_id)
     {
-        return $this->drops;
+        return isset($this->drops[$match_id]) ? $this->drops[$match_id] : 0;
     }
 
-    public function setDrops($id, ?int $drops): self
+    /**
+     * Get the total of drops
+     */ 
+    public function getTotalDrops()
     {
-        $this->drops = $drops;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['drops'];
+        }
+        return $total;
+    }
+
+    /**
+     * Set the value of drops
+     *
+     * @return  self
+     */ 
+    public function setDrops($match_id, $drops)
+    {
+        $this->drops[$match_id] = $drops;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['drops'] = $drops;
+        $this->setStats($tmpStats);
 
         return $this;
     }
 
-    public function getRouges($id): ?int
+    /**
+     * Get the value of rouges
+     */ 
+    public function getRouges($match_id)
     {
-        return $this->rouges;
+        return isset($this->rouges[$match_id]) ? $this->rouges[$match_id] : 0;
     }
 
-    public function setRouges($id, ?int $rouges): self
+    /**
+     * Get the total of rouges
+     */ 
+    public function getTotalRouges()
     {
-        $this->rouges = $rouges;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['rouges'];
+        }
+        return $total;
+    }
+
+    /**
+     * Set the value of rouges
+     *
+     * @return  self
+     */ 
+    public function setRouges($match_id, $rouges)
+    {
+        $this->rouges[$match_id] = $rouges;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['rouges'] = $rouges;
+        $this->setStats($tmpStats);
 
         return $this;
     }
 
-    public function getJaunes(): ?int
+    /**
+     * Get the value of jaunes
+     */ 
+    public function getJaunes($match_id)
     {
-        return $this->jaunes;
+        return isset($this->jaunes[$match_id]) ? $this->jaunes[$match_id] : 0;
     }
 
-    public function setJaunes(?int $jaunes): self
+    /**
+     * Get the total of jaunes
+     */ 
+    public function getTotalJaunes()
     {
-        $this->jaunes = $jaunes;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['jaunes'];
+        }
+        return $total;
+    }
+
+    /**
+     * Set the value of jaunes
+     *
+     * @return  self
+     */ 
+    public function setJaunes($match_id, $jaunes)
+    {
+        $this->jaunes[$match_id] = $jaunes;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['jaunes'] = $jaunes;
+        $this->setStats($tmpStats);
 
         return $this;
     }
 
-    public function getTemps(): ?\DateTimeInterface
+    /**
+     * Get the value of temps
+     */ 
+    public function getTemps($match_id)
     {
-        return $this->temps;
+        return isset($this->temps[$match_id]) ? $this->temps[$match_id] : 0;
     }
 
-    public function setTemps(?\DateTimeInterface $temps): self
+    /**
+     * Get the total of temps
+     */ 
+    public function getTotalTemps()
     {
-        $this->temps = $temps;
+        $total = 0;
+        if(isset($this->stats))
+        {
+            foreach($this->stats as $val) $total += $val['temps'];
+        }
+        return $total;
+    }
+
+    /**
+     * Set the value of temps
+     *
+     * @return  self
+     */ 
+    public function setTemps($match_id, $temps)
+    {
+        $this->temps[$match_id] = $temps;
+        $tmpStats = $this->getStats();
+        $tmpStats[$match_id]['temps'] = $temps;
+        $this->setStats($tmpStats);
 
         return $this;
     }
