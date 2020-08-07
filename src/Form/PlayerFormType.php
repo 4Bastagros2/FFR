@@ -19,7 +19,7 @@ class PlayerFormType extends AbstractType
         $builder
             ->add('lest_name')
             ->add('first_name')
-            ->add('picture', FileType::class)
+            ->add('picture', FileType::class, array('data_class' => null))
             ->add('birth_date')
             ->add('club_entry_date')
             ->add('stats')
