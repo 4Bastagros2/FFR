@@ -11,6 +11,7 @@ use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use App\Repository\MatchRepository;
 use Symfony\Component\HttpFoundation\Request;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class AddMatchController extends AbstractController
     /**
      * @Route("/add/match/{id_team}{id_match}", name="add_match", defaults={"id_match"=-1})
      */
-    public function index(Request $request,MatchRepository $matchRep, UserRepository $user, TeamRepository $teams,$id_match, $id_team)
+    public function index(Request $request,MatchRepository $matchRep, UserRepository $user, TeamRepository $teams,$id_match, $id_team, FlashyNotifier $flashy)
     {   
 
         if($id_match==-1){
@@ -98,9 +99,10 @@ class AddMatchController extends AbstractController
             
             $entityManager->persist($match);
             $entityManager->flush();
+            $flashy->success('Ajout réussi !');
             
             
-            //return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);
+            // return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);
         
 
         }

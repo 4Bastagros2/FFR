@@ -22,7 +22,6 @@ class PlayerFormController extends AbstractController
     public function index(PlayerRepository $PlayerRepo, Request $request, $id, SluggerInterface $slugger, FlashyNotifier $flashy)
     {
 
-        $flashy->success('Event created!', 'http://your-awesome-link.com');
 
         if($id == -1)
         {
@@ -80,6 +79,8 @@ class PlayerFormController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();
+            $flashy->success('Ajout réussi !');
+
             }
 
             // ... persist the $product variable or any other work
