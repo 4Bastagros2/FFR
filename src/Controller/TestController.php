@@ -26,6 +26,8 @@ class TestController extends AbstractController
 
         dump($player->getStats());
 
+
+        
         return $this->render('test/index.html.twig', [
             'controller_name' => 'TestController',
         ]);
