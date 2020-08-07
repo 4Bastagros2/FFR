@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -21,10 +22,11 @@ class FormAddTeamType extends AbstractType
 
 
         $builder
-        ->add('category')
+        ->add('category',TextType::class,['label'=>'La category de la nouvelle equipe'])
         ->add('play_season',EntityType::class,[
             'class' => Season::class,
             'choice_label' => 'name',
+            'label'=>'Choisissez la saison'
             ])
         ->add('Submit', SubmitType::class)
     ;
