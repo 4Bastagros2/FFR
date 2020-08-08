@@ -103,6 +103,7 @@ button {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 1rem !important;
 }
 
 .btn-lg:hover {
@@ -111,13 +112,23 @@ button {
 }
 
 .btn-edit {
-    background-color: white !important;
-    color: $blue !important;
+    background-color: #01397494 !important;
+    transition: .2s ease-out;
 }
 
 .btn-edit:hover {
     color: white !important;
     background-color: $blue !important;
+}
+
+.btn-delete {
+    background-color: #f2362fa8 !important;
+    transition: .2s ease-out;
+}
+
+.btn-delete:hover {
+    background-color: $red !important;
+    color: white !important;
 }
 
 a.btn-lg {
@@ -127,6 +138,7 @@ a.btn-lg {
 
 .underline {
     text-decoration: underline;
+    font-weight: 600 !important;
 }
 
 .team-wrapper {
@@ -138,7 +150,7 @@ a.btn-lg {
 
     .team-grid {
         flex-wrap: wrap;
-        justify-content: center;
+        place-content: center;
     }
 
     .team-card {
@@ -155,6 +167,7 @@ a.btn-lg {
             text-align: center;
             margin: .5rem auto;
             font-weight: bold;
+            transition: .2s ease-out;
         }
 
         .card-body {
@@ -266,6 +279,7 @@ a.btn-lg {
                     fill: $red;
                     margin-right: 1vw;
                     height: calc(0.3rem + 1vw);
+                    transition: .2s ease-out;
                 }
 
                 li {
@@ -280,6 +294,17 @@ a.btn-lg {
                     width: auto;
                     font-size: calc(0.5em + 1vw);
                     display: flex;
+                    transition: .2s ease-out;
+                }
+
+                .li-wrapper:hover {
+                    background-color: white;
+                    color: $blue;
+
+                    svg {
+                        fill: $blue;
+                    }
+
                 }
 
                 li:first-of-type {
