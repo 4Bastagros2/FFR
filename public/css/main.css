@@ -335,6 +335,8 @@ a.btn-lg {
     display: flex;
     -webkit-transition: .2s ease-out;
     transition: .2s ease-out;
+    position: relative;
+    bottom: -1px;
   }
   #nav .bg-menu .sub-menu .li-wrapper:hover {
     background-color: white;
@@ -410,7 +412,7 @@ a.btn-lg {
   }
   .main-wrapper,
   .players-wrapper {
-    padding: 2.5rem 4vw;
+    padding: calc(0.45rem + 1vw) 2.55rem;
   }
   .main-wrapper,
   .players-wrapper {
@@ -421,14 +423,19 @@ a.btn-lg {
     grid-row: 2;
     background-color: #013974;
     color: #E3E8EE;
-    font-size: 1.50rem;
+    font-size: 1.25rem;
   }
   .menu-tab h4 {
-    border-bottom: 5px solid #E3E8EE;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-    padding-bottom: 1rem;
+    background-color: #E3E8EE;
+    padding: .5rem 2rem;
+    color: red;
+    -webkit-clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+            clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+    position: relative;
+    bottom: -1px;
   }
   .main-wrapper {
     background-color: #E3E8EE;

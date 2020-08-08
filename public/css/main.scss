@@ -231,7 +231,7 @@ a.btn-lg {
 .dashboard {
     display: grid;
 
-    
+
 }
 
 @media screen and (min-width: 760px) {
@@ -295,6 +295,8 @@ a.btn-lg {
                     font-size: calc(0.5em + 1vw);
                     display: flex;
                     transition: .2s ease-out;
+                    position: relative;
+                    bottom: -1px;
                 }
 
                 .li-wrapper:hover {
@@ -382,7 +384,7 @@ a.btn-lg {
 
     .main-wrapper,
     .players-wrapper {
-        padding: 2.5rem 4vw;
+        padding: calc(0.45rem + 1vw) 2.55rem;
     }
 
     .main-wrapper,
@@ -394,12 +396,16 @@ a.btn-lg {
         grid-row: 2;
         background-color: $blue;
         color: $gray;
-        font-size: 1.50rem;
+        font-size: 1.25rem;
 
         h4 {
-            border-bottom: 5px solid $gray;
             width: fit-content;
-            padding-bottom: 1rem;
+            background-color: $gray;
+            padding: .5rem 2rem;
+            color: red;
+            clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+            position: relative;
+            bottom: -1px;
         }
     }
 
