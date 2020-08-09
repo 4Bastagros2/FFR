@@ -19,12 +19,15 @@ body {
 }
 
 #nav {
+  position: fixed;
   bottom: 0;
   color: white;
   font-size: 0.9rem;
   -webkit-box-shadow: 0px 0px 5px 0px #000000ad;
           box-shadow: 0px 0px 5px 0px #000000ad;
   font-weight: bold;
+  width: 100%;
+  z-index: 999;
 }
 
 a {
@@ -42,38 +45,43 @@ a:hover {
 
 .sm-menu {
   text-align: center;
-  background-color: #F2362F;
+  background-color: #013974;
 }
 
-.sm-menu ul {
+.sm-menu .main-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0.25rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 50px;
 }
 
-.sm-menu ul .svg-icon {
-  width: 100%;
-  height: 20px;
-  margin-bottom: 4px;
+.sm-menu .main-list h3 {
+  margin-left: .75rem;
 }
 
-.sm-menu li img {
-  margin: auto;
+.sm-menu .main-list ul {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: .5rem;
 }
 
-.sm-menu li .user-portrait {
-  height: 45px;
+.sm-menu .main-list a {
+  display: -ms-grid;
+  display: grid;
+  padding: .75rem;
 }
 
-.sm-menu span {
-  font-size: 1.8rem;
+.sm-menu .main-list .svg-icon {
+  height: 15px;
+  margin: 0 auto .25rem;
+  fill: white;
 }
 
 .pointer {
@@ -158,6 +166,7 @@ a.btn-lg {
           justify-content: center;
   -ms-grid-rows: 1fr auto;
       grid-template-rows: 1fr auto;
+  margin-bottom: 50px;
 }
 
 .team-wrapper .team-grid {
@@ -281,6 +290,7 @@ a.btn-lg {
     -ms-flex-item-align: start;
         -ms-grid-row-align: start;
         align-self: start;
+    position: initial;
   }
   #nav .sm-menu {
     display: none;
@@ -336,7 +346,6 @@ a.btn-lg {
     -webkit-transition: .2s ease-out;
     transition: .2s ease-out;
     position: relative;
-    bottom: -1px;
   }
   #nav .bg-menu .sub-menu .li-wrapper:hover {
     background-color: white;
@@ -431,7 +440,7 @@ a.btn-lg {
     width: fit-content;
     background-color: #E3E8EE;
     padding: .5rem 2rem;
-    color: red;
+    color: #F2362F;
     -webkit-clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
             clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
     position: relative;
