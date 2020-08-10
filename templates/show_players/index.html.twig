@@ -10,49 +10,50 @@
 <div class="body-wrapper">
 
 	<div class="menu-tab">
-		<center>
-			<h4>Listes des joueurs</h4>
-		</center>
+		<h4 class="active"><a href="">Listes des joueurs</a></h4>
 	</div>
 
 	<div class="main-wrapper">
 
-		<table id="players-list" class="responsive stripe hover cell-border dt-justify">
+		<div class="dash-card">
 
-			<thead>
-				<tr>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Essais</th>
-					<th>transformations</th>
-					<th>Pénalités</th>
-					<th>Drops</th>
-					<th>Cartons rouges</th>
-					<th>Cartons jaunes</th>
-					<th>Temps de jeu</th>
-					<th>Catégorie</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for player in players %}
-				<tr>
-					<td>{{ player.lestName}}</td>
-					<td>{{ player.firstName }}</td>
-					<td>{{ player.essais }}</td>
-					<td>{{ player.transformations }}</td>
-					<td>{{ player.penalites }}</td>
-					<td>{{ player.drops }}</td>
-					<td>{{ player.rouges }}</td>
-					<td>{{ player.jaunes }}</td>
-					<td>{{ player.temps|date() }}</td>
-					<td>{{ team.category}}</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+			<table id="players-list" class="responsive stripe hover cell-border dt-justify">
+
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Essais</th>
+						<th>transformations</th>
+						<th>Pénalités</th>
+						<th>Drops</th>
+						<th>Cartons rouges</th>
+						<th>Cartons jaunes</th>
+						<th>Temps de jeu</th>
+						<th>Catégorie</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for player in players %}
+					<tr>
+						<td>{{ player.lestName}}</td>
+						<td>{{ player.firstName }}</td>
+						<td>{{ player.essais }}</td>
+						<td>{{ player.transformations }}</td>
+						<td>{{ player.penalites }}</td>
+						<td>{{ player.drops }}</td>
+						<td>{{ player.rouges }}</td>
+						<td>{{ player.jaunes }}</td>
+						<td>{{ player.temps|date() }}</td>
+						<td>{{ team.category}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<a class="btn-lg pointer" href="/player/form">+ Ajouter un joueur</a>
+		</div>
 	</div>
-
-	<a class="btn-lg pointer" href="/player/form">+ Ajouter un joueur</a>
 </div>
 
 <script>
