@@ -4,22 +4,21 @@
 {% endblock %}
 
 {% block body %}
-				{# {{ dump(id_team) }} #}
+{# {{ dump(id_team) }} #}
 
 {{ include('main_nav.html.twig', {'idteam': idteam}) }}
 
 <div class="body-wrapper">
 
     <div class="menu-tab">
-        <center>
-            <h4>Calendrier des matches</h4>
-        </center>
+        <h4 class="active"><a href="">Calendrier des matches</a></h4>
+        <h4><a href="">Compositions</a></h4>
     </div>
 
 
     <div class="main-wrapper">
         <div class="dashboard">
-            <div>
+            <div class="dash-card">
                 <table id="match-calendar" class="responsive stripe hover cell-border dt-body-center">
                     <thead>
                         <tr>
@@ -56,51 +55,69 @@
 												                {% endfor %}
 												            </li> #}
 
-            </tbody>
-        </table>
-        <a href="{{ path('add_match', {id_team: idteam}) }}" class="btn-lg pointer">+ Ajouter un match</a>
+                    </tbody>
+                </table>
+                <a href="{{ path('add_match', {id_team: idteam}) }}" class="btn-lg pointer">+ Ajouter un match</a>
 
                 {# <a href="{{ path('add_match') }}" class="btn-lg pointer">+ Ajouter un match</a> #}
             </div>
 
             <div class="dashboard-content">
-                <div>
-                    <h4>Résultat des 5 derniers matches</h4>
-                    <!-- la suite -->
-                    <!-- pour guillaume -->
-                    <!-- recap 5 dernier match-->
-                    {% for resultat in resultat %}
-                    {% if resultat == 1 %}
-                    <p>win</p>
-                    {% endif %}
-                    {% if resultat == 2 %}
-                    <p>loser</p>
-                    {% endif %}
-                    {% if resultat == 0 %}  
-                    <p>egalite</p>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div>
-                    <h4>Les 5 meilleurs buteurs</h4>
-                    <!-- 5 meilleurs buteurs-->
-                    <table id="best-scorers">
-                        {% for meilleur_buteur in meilleur_buteur %}
-                        <tr>
-                            <td> 
-                                <!-- Le 0 affiche le last name -->
-                                {{ meilleur_buteur.0 }}
-                                <!-- le 1 affiche le first name -->
-                                {{ meilleur_buteur.1 }}
-                            </td>
-                            <td>
-                                <!-- le 2 affiche le nombre de point total de la saison mis par le joueur -->
-                                {# {{ meilleur_buteur.2 }}<br> #}
-                            </td>
-                        </tr>
-
+                <div class="dash-card">
+                    <div class="card-header">
+                        <h5>Résultat des 5 derniers matches</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- la suite -->
+                        <!-- pour guillaume -->
+                        <!-- recap 5 dernier match-->
+                        {% for resultat in resultat %}
+                        {% if resultat == 1 %}
+                        <div class="result winner">
+                            <p>&#10004;</p>
+                        </div>
+                        {% endif %}
+                        {% if resultat == 2 %}
+                        <div class="result loser">
+                            <p>&#10006;</p>
+                        </div>
+                        {% endif %}
+                        {% if resultat == 0 %}
+                        <div class="result draw">
+                            <p>-</p>
+                        </div>
+                        {% endif %}
                         {% endfor %}
-                    </table>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <div class="card-header">
+                        <h5>Les 5 meilleurs buteurs</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- 5 meilleurs buteurs-->
+                        <center>
+                            <table id="best-scorers">
+                                {% for meilleur_buteur in meilleur_buteur %}
+                                <tr>
+                                    <td>
+                                        <!-- le 2 affiche le nombre de point total de la saison mis par le joueur -->
+                                        {# {{ meilleur_buteur.2 }}<br> #}
+                                    </td>
+                                    <td>
+                                        <!-- Le 0 affiche le last name -->
+                                        {{ meilleur_buteur.0 }}
+                                        <!-- le 1 affiche le first name -->
+                                        {{ meilleur_buteur.1 }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </center>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="small">Voir le classement des joueurs &xrarr;</a>
+                    </div>
                 </div>
 
             </div>

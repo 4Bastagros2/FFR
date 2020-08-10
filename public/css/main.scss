@@ -233,8 +233,72 @@ a.btn-lg {
 
 .dashboard {
     display: grid;
+}
 
+.dash-card {
+    background-color: white;
+    box-shadow: 0 0 4px #0000001f;
+    padding: 1rem;
+    margin: 1rem 0;
 
+    .card-header {
+        padding-top: 0 !important;
+        font-weight: bold;
+    }
+
+    .card-footer {
+        padding-bottom: 0 !important;
+    }
+
+    .card-header,
+    .card-footer {
+        background-color: transparent !important;
+    }
+}
+
+.result {
+    font-size: 1.25rem !important;
+}
+
+.winner p {
+    color: $blue !important;
+}
+
+.loser p {
+    color: $red !important;
+}
+
+.draw p {
+    color: rgba(0, 0, 0, 0.32) !important;
+}
+
+#best-scorers {
+
+    tr td:first-of-type {
+        padding: .2rem;
+        text-align: right;
+    }
+
+    tr td:last-of-type {
+        text-transform: uppercase;
+        padding: .2rem;
+    }
+
+    td {
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    td.body {
+        border-bottom: 1px solid #0000001f;
+        background-color: $gray;
+    }
+}
+
+.dataTables_wrapper {
+    outline: none;
+    label {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (min-width: 760px) {
@@ -382,7 +446,12 @@ a.btn-lg {
 
     .menu-tab,
     .team-wrapper {
-        padding: 1rem 4vw 0;
+        padding: 1rem 2.55rem 0;
+    }
+
+    .menu-tab {
+        padding-top: 1.25rem;
+
     }
 
     .main-wrapper,
@@ -403,12 +472,26 @@ a.btn-lg {
 
         h4 {
             width: fit-content;
-            background-color: $gray;
+            background-color: $blue;
             padding: .5rem 2rem;
-            color: $red;
-            clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+            color: $gray;
             position: relative;
-            bottom: -1px;
+            display: inline-flex;
+            transition: .2s ease-out;
+
+            a {
+                transition: .2s ease-out;
+            }
+        }
+
+        h4:hover {
+            background-color: $gray;
+            color: $red !important;
+        }
+
+        h4.active {
+            background-color: $gray;
+            color: $red;
         }
     }
 
@@ -425,12 +508,14 @@ a.btn-lg {
 
     .dashboard {
         grid-template-columns: 1fr auto;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto fit-content;
+        grid-gap: 1rem;
 
         .dashboard-content {
             display: grid;
             text-align: center;
-            padding: 1rem;
+            grid-auto-flow: row;
+            align-content: start;
         }
     }
 }

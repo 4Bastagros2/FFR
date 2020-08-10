@@ -273,6 +273,71 @@ a.btn-lg {
   display: grid;
 }
 
+.dash-card {
+  background-color: white;
+  -webkit-box-shadow: 0 0 4px #0000001f;
+          box-shadow: 0 0 4px #0000001f;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.dash-card .card-header {
+  padding-top: 0 !important;
+  font-weight: bold;
+}
+
+.dash-card .card-footer {
+  padding-bottom: 0 !important;
+}
+
+.dash-card .card-header,
+.dash-card .card-footer {
+  background-color: transparent !important;
+}
+
+.result {
+  font-size: 1.25rem !important;
+}
+
+.winner p {
+  color: #013974 !important;
+}
+
+.loser p {
+  color: #F2362F !important;
+}
+
+.draw p {
+  color: rgba(0, 0, 0, 0.32) !important;
+}
+
+#best-scorers tr td:first-of-type {
+  padding: .2rem;
+  text-align: right;
+}
+
+#best-scorers tr td:last-of-type {
+  text-transform: uppercase;
+  padding: .2rem;
+}
+
+#best-scorers td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#best-scorers td.body {
+  border-bottom: 1px solid #0000001f;
+  background-color: #E3E8EE;
+}
+
+.dataTables_wrapper {
+  outline: none;
+}
+
+.dataTables_wrapper label {
+  font-size: 1rem;
+}
+
 @media screen and (min-width: 760px) {
   body {
     background-color: #013974;
@@ -417,7 +482,10 @@ a.btn-lg {
   }
   .menu-tab,
   .team-wrapper {
-    padding: 1rem 4vw 0;
+    padding: 1rem 2.55rem 0;
+  }
+  .menu-tab {
+    padding-top: 1.25rem;
   }
   .main-wrapper,
   .players-wrapper {
@@ -438,13 +506,27 @@ a.btn-lg {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-    background-color: #E3E8EE;
+    background-color: #013974;
     padding: .5rem 2rem;
-    color: #F2362F;
-    -webkit-clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
-            clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+    color: #E3E8EE;
     position: relative;
-    bottom: -1px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-transition: .2s ease-out;
+    transition: .2s ease-out;
+  }
+  .menu-tab h4 a {
+    -webkit-transition: .2s ease-out;
+    transition: .2s ease-out;
+  }
+  .menu-tab h4:hover {
+    background-color: #E3E8EE;
+    color: #F2362F !important;
+  }
+  .menu-tab h4.active {
+    background-color: #E3E8EE;
+    color: #F2362F;
   }
   .main-wrapper {
     background-color: #E3E8EE;
@@ -455,14 +537,18 @@ a.btn-lg {
   .dashboard {
     -ms-grid-columns: 1fr auto;
         grid-template-columns: 1fr auto;
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
+    -ms-grid-columns: auto fit-content;
+        grid-template-columns: auto -webkit-fit-content;
+        grid-template-columns: auto fit-content;
+    grid-gap: 1rem;
   }
   .dashboard .dashboard-content {
     display: -ms-grid;
     display: grid;
     text-align: center;
-    padding: 1rem;
+    grid-auto-flow: row;
+    -ms-flex-line-pack: start;
+        align-content: start;
   }
 }
 
