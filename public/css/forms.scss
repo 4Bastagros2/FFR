@@ -72,7 +72,11 @@ select {
 }
 
 .modal-card {
-    width: 70vw;
+    max-width: 70vw;
+
+    form {
+        margin-top: 1rem;
+    }
 }
 
 legend {

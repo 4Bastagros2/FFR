@@ -57,9 +57,8 @@
 
                     </tbody>
                 </table>
-                <a href="{{ path('add_match', {id_team: idteam}) }}" class="btn-lg pointer">+ Ajouter un match</a>
+                <a href="" class="add-match-btn btn-lg pointer">+ Ajouter un match</a>
 
-                {# <a href="{{ path('add_match') }}" class="btn-lg pointer">+ Ajouter un match</a> #}
             </div>
 
             <div class="dashboard-content">
@@ -126,6 +125,7 @@
     </div>
 </div>
 
+{% include 'add_match/index.html.twig' with {'form': form} %}
 
 
 
@@ -138,6 +138,14 @@
             responsive: true,
             autoWidth: false,
         });
+        $('.add-match-btn').click(function (e) {
+			e.preventDefault()
+			$('.modal').fadeIn()
+		})
+		$('.close-btn').click(function (e) {
+			e.preventDefault()
+			$('.modal').fadeOut()
+		})
     });
 </script>
 {% endblock %}

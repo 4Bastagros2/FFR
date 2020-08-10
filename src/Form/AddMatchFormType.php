@@ -47,7 +47,7 @@ class AddMatchFormType extends AbstractType
             //     'multiple' => true,
             //     'expanded' => false,  
             // ])
-            ->add('Submit', SubmitType::class)
+            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
         ;
     }
 
