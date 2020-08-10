@@ -51,10 +51,12 @@
 				</tbody>
 			</table>
 
-			<a class="btn-lg pointer" href="/player/form">+ Ajouter un joueur</a>
+			<a class="add-player-btn btn-lg pointer" href="">+ Ajouter un joueur</a>
 		</div>
 	</div>
 </div>
+
+{% include 'player_form/index.html.twig' with {'form': form} %}
 
 <script>
 	$(document).ready(function () {
@@ -65,6 +67,14 @@
 			responsive: true,
 			autoWidth: false,
 		});
+		$('.add-player-btn').click(function (e) {
+			e.preventDefault()
+			$('.modal').fadeIn()
+		})
+		$('.close-btn').click(function (e) {
+			e.preventDefault()
+			$('.modal').fadeOut()
+		})
 	});
 </script>
 
