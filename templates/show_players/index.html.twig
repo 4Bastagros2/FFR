@@ -38,13 +38,13 @@
 					<tr>
 						<td>{{ player.lestName}}</td>
 						<td>{{ player.firstName }}</td>
-						<td>{{ player.essais }}</td>
-						<td>{{ player.transformations }}</td>
-						<td>{{ player.penalites }}</td>
-						<td>{{ player.drops }}</td>
-						<td>{{ player.rouges }}</td>
-						<td>{{ player.jaunes }}</td>
-						<td>{{ player.temps|date() }}</td>
+						<td>{{ player.totalessais }}</td>
+						<td>{{ player.totaltransformations }}</td>
+						<td>{{ player.totalpenalites }}</td>
+						<td>{{ player.totaldrops }}</td>
+						<td>{{ player.totalrouges }}</td>
+						<td>{{ player.totaljaunes }}</td>
+						<td>{{ player.totaltemps|date() }}</td>
 						<td>{{ team.category}}</td>
 					</tr>
 					{% endfor %}
