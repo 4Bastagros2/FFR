@@ -21,12 +21,14 @@ body {
 }
 
 #nav {
-    // position: fixed;
+    position: fixed;
     bottom: 0;
     color: white;
     font-size: 0.9rem;
     box-shadow: 0px 0px 5px 0px #000000ad;
     font-weight: bold;
+    width: 100%;
+    z-index: 999;
 }
 
 a {
@@ -44,34 +46,34 @@ a:hover {
 
 .sm-menu {
     text-align: center;
-    background-color: $red;
+    background-color: $blue;
 
-    ul {
+    .main-list {
         display: flex;
         justify-content: space-between;
-        margin: 0.25rem;
         align-items: center;
+        height: 50px;
+
+        h3 {
+            margin-left: .75rem;
+        }
+
+        ul {
+            display: grid;
+            grid-auto-flow: column;
+            grid-gap: .5rem;
+        }
+
+        a {
+            display: grid;
+            padding: .75rem;
+        }
 
         .svg-icon {
-            width: 100%;
-            height: 20px;
-            margin-bottom: 4px;
+            height: 15px;
+            margin: 0 auto .25rem;
+            fill: white;
         }
-    }
-
-    li {
-
-        img {
-            margin: auto;
-        }
-
-        .user-portrait {
-            height: 45px;
-        }
-    }
-
-    span {
-        font-size: 1.8rem;
     }
 }
 
@@ -103,6 +105,7 @@ button {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32);
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 1rem !important;
 }
 
 .btn-lg:hover {
@@ -111,13 +114,23 @@ button {
 }
 
 .btn-edit {
-    background-color: white !important;
-    color: $blue !important;
+    background-color: #01397494 !important;
+    transition: .2s ease-out;
 }
 
 .btn-edit:hover {
     color: white !important;
     background-color: $blue !important;
+}
+
+.btn-delete {
+    background-color: #f2362fa8 !important;
+    transition: .2s ease-out;
+}
+
+.btn-delete:hover {
+    background-color: $red !important;
+    color: white !important;
 }
 
 a.btn-lg {
@@ -127,6 +140,7 @@ a.btn-lg {
 
 .underline {
     text-decoration: underline;
+    font-weight: 600 !important;
 }
 
 .team-wrapper {
@@ -135,10 +149,11 @@ a.btn-lg {
     justify-content: center;
     // flex-wrap: wrap;
     grid-template-rows: 1fr auto;
+    margin-bottom: 50px;
 
     .team-grid {
         flex-wrap: wrap;
-        justify-content: center;
+        place-content: center;
     }
 
     .team-card {
@@ -155,6 +170,7 @@ a.btn-lg {
             text-align: center;
             margin: .5rem auto;
             font-weight: bold;
+            transition: .2s ease-out;
         }
 
         .card-body {
@@ -217,8 +233,72 @@ a.btn-lg {
 
 .dashboard {
     display: grid;
+}
 
-    
+.dash-card {
+    background-color: white;
+    box-shadow: 0 0 4px #0000001f;
+    padding: 1rem;
+    margin: 1rem 0;
+
+    .card-header {
+        padding-top: 0 !important;
+        font-weight: bold;
+    }
+
+    .card-footer {
+        padding-bottom: 0 !important;
+    }
+
+    .card-header,
+    .card-footer {
+        background-color: transparent !important;
+    }
+}
+
+.result {
+    font-size: 1.25rem !important;
+}
+
+.winner p {
+    color: $blue !important;
+}
+
+.loser p {
+    color: $red !important;
+}
+
+.draw p {
+    color: rgba(0, 0, 0, 0.32) !important;
+}
+
+#best-scorers {
+
+    tr td:first-of-type {
+        padding: .2rem;
+        text-align: right;
+    }
+
+    tr td:last-of-type {
+        text-transform: uppercase;
+        padding: .2rem;
+    }
+
+    td {
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    td.body {
+        border-bottom: 1px solid #0000001f;
+        background-color: $gray;
+    }
+}
+
+.dataTables_wrapper {
+    outline: none;
+    label {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (min-width: 760px) {
@@ -236,6 +316,7 @@ a.btn-lg {
     #nav {
         grid-row: 1;
         align-self: start;
+        position: initial;
 
         .sm-menu {
             display: none;
@@ -266,6 +347,7 @@ a.btn-lg {
                     fill: $red;
                     margin-right: 1vw;
                     height: calc(0.3rem + 1vw);
+                    transition: .2s ease-out;
                 }
 
                 li {
@@ -280,6 +362,18 @@ a.btn-lg {
                     width: auto;
                     font-size: calc(0.5em + 1vw);
                     display: flex;
+                    transition: .2s ease-out;
+                    position: relative;
+                }
+
+                .li-wrapper:hover {
+                    background-color: white;
+                    color: $blue;
+
+                    svg {
+                        fill: $blue;
+                    }
+
                 }
 
                 li:first-of-type {
@@ -352,12 +446,17 @@ a.btn-lg {
 
     .menu-tab,
     .team-wrapper {
-        padding: 1rem 4vw 0;
+        padding: 1rem 2.55rem 0;
+    }
+
+    .menu-tab {
+        padding-top: 1.25rem;
+
     }
 
     .main-wrapper,
     .players-wrapper {
-        padding: 2.5rem 4vw;
+        padding: calc(0.45rem + 1vw) 2.55rem;
     }
 
     .main-wrapper,
@@ -369,12 +468,30 @@ a.btn-lg {
         grid-row: 2;
         background-color: $blue;
         color: $gray;
-        font-size: 1.50rem;
+        font-size: 1.25rem;
 
         h4 {
-            border-bottom: 5px solid $gray;
             width: fit-content;
-            padding-bottom: 1rem;
+            background-color: $blue;
+            padding: .5rem 2rem;
+            color: $gray;
+            position: relative;
+            display: inline-flex;
+            transition: .2s ease-out;
+
+            a {
+                transition: .2s ease-out;
+            }
+        }
+
+        h4:hover {
+            background-color: $gray;
+            color: $red !important;
+        }
+
+        h4.active {
+            background-color: $gray;
+            color: $red;
         }
     }
 
@@ -391,12 +508,14 @@ a.btn-lg {
 
     .dashboard {
         grid-template-columns: 1fr auto;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto fit-content;
+        grid-gap: 1rem;
 
         .dashboard-content {
             display: grid;
             text-align: center;
-            padding: 1rem;
+            grid-auto-flow: row;
+            align-content: start;
         }
     }
 }

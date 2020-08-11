@@ -18,21 +18,21 @@ class PlayerFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lest_name',TextType::class,['label'=>'Entrez le nom du joueur'])
-            ->add('first_name',TextType::class,['label'=>'Entrez le prenom du joueur'])
+            ->add('lest_name',TextType::class,['label'=>'Nom'])
+            ->add('first_name',TextType::class,['label'=>'Prénom'])
             ->add('picture', FileType::class, array('data_class' => null,
-                                                    'label'=>'La photo du joueur'
+                                                    'label'=>'Photo'
             
             ))
-            ->add('birth_date',TextType::class,['label'=>'La date de naissance'])
-            ->add('club_entry_date',TextType::class,['label'=>'La date darriver dans le club'])
+            ->add('birth_date',TextType::class,['label'=>'Date de naissance'])
+            ->add('club_entry_date',TextType::class,['label'=>'Date d\'entrée au club'])
             ->add('stats',TextType::class,['label'=>'Les statistiques du joueur'])
-            ->add('license_number',TextType::class,['label'=>'Numero de license'])
+            ->add('license_number',TextType::class,['label'=>'N° de license'])
             // ->add('play_in')
             ->add('is_post', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Post::class,
-                'label'=>'Les postes du joueur : ',
+                'label'=>'Postes occupés',
             
                 // uses the User.username property as the visible option string
                 'choice_label' => 'post',
@@ -51,7 +51,7 @@ class PlayerFormType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => true,
-                'label'=>'Choisissez les equipes ou il va jouer'
+                'label'=>'Jouera en'
             ])
             ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
         ;

@@ -25,13 +25,13 @@ input {
 }
 
 input {
-    margin-bottom: .5rem;
+    // margin-bottom: .5rem;
     font-weight: 300;
     font-size: 1rem;
     padding: .5rem;
     border: .5px solid $blue;
 
-    margin: auto;
+    // margin: auto;
     // max-width: 300px;
 }
 
@@ -40,7 +40,7 @@ input:focus-within {
 }
 
 .form-check-input {
-    margin-top: .9rem ;
+    margin-top: .9rem;
 }
 
 select {
@@ -59,23 +59,32 @@ select {
         width: calc(230px + 10vw);
     }
 
-    input:first-of-type {
-        margin-bottom: 1rem;
+    .form-check>* {
+        width: auto !important;
+        display: inline-flex;
     }
 
-    .agree-terms {
-        display: flex;
-        justify-content: center;
-
-        label {
-            font-size: 1rem;
-            width: auto;
-            margin: .75rem;
-        }
+    label {
+        font-size: 1rem;
+        width: auto;
+        margin: .75rem;
     }
 }
 
-// .form-row {
+.modal-card {
+    max-width: 70vw;
+
+    form {
+        margin-top: 1rem;
+    }
+}
+
+legend {
+    font-size: 1.15rem !important;
+    // margin: .75rem auto !important;
+}
+
+.form // .form-row {
 //     display: grid;
 //     grid-auto-flow: column;
 //     grid-gap: 20px;
@@ -177,6 +186,7 @@ table {
         max-width: 70vw;
         max-height: 75vh;
         box-shadow: 0px 0px 14px 7px #00000052;
+        padding: 0 !important;
 
         .form-wrap {
             padding: 2rem calc(2rem + 2vw);

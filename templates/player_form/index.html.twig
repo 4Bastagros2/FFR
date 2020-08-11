@@ -1,5 +1,4 @@
-{% extends 'base.html.twig' %}
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
 
 {% block title %}Hello PlayerFormController!
 {% endblock %}
@@ -10,67 +9,71 @@
 
 <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
-{% include 'first_nav.html.twig' %}
+{# {% include 'first_nav.html.twig' %} #}
+<div class="modal">
 
-<div class="main-wrapper">
+	<div class="modal-content">
 
-	<div class="container">
+		<div class="dash-card modal-card">
 
-		<a href="/team/screen" class="dis-block p-b-20">&larr; Retour</a>
 
-		{{ form_start(form, {'attr': {'id': 'player_form'}}) }}
-		<div class="form-row">
-			<div class="form-group col-xs-12 col-sm-6">
-				{{ form_label(form.lest_name, 'Nom' ) }}
-				{{ form_widget(form.lest_name) }}
+			<!-- <div class="form_add_team form-add"> -->
+
+			<!-- <div class="row"> -->
+
+			<div class="card-header">
+
+				<a href="" class="dis-block close-btn">&larr; Retour</a>
+
 			</div>
-			<div class="form-group col-xs-12 col-sm-6">
-				{{ form_label(form.first_name, 'Prénom' ) }}
-				{{ form_widget(form.first_name) }}
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-group col-xs-12 col-md-6">
-				{{ form_label(form.picture, 'Portrait' ) }}
-				{{ form_widget(form.picture) }}
-				
-			</div>
-			<div class="form-group col-xs-12 col-md-6">
-				{{ form_label(form.license_number, 'License n° ' ) }}
-				{{ form_widget(form.license_number) }}
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-group col-xs-12 col-sm-6">
+			<!-- </div> -->
+
+			<div class="container">
+				{{ form_start(form, {'attr': {'id': 'player_form'}}) }}
+
 				<div class="form-row">
-					<div class="form-group col-xs-12 col-md-6">
-						{{ form_label(form.is_post, 'Poste occupé' ) }}
-						{{ form_widget(form.is_post) }}
+					<div class="col-xs-12 col-sm-6">
+						{{ form_row(form.lest_name) }}
 					</div>
-					<div class="form-group col-xs-12 col-md-6">
-						{{ form_label(form.play_in, 'Joue en' ) }}
-						{{ form_widget(form.play_in) }}
+					<div class="col-xs-12 col-sm-6">
+						{{ form_row(form.first_name) }}
 					</div>
 				</div>
+				<div class="form-row">
+					<div class="form-group col-xs-12 col-md-6">
+						{{ form_row(form.picture) }}
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						{{ form_row(form.license_number) }}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-xs-12 col-sm-6">
+						<div class="form-row">
+							<div class="form-group col-xs-12 col-md-6">
+								{{ form_row(form.is_post) }}
+							</div>
+							<div class="form-group col-xs-12 col-md-6">
+								{{ form_row(form.play_in) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-6">
+						{{ form_row(form.birth_date ) }}
+						{{ form_row(form.club_entry_date ) }}
+						{{ form_row(form.stats) }}
+					</div>
+				</div>
+				
+				<script src="//code.jquery.com/jquery.js"></script>
+				<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+				{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+				{{ form_end(form)}}
 			</div>
-			<div class="form-group col-xs-12 col-sm-6">
-				{{ form_label(form.birth_date, 'Date de naissance' ) }}
-				{{ form_widget(form.birth_date) }}
-				{{ form_label(form.club_entry_date, 'Date d\entrée au club' ) }}
-				{{ form_widget(form.club_entry_date) }}
-				{# {{ form_label(form.stats, 'Statistiques' ) }} #}
-				{# {{ form_widget(form.stats) }} #}
-			</div>
+
 		</div>
 	</div>
-
-		
-		<script src="//code.jquery.com/jquery.js"></script>
-		<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-    	{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
-	
-	{{ form_end(form)}}
-	
 </div>
 		
 

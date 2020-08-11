@@ -3,25 +3,37 @@
 <div id="nav">
     <div class="sm-menu nav-container">
 
-        <ul>
-            <li><img class="user-portrait" src="{{ asset('img/portrait.png') }}" alt="portrait de l'utilisateur"></li>
+        <ul class="main-list">
+
+            <li>
+                <h3>{{ app.user.finances.name }}</h3>
+            </li>
             <li>
                 <ul>
                     <li class="mb-screen">
-                        <a><img class="svg-icon" src="{{ asset('icons/users.svg')}}" href="">Equipe</a>
+                        <a href="">
+                            <img class="svg-icon" src="{{ asset('icons/users.svg')}}" href="">
+                        </a>
                     </li>
                     <li class="mb-screen">
-                        <a><img class="svg-icon" src="{{ asset('icons/plus.svg')}}" href="">Ajouter</a>
+                        <a href="">
+                            <img class="svg-icon" src="{{ asset('icons/calendar.svg')}}" href="">
+                        </a>
                     </li>
-                    <li>
-                        <a href="/logout"><img class="svg-icon" src="{{ asset('icons/signout.svg')}}"
-                                alt="=déconnection">
-                            Déconnection
+                    <li class="mb-screen">
+                        <a href="">
+                            <img class="svg-icon" src="{{ asset('icons/settings.svg')}}" href="">
+                        </a>
+                    </li>
+                    <li class="mb-screen">
+                        <a href="/logout">
+                            <img class="svg-icon" src="{{ asset('icons/signout.svg')}}" alt="=déconnection">
                         </a>
                     </li>
                 </ul>
             </li>
         </ul>
+
     </div>
 
     <div class="bg-menu tab-container">
