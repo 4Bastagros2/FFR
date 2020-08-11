@@ -18,7 +18,7 @@ class ShowPlayersController extends AbstractController
     /**
      * @Route("/show/players/{id_team}", name="show_players")
      */
-    public function index(Request $request, TeamRepository $teamrepo, $id_team)
+    public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_team)
     {
         $thisTeam = $teamrepo->findById($id_team)[0];
         $thisPlayers = $thisTeam->getPlayers();
@@ -28,6 +28,7 @@ class ShowPlayersController extends AbstractController
         $form->handleRequest($request);
         // if ($form->isSubmitted() && $form->isValid()) {
         if ($form->isSubmitted() && $form->isValid()) {
+            $player = new Player();
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $form['picture']->getData();
@@ -37,9 +38,13 @@ class ShowPlayersController extends AbstractController
             
     
             if ($task) {
+
+
+
                 $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
-                $safeFilename = "player".$id;
+                // $safeFilename = "player".$id_player;
+                $safeFilename = "player";
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
 
 

@@ -1,10 +1,3 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
-
-<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
 {# {% include 'main_nav.html.twig' %} #}
 <div class="modal">
 
@@ -56,9 +49,6 @@
 
             </div>
 
-        <!-- <script src="//code.jquery.com/jquery.js"></script> -->
-		<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-    	{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 
         {{ form_end(form)}}
         </div>
@@ -66,5 +56,3 @@
     </div>
 
 </div>
-
-{% endblock %}

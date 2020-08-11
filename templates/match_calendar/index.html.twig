@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+{% endblock %}
+
+
+
+
 {% block title %}Hello MatchCalendarController!
 {% endblock %}
 
@@ -127,7 +137,10 @@
 
 {% include 'add_match/index.html.twig' with {'form': form} %}
 
+{% endblock %}
 
+
+{% block javascripts %}
 
 <script>
     $(document).ready(function () {
@@ -148,4 +161,9 @@
 		})
     });
 </script>
+
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
 {% endblock %}

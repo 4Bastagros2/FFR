@@ -23,7 +23,7 @@ class MatchCalendarController extends AbstractController
     /**
      * @Route("/match/calendar/{id_team}{id_match}", name="match_calendar", defaults={"id_match"=-1})
      */
-    public function index(Request $request, MatchRepository $match,TeamRepository $team,$id_team, UserRepository $user, $id_match, ClubRepository $clubRepo)
+    public function index(Request $request, MatchRepository $match,TeamRepository $team,$id_team, UserRepository $user, $id_match, ClubRepository $clubRepo, FlashyNotifier $flashy)
     {
         $matches=$team->find($id_team)->getPlayMatches();
 
@@ -187,7 +187,7 @@ class MatchCalendarController extends AbstractController
 
             $team->find($id_team)->addPlayMatch($match);
             
-           
+            $flashy->success('Match ajouté !');
             
             $entityManager->persist($match);
             $entityManager->flush();
@@ -198,7 +198,7 @@ class MatchCalendarController extends AbstractController
 
         }
 
-        
+        // $flashy->success('Test');
         // dump($match);
 
         

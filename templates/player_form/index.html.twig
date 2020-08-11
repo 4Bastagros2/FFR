@@ -1,9 +1,14 @@
-{% block body %}
-<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
 
+{% block javascripts %}
 <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+{% endblock %}
 
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+{% endblock %}
+
+{% block body %}
 <div class="modal">
 
 	<div class="modal-content">
