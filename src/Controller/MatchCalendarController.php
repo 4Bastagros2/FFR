@@ -25,7 +25,7 @@ class MatchCalendarController extends AbstractController
      */
     public function index(Request $request, MatchRepository $match,TeamRepository $team,$id_team, UserRepository $user, $id_match, ClubRepository $clubRepo)
     {
-        $match=$team->find($id_team)->getPlayMatches();
+        $matches=$team->find($id_team)->getPlayMatches();
 
         $match_id=$team->find($id_team);
 
@@ -35,7 +35,7 @@ class MatchCalendarController extends AbstractController
         $userConnect = $this->getUser();
         $userClub=$user->find($userConnect)->getFinances()->getId();
         $club=$clubRepo->find($userClub)->getName();
-        $count=$match->count($club);
+        $count=$matches->count($club);
         
         if($count > 0) {
 
@@ -185,7 +185,7 @@ class MatchCalendarController extends AbstractController
             
            
 
-            $teams->find($id_team)->addPlayMatch($match);
+            $team->find($id_team)->addPlayMatch($match);
             
            
             
@@ -199,11 +199,11 @@ class MatchCalendarController extends AbstractController
         }
 
         
-        
+        // dump($match);
 
         
         return $this->render('match_calendar/index.html.twig', [
-            'match'=>$match,
+            'match'=>$matches,
             'resultat'=>$resultat,
             'meilleur_buteur'=>$stat,
             'idteam' => $id_team,
