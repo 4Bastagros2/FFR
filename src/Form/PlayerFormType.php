@@ -9,8 +9,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PlayerFormType extends AbstractType
@@ -24,10 +26,10 @@ class PlayerFormType extends AbstractType
                                                     'label'=>'Photo'
             
             ))
-            ->add('birth_date',TextType::class,['label'=>'Date de naissance'])
-            ->add('club_entry_date',TextType::class,['label'=>'Date d\'entrée au club'])
-            ->add('stats',TextType::class,['label'=>'Les statistiques du joueur'])
-            ->add('license_number',TextType::class,['label'=>'N° de license'])
+            ->add('birth_date',DateType::class,['label'=>'Date de naissance'])
+            ->add('club_entry_date',DateType::class,['label'=>'Date d\'entrée au club'])
+            // ->add('stats',TextType::class,['label'=>'Les statistiques du joueur'])
+            ->add('license_number',NumberType::class,['label'=>'N° de license'])
             // ->add('play_in')
             ->add('is_post', EntityType::class, [
                 // looks for choices from this entity

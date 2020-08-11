@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 use DateTime;
-
 use App\Entity\Team;
 use App\Entity\User;
 use App\Entity\Match;
@@ -13,6 +12,7 @@ use App\Repository\UserRepository;
 use App\Repository\MatchRepository;
 use App\Repository\MatchTypeRepository;
 use Symfony\Component\HttpFoundation\Request;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MatchCalendarController extends AbstractController
 {
     /**
-     * @Route("/match/calendar/{id_team}/{id_match}", name="match_calendar", defaults={"id_match"=-1})
+     * @Route("/match/calendar/{id_team}{id_match}", name="match_calendar", defaults={"id_match"=-1})
      */
     public function index(Request $request, MatchRepository $match,TeamRepository $team,$id_team, UserRepository $user, $id_match, ClubRepository $clubRepo)
     {
@@ -208,7 +208,6 @@ class MatchCalendarController extends AbstractController
             'meilleur_buteur'=>$stat,
             'idteam' => $id_team,
             'form' => $form->createView(),
-            'idteam' => $id_team,
         ]);
     }
 }

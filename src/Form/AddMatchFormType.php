@@ -12,7 +12,9 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
@@ -22,8 +24,8 @@ class AddMatchFormType extends AbstractType
     {
        
         $builder
-            ->add('date',TextType::class,['label'=>'Date du match : '])
-            ->add('duration',TextType::class,['label'=>'Durée du match'])
+            ->add('date',DateType::class,['label'=>'Date du match : '])
+            ->add('duration',TimeType::class,['label'=>'Durée du match'])
             ->add('domicile', CheckboxType::class, [
                 'mapped' => false,
                 'required'=>false,
