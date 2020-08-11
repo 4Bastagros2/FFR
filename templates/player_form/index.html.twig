@@ -3,9 +3,13 @@
 
 {% block title %}Hello PlayerFormController!
 {% endblock %}
+    
 
 {% block body %}
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
 
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
 {% include 'first_nav.html.twig' %}
 
 <div class="main-wrapper">
@@ -58,11 +62,16 @@
 				{# {{ form_widget(form.stats) }} #}
 			</div>
 		</div>
-
 	</div>
 
+		
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    	{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 	
 	{{ form_end(form)}}
 	
 </div>
+		
+
 {% endblock %}
