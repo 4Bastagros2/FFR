@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Team;
+use App\Entity\User;
 use App\Form\CoachFormType;
+use App\Form\AddMatchFormType;
 use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ParameterCoachController extends AbstractController
 {
     /**
-     * @Route("/parameter/coach", name="parameter_coach")
+     * @Route("/parameter/coach/{id_team}", name="parameter_coach")
      */
 
     //  recuperer email, verifie que c est un un doublon
@@ -25,16 +26,37 @@ class ParameterCoachController extends AbstractController
     // ajouter l id_team du connecter avec l id du mail ci dessus 
 
 
-    public function index(UserReposintory $UserRepo, TeamRepository $teams, Request $request, SluggerInterface $slugger)
-    {
-        $mail = $UserRepo->findOneBy(array($email=>"email"));
-        dump($mail);
-        
-        
+    public function index(TeamRepository $teamReP, UserRepository $userRep,TeamRepository $teams, Request $request, SluggerInterface $slugger,$id_team)
+    {   
+        $user=new User();
+        $form = $this->createForm(CoachFormType::class, $user);
+
+        $form->handleRequest($request);
+       
+        if ($form->isSubmitted()) {
+            $email=$form->get('email')->getViewData();
+            
+           $count= count($userRep->findBy(['email'=>$email]));
+           if($count != 0){
+                $coach=$userRep->findBy(['email'=>$email]);
+                $team=$teamReP->find($id_team);
+                $coach[0]->addCoach($team);
+                
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($coach[0]);
+                $entityManager->flush();
+               
+           }
+            
+
+            
+            
+       
+        }
 
         return $this->render('parameter_coach/index.html.twig', [
             'controller_name' => 'ParameterCoachController',
-            // 'form' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 }
