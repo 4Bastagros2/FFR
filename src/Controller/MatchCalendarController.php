@@ -193,7 +193,7 @@ class MatchCalendarController extends AbstractController
             $entityManager->flush();
             
             
-            //return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);
+            return $this->redirectToRoute('match_calendar',['id_team'=>$id_team]);
         
 
         }
