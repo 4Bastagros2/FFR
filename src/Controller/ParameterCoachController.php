@@ -9,6 +9,7 @@ use App\Form\AddMatchFormType;
 use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,17 +27,18 @@ class ParameterCoachController extends AbstractController
     // ajouter l id_team du connecter avec l id du mail ci dessus 
 
 
-    public function index(TeamRepository $teamReP, UserRepository $userRep,TeamRepository $teams, Request $request, SluggerInterface $slugger,$id_team)
+    public function index(TeamRepository $teamReP, UserRepository $userRep,TeamRepository $teams, Request $request, SluggerInterface $slugger,$id_team, FlashyNotifier $flashy)
     {   
-        $user=new User();
-        $form = $this->createForm(CoachFormType::class, $user);
+        // $user=new User();
+        // $form = $this->createForm(CoachFormType::class, $user);
+        $form = $this->createForm(CoachFormType::class);
 
         $form->handleRequest($request);
        
         if ($form->isSubmitted()) {
             $email=$form->get('email')->getViewData();
             
-           $count= count($userRep->findBy(['email'=>$email]));
+           $count = count($userRep->findBy(['email'=>$email]));
            if($count != 0){
                 $coach=$userRep->findBy(['email'=>$email]);
                 $team=$teamReP->find($id_team);
@@ -45,7 +47,9 @@ class ParameterCoachController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($coach[0]);
                 $entityManager->flush();
-               
+                $flashy->success('Coach ajouté');
+           } else {
+                $flashy->error('e-mail non existant');
            }
             
 

@@ -26,6 +26,10 @@
 		{# datatables #}
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.21/b-1.6.2/b-colvis-1.6.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.css"/>
 		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.21/b-1.6.2/b-colvis-1.6.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.js"></script>
+
+		<link rel="stylesheet" href="{{ asset('css/flashy.css') }}">
+		<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 		{% block stylesheets %}{% endblock %}
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
 	</head>
@@ -33,6 +37,8 @@
 	<body>
 		{% block body %}{% endblock %}
 		{% block javascripts %}{% endblock %}
+		<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+		{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 	</body>
 
 </html>
