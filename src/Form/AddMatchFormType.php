@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class AddMatchFormType extends AbstractType
 {
@@ -24,7 +25,7 @@ class AddMatchFormType extends AbstractType
     {
        
         $builder
-            ->add('date',DateType::class,['label'=>'Date du match : '])
+            ->add('date',DateTimeType::class,['label'=>'Date du match : '])
             ->add('duration',TimeType::class,['label'=>'Durée du match'])
             ->add('domicile', CheckboxType::class, [
                 'mapped' => false,
