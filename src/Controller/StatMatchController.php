@@ -44,8 +44,14 @@ class StatMatchController extends AbstractController
        
         $joueurs = $team->getPlayers();
 
+        $mergedForms = [
+            'match'     =>      $match,
+            'players'   =>      $joueurs,
+        ];
+
         // $Match = new Match();
-        $form = $this->createForm(MatchStatsType::class, $match);
+        $form = $this->createForm(MatchStatsType::class, $mergedForms);
+        // $form = $this->createForm(MatchStatsType::class, $joueurs);
         // $form->handleRequest($request);
         $form->submit($request->request->get('match_stats'), false);
 
