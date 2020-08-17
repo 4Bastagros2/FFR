@@ -1,13 +1,6 @@
 {% extends 'base.html.twig' %}
 
 
-
-
-
-
-
-
-
 {% block title %}Hello MatchCalendarController!
 {% endblock %}
 
@@ -19,7 +12,9 @@
 <div class="body-wrapper">
 
     <div class="menu-tab">
-        <h4 class="active"><a href="">Calendrier des matches</a></h4>
+        <h4 class="active">
+            <a href="">Calendrier des matches</a>
+        </h4>
         <!-- <h4><a href="">Compositions</a></h4> -->
     </div>
 
@@ -43,8 +38,11 @@
                         {% for match in match %}
                         <tr>
 
-                            <td><a href="/match/composition/{{ match.id }}">{{ match.matchtype.name }}<br><small>voir
-                                        détails</small></a></td>
+                            <td>
+                                <a href="/match/composition/{{ match.id }}">{{ match.matchtype.name }}<br><small>voir
+                                        détails</small>
+                                </a>
+                            </td>
                             <td>{{ match.date |date("Y/m/d H:i:s") }}</td>
                             <td>{{ match.localteam }}</td>
                             <td>vs</td>
@@ -59,9 +57,9 @@
 
                     {# <li>{{ match.stats }}</li> #}
                     {# <li>{% for comp in match.composition['backer'] %}
-												                Position possible : {{comp}}<br>
-												                {% endfor %}
-												            </li> #}
+																		                Position possible : {{comp}}<br>
+																		                {% endfor %}
+																		            </li> #}
 
                     </tbody>
                 </table>
@@ -133,34 +131,29 @@
     </div>
 </div>
 
-{% include 'add_match/index.html.twig' with {'form': form} %}
+{% include 'add_match/index.html.twig' with {'form': form} %}{% endblock %}{% block javascripts %}
 
-{% endblock %}
-
-
-{% block javascripts %}
-
+<script type="text/javascript" src="jquery.dataTables.js"></script>
+<script type="text/javascript" src="dataTables.numericComma.js"></script>
 <script>
     $(document).ready(function () {
         $('#match-calendar').DataTable({
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             },
+            "columnDefs": [
+                { "type": "numeric-comma", targets: 3 }
+            ],
             responsive: true,
-            autoWidth: false,
+            autoWidth: false
         });
         $('.add-match-btn').click(function (e) {
-			e.preventDefault()
-			$('.modal').fadeIn()
-		})
-		$('.close-btn').click(function (e) {
-			e.preventDefault()
-			$('.modal').fadeOut()
-		})
+            e.preventDefault()
+            $('.modal').fadeIn()
+        })
+        $('.close-btn').click(function (e) {
+            e.preventDefault()
+            $('.modal').fadeOut()
+        })
     });
-</script>
-
-
-
-
-{% endblock %}
+</script>{% endblock %}
