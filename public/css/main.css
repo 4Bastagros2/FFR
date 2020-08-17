@@ -331,6 +331,7 @@ a.btn-lg {
 }
 
 .dataTables_wrapper {
+  font-size: small;
   outline: none;
 }
 

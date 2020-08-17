@@ -21,16 +21,16 @@
 
     <div class="main-wrapper">
         <div class="dashboard">
-            <div class="dash-card">
-                <table id="match-calendar" class="responsive stripe hover cell-border dt-body-center">
+            <div class="dash-card table-responsive">
+                <table id="match-calendar" class="stripe hover cell-border dt-body-center">
                     <thead>
                         <tr>
-                            <th>Type</th>
-                            <th>Date</th>
-                            <th>Équipe local</th>
-                            <th></th>
-                            <th>Équipe visiteur</th>
-                            <th>Durée</th>
+                            <th data-priority="4">Type</th>
+                            <th data-priority="1">Date</th>
+                            <th data-priority="2">Équipe local</th>
+                            <!-- <th></th> -->
+                            <th data-priority="3">Équipe visiteur</th>
+                            <th data-priority="5">Durée</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +45,7 @@
                             </td>
                             <td>{{ match.date |date("Y/m/d H:i:s") }}</td>
                             <td>{{ match.localteam }}</td>
-                            <td>vs</td>
+                            <!-- <td>vs</td> -->
                             <td>{{ match.visitorteam }}</td>
                             <td>{{ match.duration |date('H:i:s') }}</td>
 
