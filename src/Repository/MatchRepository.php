@@ -52,7 +52,7 @@ class MatchRepository extends ServiceEntityRepository
       
       
       return $this->createQueryBuilder('m')
-            ->orderBy('m.id','DESC')
+            ->orderBy('m.date','ASC')
             ->getQuery()
             ->getResult();
   }
