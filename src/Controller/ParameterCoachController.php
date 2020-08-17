@@ -61,6 +61,7 @@ class ParameterCoachController extends AbstractController
         return $this->render('parameter_coach/index.html.twig', [
             'controller_name' => 'ParameterCoachController',
             'form' => $form->createView(),
+            'idteam' => $id_team,
         ]);
     }
 }
