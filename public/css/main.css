@@ -551,6 +551,9 @@ a.btn-lg {
     -ms-flex-line-pack: start;
         align-content: start;
   }
+  .dataTables_wrapper {
+    font-size: medium;
+  }
 }
 
 @media screen and (min-width: 1120px) {
