@@ -46,15 +46,11 @@ class ShowPlayersController extends AbstractController
             
     
             if ($task) {
-
-
-
                 $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 // $safeFilename = "player".$id_player;
                 $safeFilename = "player";
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
-
 
                 try {
                     $task->move(
@@ -68,14 +64,16 @@ class ShowPlayersController extends AbstractController
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $player->setPicture($newFilename);
-
+            } else {
+                $player->setPicture("default_avatar.png");
+            }
+            $player->setStats([]);
 
                             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();
-            }
 
             // ... persist the $product variable or any other work
 
