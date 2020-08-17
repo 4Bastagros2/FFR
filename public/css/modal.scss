@@ -13,8 +13,15 @@
     background-color: #0000009e;
     z-index: 999;
     display: grid;
-    overflow: auto;
+
+    label {
+        margin-bottom: 0;
+    }
+
 }
+        .modal-card {
+            overflow: auto;
+        }
 
 .form-add {
     div {

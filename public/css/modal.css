@@ -12,6 +12,13 @@
   z-index: 999;
   display: -ms-grid;
   display: grid;
+}
+
+.modal-content label {
+  margin-bottom: 0;
+}
+
+.modal-card {
   overflow: auto;
 }
 
