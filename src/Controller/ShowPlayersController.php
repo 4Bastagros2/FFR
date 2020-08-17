@@ -16,19 +16,27 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class ShowPlayersController extends AbstractController
 {
     /**
-     * @Route("/show/players/{id_team}", name="show_players")
+     * @Route("/show/players/{id_team}/{id_player}", name="show_players", defaults={"id_player"=-1})
      */
-    public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_team)
+    public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_team, $id_player)
     {
+        if($id_player == -1)
+        {
+            $player = new Player();
+        } else {
+            $player = $PlayerRepo->find($id);
+        }
+
         $thisTeam = $teamrepo->findById($id_team)[0];
         $thisPlayers = $thisTeam->getPlayers();
 
-        $form = $this->createForm(PlayerFormType::class);
+        $form = $this->createForm(PlayerFormType::class, $player);
 
         $form->handleRequest($request);
         // if ($form->isSubmitted() && $form->isValid()) {
         if ($form->isSubmitted() && $form->isValid()) {
-            $player = new Player();
+            
+
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $form['picture']->getData();
@@ -71,7 +79,9 @@ class ShowPlayersController extends AbstractController
 
             // ... persist the $product variable or any other work
 
-            return $this->redirect($this->generateUrl('player_form'));
+            return $this->redirect($this->generateUrl('show_players', [
+                'id_team' => $id_team,
+            ]));
         }
 
 
