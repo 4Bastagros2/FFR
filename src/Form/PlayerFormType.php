@@ -23,9 +23,9 @@ class PlayerFormType extends AbstractType
             ->add('lest_name',TextType::class,['label'=>'Nom'])
             ->add('first_name',TextType::class,['label'=>'Prénom'])
             ->add('picture', FileType::class, array('data_class' => null,
-                                                    'label'=>'Photo'
-            
-            ))
+                                                    'label'=>'Photo',
+                                                    'required' => false,                                                    
+                                                    ))
             ->add('birth_date',DateType::class,['label'=>'Date de naissance'])
             ->add('club_entry_date',DateType::class,['label'=>'Date d\'entrée au club'])
             // ->add('stats',TextType::class,['label'=>'Les statistiques du joueur'])

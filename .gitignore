@@ -8,4 +8,5 @@
 /var/
 /vendor/
 /public/img/picture/
+!/public/img/picture/default_avatar.png
 ###< symfony/framework-bundle ###

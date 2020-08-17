@@ -131,8 +131,12 @@
     </div>
 </div>
 
-{% include 'add_match/index.html.twig' with {'form': form} %}{% endblock %}{% block javascripts %}
+{% include 'add_match/index.html.twig' with {'form': form} %}
 
+{% endblock %}
+
+
+{% block javascripts %}
 <script type="text/javascript" src="jquery.dataTables.js"></script>
 <script type="text/javascript" src="dataTables.numericComma.js"></script>
 <script>
@@ -141,9 +145,7 @@
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             },
-            "columnDefs": [
-                { "type": "numeric-comma", targets: 3 }
-            ],
+            "order": [ [ 1, 'desc' ]],
             responsive: true,
             autoWidth: false
         });
