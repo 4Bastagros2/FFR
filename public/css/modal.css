@@ -12,6 +12,7 @@
   z-index: 999;
   display: -ms-grid;
   display: grid;
+  overflow: auto;
 }
 
 .form-add div {
