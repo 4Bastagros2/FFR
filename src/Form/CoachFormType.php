@@ -16,7 +16,7 @@ class CoachFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email',TextType::class,['label'=>'Email du coach a ajouter'])
+            ->add('email',TextType::class,['label'=>'Email du coach à ajouter'])
             ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
         ;
     }
