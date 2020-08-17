@@ -139,13 +139,15 @@
 
 
 {% block javascripts %}
-
+<script type="text/javascript" src="jquery.dataTables.js"></script>
+<script type="text/javascript" src="dataTables.numericComma.js"></script>
 <script>
     $(document).ready(function () {
         $('#match-calendar').DataTable({
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             },
+            "order": [ [ 1, 'desc' ]],
             responsive: true,
             autoWidth: false,
         });
