@@ -1,25 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClassementChampionnatController!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% include 'main_nav.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/FFR/src/Controller/ClassementChampionnatController.php'|file_link(0) }}">src/Controller/ClassementChampionnatController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/FFR/templates/classement_championnat/index.html.twig'|file_link(0) }}">templates/classement_championnat/index.html.twig</a></code></li>
-    </ul>
+<div class="main-wrapper">
 
+
+    <iframe src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020"
+        width="100%" height="100%" sandbox="allow-scripts"></iframe>
+
+    <div class="dashboard">
+    </div>
 
 </div>
-<iframe src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020" width="100%" height="100%" sandbox></iframe>
 
+{% endblock %}
 
+{% block javascripts %}
+<script>
+    // $(function () {
+            console.log($('iframe').attr('src'))
+        // $('iframe').load(function (e) { 
+            // $('#myTable', $('iframe').contents());
+            // $('iframe').animate({
+            // scrollTop: $("#myTable").offset().top},
+            // 'slow');
+            // $('iframe #myTable').hide();
+        // })
+    // })
+</script>
 {% endblock %}
