@@ -31,7 +31,7 @@ class PlayerMatchStatsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => PlayerMatchStats::class,
+            'data_class' => Player::class,
         ]);
     }
 }

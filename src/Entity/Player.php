@@ -20,6 +20,8 @@ class Player
      */
     private $id;
 
+    private $current_match;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -233,8 +235,9 @@ class Player
     /**
      * Get the value of essais
      */ 
-    public function getEssais($match_id)
+    public function getEssais($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->essais[$match_id]) ? $this->essais[$match_id] : 0;
     }
 
@@ -257,8 +260,9 @@ class Player
      *
      * @return  self
      */ 
-    public function setEssais($match_id, $essais)
+    public function setEssais($essais, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->essais[$match_id] = $essais;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['essais'] = $essais;
@@ -270,8 +274,9 @@ class Player
     /**
      * Get the value of transformations
      */ 
-    public function getTransformations($match_id)
+    public function getTransformations($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->transformations[$match_id]) ? $this->transformations[$match_id] : 0;
     }
 
@@ -293,8 +298,9 @@ class Player
      *
      * @return  self
      */ 
-    public function setTransformations($match_id, $transformations)
+    public function setTransformations($transformations, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->transformations[$match_id] = $transformations;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['transformations'] = $transformations;
@@ -306,8 +312,9 @@ class Player
     /**
      * Get the value of penalites
      */ 
-    public function getPenalites($match_id)
+    public function getPenalites($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->penalites[$match_id]) ? $this->penalites[$match_id] : 0;
     }
 
@@ -329,8 +336,9 @@ class Player
      *
      * @return  self
      */ 
-    public function setPenalites($match_id, $penalites)
+    public function setPenalites($penalites, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->penalites[$match_id] = $penalites;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['penalites'] = $penalites;
@@ -342,8 +350,9 @@ class Player
     /**
      * Get the value of drops
      */ 
-    public function getDrops($match_id)
+    public function getDrops($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->drops[$match_id]) ? $this->drops[$match_id] : 0;
     }
 
@@ -365,8 +374,9 @@ class Player
      *
      * @return  self
      */ 
-    public function setDrops($match_id, $drops)
+    public function setDrops($drops, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->drops[$match_id] = $drops;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['drops'] = $drops;
@@ -378,8 +388,9 @@ class Player
     /**
      * Get the value of rouges
      */ 
-    public function getRouges($match_id)
+    public function getRouges($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->rouges[$match_id]) ? $this->rouges[$match_id] : 0;
     }
 
@@ -401,8 +412,9 @@ class Player
      *
      * @return  self
      */ 
-    public function setRouges($match_id, $rouges)
+    public function setRouges($rouges, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->rouges[$match_id] = $rouges;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['rouges'] = $rouges;
@@ -414,8 +426,9 @@ class Player
     /**
      * Get the value of jaunes
      */ 
-    public function getJaunes($match_id)
+    public function getJaunes($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->jaunes[$match_id]) ? $this->jaunes[$match_id] : 0;
     }
 
@@ -437,8 +450,9 @@ class Player
      *
      * @return  self
      */ 
-    public function setJaunes($match_id, $jaunes)
+    public function setJaunes($jaunes, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->jaunes[$match_id] = $jaunes;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['jaunes'] = $jaunes;
@@ -450,8 +464,9 @@ class Player
     /**
      * Get the value of temps
      */ 
-    public function getTemps($match_id)
+    public function getTemps($match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         return isset($this->temps[$match_id]) ? $this->temps[$match_id] : 0;
     }
 
@@ -473,13 +488,25 @@ class Player
      *
      * @return  self
      */ 
-    public function setTemps($match_id, $temps)
+    public function setTemps($temps, $match_id = -1)
     {
+        if($match_id==-1) $match_id = $this->current_match;
         $this->temps[$match_id] = $temps;
         $tmpStats = $this->getStats();
         $tmpStats[$match_id]['temps'] = $temps;
         $this->setStats($tmpStats);
 
+        return $this;
+    }
+
+    /**
+     * Set the current match id
+     *
+     * @return  self
+     */ 
+    public function setCurrentMatch($match_id)
+    {
+        $this->current_match = $match_id;
         return $this;
     }
 }

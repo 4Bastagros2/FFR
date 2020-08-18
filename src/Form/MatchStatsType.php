@@ -16,15 +16,16 @@ class MatchStatsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        dump($options);
         $builder
-            // ->add('score',TextType::class,['label'=>'score'])
-            // ->add('reds',TextType::class,['label'=>'carton rouge'])
-            // ->add('yellows',TextType::class,['label'=>'carton jaune'])
-            // ->add('essais',TextType::class,['label'=>'essais realisés'])
-            // ->add('transformations',TextType::class,['label'=>'transfo reussis'])
-            // ->add('penalites',TextType::class,['label'=>'penalités'])
-            // ->add('drops',TextType::class,['label'=>'drops effectués'])
-            // ->add('drops',TextType::class,['label'=>'drops effectués'])
+            ->add('score',TextType::class,['label'=>'score'])
+            ->add('reds',TextType::class,['label'=>'carton rouge'])
+            ->add('yellows',TextType::class,['label'=>'carton jaune'])
+            ->add('essais',TextType::class,['label'=>'essais realisés'])
+            ->add('transformations',TextType::class,['label'=>'transfo reussis'])
+            ->add('penalites',TextType::class,['label'=>'penalités'])
+            ->add('drops',TextType::class,['label'=>'drops effectués'])
+            ->add('drops',TextType::class,['label'=>'drops effectués'])
             // 'entry_type'   => PlayerMatchStatsType::class,
             // 'data_class' => Player::class,
             ->add('players', CollectionType::class, [

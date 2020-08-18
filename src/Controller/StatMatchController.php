@@ -25,7 +25,7 @@ class StatMatchController extends AbstractController
     {   
         //affiche team local
         $match = $matchRep->find($id);
-        dump($match);
+        // dump($match);
         $local = $match->getLocalTeam();
         //affiche team visiteur
         $visitor = $match->getVisitorTeam();
@@ -46,22 +46,17 @@ class StatMatchController extends AbstractController
        
         $joueurs = $team->getPlayers();
 
-        $joueursStats = new ArrayCollection();
-
         foreach($joueurs as $j)
         {
-            $joueursStats[] = new PlayerMatchStats($match, $j);
+            $j->setCurrentMatch($id);
         }
 
         $mergedForms = [
             'match'     =>      $match,
-            'players'   =>      $joueursStats,
+            'players'   =>      $joueurs,
         ];
 
-        // $Match = new Match();
         $form = $this->createForm(MatchStatsType::class, $mergedForms);
-        // $form = $this->createForm(MatchStatsType::class, $joueurs);
-        // $form->handleRequest($request);
         $form->submit($request->request->get('match_stats'), false);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,8 +66,13 @@ class StatMatchController extends AbstractController
             // $task=$form->getData();
 
 
-        $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($match);
+            foreach($joueurs as $j)
+            {
+                $entityManager->persist($j);
+            }
+
             $entityManager->flush();
 
 
