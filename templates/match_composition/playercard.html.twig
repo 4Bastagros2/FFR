@@ -3,5 +3,14 @@
 <img src="/img/picture{{asset(player.picture)}}" alt="">
 
     <!-- </div> -->
-    <p class="player_id">{{id}}</p>
+    <p class="player_initials"></p>
 </div>
+
+<script>
+    var lastname = "{{lastname}}";
+    var firstname = "{{firstname}}";
+    var f = firstname.charAt(0)
+    var l = lastname.charAt(0)
+    var initials = f + "." + l + ".";
+    $('.player_initials').text(initials)
+</script>
