@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Match;
 use App\Form\MatchStatsType;
 use App\Form\AddMatchFormType;
+use App\Entity\PlayerMatchStats;
 use App\Repository\TeamRepository;
 use App\Repository\MatchRepository;
 use App\Repository\MatchTypeRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -44,9 +46,16 @@ class StatMatchController extends AbstractController
        
         $joueurs = $team->getPlayers();
 
+        $joueursStats = new ArrayCollection();
+
+        foreach($joueurs as $j)
+        {
+            $joueursStats[] = new PlayerMatchStats($match, $j);
+        }
+
         $mergedForms = [
             'match'     =>      $match,
-            'players'   =>      $joueurs,
+            'players'   =>      $joueursStats,
         ];
 
         // $Match = new Match();
@@ -56,8 +65,6 @@ class StatMatchController extends AbstractController
         $form->submit($request->request->get('match_stats'), false);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             
             // $data=$task->getViewData();
             
