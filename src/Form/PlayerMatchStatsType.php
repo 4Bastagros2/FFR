@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Player;
+use App\Entity\PlayerMatchStats;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,7 +31,7 @@ class PlayerMatchStatsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Player::class,
+            'data_class' => PlayerMatchStats::class,
         ]);
     }
 }
