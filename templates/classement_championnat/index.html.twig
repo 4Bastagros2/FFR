@@ -19,7 +19,18 @@
 
 
 </div>
-<iframe src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020" width="100%" height="100%" sandbox></iframe>
 
+<iframe id="myFrame" src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020" style="height:880px;width:100%" onload="access()"></iframe>
+
+
+
+
+<script>
+	function access() {
+        var iframe = document.getElementById("myFrame");
+        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        console.log(innerDoc.body);
+    }
+</script>
 
 {% endblock %}
