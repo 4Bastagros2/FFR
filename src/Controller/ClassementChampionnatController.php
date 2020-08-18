@@ -17,7 +17,6 @@ class ClassementChampionnatController extends AbstractController
         return $this->render('classement_championnat/index.html.twig', [
             'controller_name' => 'ClassementChampionnatController',
             'idteam' => $id_team,
-
         ]);
     }
 }
