@@ -41,7 +41,7 @@
 						<tbody>
 							{% for player in players %}
 								<tr>
-									<td>{{ player.lestname}}</td>
+									<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;"><a href="player/form/{{ player.id }}">Éditer</a></small></td>
 									<td>{{ player.firstname }}</td>
 									<td>{{ player.totalessais }}</td>
 									<td>{{ player.totaltransformations }}</td>
