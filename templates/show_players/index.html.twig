@@ -41,7 +41,7 @@
 						<tbody>
 							{% for player in players %}
 								<tr>
-									<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;"><a href="player/form/{{ player.id }}">Éditer</a></small></td>
+									<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;"><a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">Éditer</a></small></td>
 									<td>{{ player.firstname }}</td>
 									<td>{{ player.totalessais }}</td>
 									<td>{{ player.totaltransformations }}</td>
@@ -56,7 +56,7 @@
 						</tbody>
 					</table>
 
-					<a class="add-player-btn btn-lg pointer" href="player/form">+ Ajouter un joueur</a>
+					<a class="add-player-btn btn-lg pointer" href="{{ path('show_players', {id_team: team.id, id_player: -2}) }}">+ Ajouter un joueur</a>
 				</div>
 			</div>
 		</div>
@@ -66,22 +66,25 @@
 
 	<script>
 		$(document).ready(function () {
-$('#players-list').DataTable({
-"language": {
-"url": "{{ asset('js/french.lang') }}"
-},
-responsive: true,
-autoWidth: false
-});
-$('.add-player-btn').click(function (e) {
-e.preventDefault()
-$('.modal').fadeIn()
-})
-$('.close-btn').click(function (e) {
-e.preventDefault()
-$('.modal').fadeOut()
-})
-});
+			$('#players-list').DataTable({
+				"language": {
+					"url": "{{ asset('js/french.lang') }}"
+				},
+				responsive: true,
+				autoWidth: false
+			});
+			// $('.add-player-btn').click(function (e) {
+			// 	// e.preventDefault()
+			// 	$('.modal').fadeIn()
+			// })
+			$('.close-btn').click(function (e) {
+				e.preventDefault()
+				$('.modal').fadeOut()
+			})
+			{% if openmodal == true %}
+				$('.modal').fadeIn()
+			{% endif %}
+		});
 	</script>
 
 {% endblock %}
