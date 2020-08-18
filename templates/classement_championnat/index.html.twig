@@ -20,17 +20,33 @@
 
 </div>
 
-<iframe id="myFrame" src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020" style="height:880px;width:100%" onload="access()"></iframe>
+
+<button onclick="access()">try it!</button>
+
+<hr>
+
+<iframe id="myFrame" src="https://www.rugbyfederal.com/Resultats/index.php?division=D5&ligue=FFR&poule=2&jour=100&year=2020" style="height:880px;width:100%" frameborder="1" target("mytable") onload="access()"></iframe>
 
 
 
 
 <script>
+
+    const myFrame = document.getElementById("myFrame");
+
 	function access() {
-        var iframe = document.getElementById("myFrame");
-        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-        console.log(innerDoc.body);
+        const iframeWindows = myFrame.contentWindow;
+        const iframeDocument = myFrame.contentDocument;
+        console.log(iframeWindows.document);
     }
+</script>
+
+<script>
+    // function access(){
+    //     var iframe = document.getElementById("myFrame");
+    //     var elmnt = iframe.contentWindow.document.getElementsByTagName("myTable")[0];
+    //     elmnt.style.display = "none";
+    // }
 </script>
 
 {% endblock %}
