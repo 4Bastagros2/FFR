@@ -91,7 +91,8 @@
 
                 <div data-id-position="0" id="players_list" class="droppable">
                     {% for player in players %}
-                    {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'name': player.firstname} %}
+                   
+                    {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'firstname': player.firstname, 'lastname': player.lestname} %}
                     {% include 'match_composition/playerstats.html.twig' with { 'id': player.id, 
                                                                                 'essais': player.totalessais, 
                                                                                 'transformations': player.totaltransformations,
