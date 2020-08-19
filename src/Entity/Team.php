@@ -35,6 +35,11 @@ class Team
     private $users;
 
     /**
+     * @ORM\Column(type="string", length=500, nullable=true)
+     */
+    private $picture;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="teams")
      */
     private $play_season;
@@ -118,6 +123,18 @@ class Team
             $this->users->removeElement($user);
             $user->removeCoach($this);
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
