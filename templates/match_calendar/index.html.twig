@@ -30,7 +30,7 @@
                             <th data-priority="2">Équipe local</th>
                             <!-- <th></th> -->
                             <th data-priority="3">Équipe visiteur</th>
-                            <th data-priority="5">Durée</th>
+                            <th data-priority="5">Détail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,16 +38,13 @@
                         {% for match in match %}
                         <tr>
 
-                            <td>
-                                <a href="/match/composition/{{ match.id }}">{{ match.matchtype.name }}<br><small>voir
-                                        détails</small>
-                                </a>
-                            </td>
-                            <td>{{ match.date |date("Y/m/d H:i:s") }}</td>
+                            <td>{{ match.matchtype.name }}</td>
+                            <td>{{ match.date |date("Y/m/d") }}</td>
                             <td>{{ match.localteam }}</td>
                             <!-- <td>vs</td> -->
                             <td>{{ match.visitorteam }}</td>
-                            <td>{{ match.duration |date('H:i:s') }}</td>
+                            <td>
+                                <a href="/match/composition/{{ match.id }}"><small>voir détails</small></a></td>
 
                         </tr>
                         {% endfor %}
