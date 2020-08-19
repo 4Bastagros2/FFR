@@ -4,6 +4,47 @@
 
 {% block body %}
 
+<style>
+    #StatMatchForm {
+        padding: 0 20px;
+        white-space: nowrap;
+    }
+
+    #StatMatchForm,
+    .player {
+        display: grid;
+        grid-auto-flow: column;
+        grid-column-gap: 1rem;
+        border-bottom: 1px solid #00000069;
+    }
+
+    fieldset:nth-child(odd) {
+        background: #f9f9f9
+    }
+
+    fieldset:nth-child(odd) .col-form-label {
+        background: #f9f9f9
+    }
+
+    .col-form-label {
+        font-weight: bold;
+        font-size: 1.25rem !important;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    .player {
+        padding: 0 20px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+    .form-group label {
+        margin-bottom: 0;
+    }
+</style>
+
 {% include 'main_nav.html.twig' %}
 
 <div class="main-wrapper">
@@ -17,51 +58,23 @@
 
         {{ form_start(form, {'attr': {'id': ''}}) }}
 
-        <table id="StatMatchForm">
-            <thead>
-                <tr>
-                    <th>{{ form_label(form.score) }}</th>
-                    <th>{{ form_label(form.reds) }}</th>
-                    <th>{{ form_label(form.yellows) }}</th>
-                    <th>{{ form_label(form.essais) }}</th>
-                    <th>{{ form_label(form.transformations) }}</th>
-                    <th>{{ form_label(form.penalites) }}</th>
-                    <th>{{ form_label(form.drops) }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ form_widget(form.score) }}</td>
-                    <td>{{ form_widget(form.reds) }}</td>
-                    <td>{{ form_widget(form.yellows) }}</td>
-                    <td>{{ form_widget(form.essais) }}</td>
-                    <td>{{ form_widget(form.transformations) }}</td>
-                    <td>{{ form_widget(form.penalites) }}</td>
-                    <td>{{ form_widget(form.drops) }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="StatMatchForm" class="cell-border row-border">
+
+            <div>{{ form_row(form.score) }}</div>
+            <div>{{ form_row(form.reds) }}</div>
+            <div>{{ form_row(form.yellows) }}</div>
+            <div>{{ form_row(form.essais) }}</div>
+            <div>{{ form_row(form.transformations) }}</div>
+            <div>{{ form_row(form.penalites) }}</div>
+            <div>{{ form_row(form.drops) }}</div>
+
+
+        </div>
 
         {{ form_end(form)}}
 
     </div>
 
 </div>
-</div>
 
-<script>
-    $(document).ready(function () {
-        $('#StatMatchForm').DataTable({
-            "language": {
-                "url": "{{ asset('js/french.lang') }}"
-            },
-            responsive: true,
-            autoWidth: false,
-            bFilter: false,
-            bInfo: false,
-            bLengthChange: false,
-            bPaginate: false
-        });
-    })
-</script>
 {% endblock %}

@@ -32,6 +32,7 @@ class PlayerMatchStatsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Player::class,
+            'id' => 'playerStat'
         ]);
     }
 }

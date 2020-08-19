@@ -47,8 +47,9 @@ class MatchStatsType extends AbstractType
                 ])
                 // 'by_reference' => true,
                 // 'delete_empty' => true,
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'save'],
+            ->add('save', SubmitType::class, ['label' => 'Sauvegarder',
+                'attr' => ['class' => 'save btn-lg pointer'],
+
             ]);
         ;
     }
