@@ -85,6 +85,7 @@ class StatMatchController extends AbstractController
         
         return $this->render('stat_match/index.html.twig', [
             'form' => $form->createView(),
+            'idteam' => $team->getId(),
             // 'local_team'=>$local,
             // 'visitor_team'=>$visitor,
             // 'match_type'=>$type,

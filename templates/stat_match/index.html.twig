@@ -4,93 +4,64 @@
 
 {% block body %}
 
-{# {% include 'main_nav.html.twig' %} #}
+{% include 'main_nav.html.twig' %}
 
 <div class="main-wrapper">
 
     <!-- <div class="container-fluid"> -->
-    <div class="dash-card">
+    <div class="dash-card table-responive">
 
-        <div class="container">
-
-            {{ form_start(form, {'attr': {'id': ''}}) }}
-
-            <div class="form-row">
-                <div class="col-1">
-                    {{ form_row(form.score) }}
-                </div>
-                <div class="col-1">
-                    {{ form_row(form.reds) }}
-                </div>
-                <div class="col-1">
-                    {{ form_row(form.yellows) }}
-                </div>
-                <div class="col-1">
-                    {{ form_row(form.essais) }}
-                </div>
-                <div class="col-1">
-                    {{ form_row(form.transformations) }}
-                </div>
-                <div class="col-1">
-                    {{ form_row(form.penalities) }}
-                </div>
-                <div class="col-1">
-                    {{ form_row(form.drops) }}
-                </div>
-            </div>
-
-
-
-            {{ form_end(form)}}
-
+        <div class="card-header">
+            <h4>Statistiques du match</h4>
         </div>
-        <div class="row">
 
-            <center>
-                <h1>
-                    <h1>
+        {{ form_start(form, {'attr': {'id': ''}}) }}
 
-                        <table>
-                            <tr>
-                                <td>Carton rouge</td>
-                                <td>Carton jaune</td>
-                                <td>Essais</td>
-                                <td>Transformation</td>
-                                <td>Pénalités</td>
-                                <td>Drops</td>
-                            </tr>
-                            <tr>
-                                {# <td>{{red}}</td>
-                    <td>{{yellow}}</td>
-                    <td>{{essais}}</td>
-                    <td>{{transformation}}</td>
-                    <td>{{penalite}}</td>
-                    <td>{{drops}}</td> #}
-                            </tr>
-                        </table>
-            </center>
-            <center>
-                <p>liste des joueurs
-            </center>
-            <table>
+        <table id="StatMatchForm">
+            <thead>
                 <tr>
-                    <td>Prenom</td>
-                    <td>Nom</td>
-                    <td>Carton rouge</td>
-                    <td>Carton jaune</td>
-                    <td>Essais</td>
-                    <td>Transformation</td>
-                    <td>Pénalités</td>
-                    <td>Drops</td>
-                    {# <td>Temps de jeux</td> #}
+                    <th>{{ form_label(form.score) }}</th>
+                    <th>{{ form_label(form.reds) }}</th>
+                    <th>{{ form_label(form.yellows) }}</th>
+                    <th>{{ form_label(form.essais) }}</th>
+                    <th>{{ form_label(form.transformations) }}</th>
+                    <th>{{ form_label(form.penalites) }}</th>
+                    <th>{{ form_label(form.drops) }}</th>
                 </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ form_widget(form.score) }}</td>
+                    <td>{{ form_widget(form.reds) }}</td>
+                    <td>{{ form_widget(form.yellows) }}</td>
+                    <td>{{ form_widget(form.essais) }}</td>
+                    <td>{{ form_widget(form.transformations) }}</td>
+                    <td>{{ form_widget(form.penalites) }}</td>
+                    <td>{{ form_widget(form.drops) }}</td>
+                </tr>
+            </tbody>
+        </table>
 
+        {{ form_end(form)}}
 
-            </table>
-        </div>
     </div>
-</div>
+
 </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $('#StatMatchForm').DataTable({
+            "language": {
+                "url": "{{ asset('js/french.lang') }}"
+            },
+            responsive: true,
+            autoWidth: false,
+            bFilter: false,
+            bInfo: false,
+            bLengthChange: false,
+            bPaginate: false
+        });
+    })
+</script>
 {% endblock %}
