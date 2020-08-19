@@ -48,4 +48,5 @@ security:
         # or require ROLE_ADMIN or IS_AUTHENTICATED_FULLY for /admin*
         # - { path: '!\/login|(^\/.*)', roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: ROLE_USER }
