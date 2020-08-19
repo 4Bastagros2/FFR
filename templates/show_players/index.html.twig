@@ -41,7 +41,12 @@
 						<tbody>
 							{% for player in players %}
 								<tr>
-									<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;"><a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">Éditer</a></small></td>
+<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;">
+		<a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">Éditer</a>
+	</small>
+	<a href="{{ path('del_player', {id_team: team.id, id_player: player.id}) }}">Supprimer</a>
+</td></small></td>
+
 									<td>{{ player.firstname }}</td>
 									<td>{{ player.totalessais }}</td>
 									<td>{{ player.totaltransformations }}</td>

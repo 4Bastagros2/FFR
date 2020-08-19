@@ -9,9 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DelPlayerController extends AbstractController
 {
     /**
-     * @Route("/del/player/{id_player}", name="del_player")
+     * @Route("/del/player/{id_player}/{id_team}", name="del_player")
      */
-    public function index(PlayerRepository $playerRepo, $id_player)
+    public function index(PlayerRepository $playerRepo, $id_player,$id_team)
     {
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -19,6 +19,8 @@ class DelPlayerController extends AbstractController
         $entityManager->remove($player);
         $entityManager->flush();
 
-        return $this->redirectToRoute('team_screen');
+        return $this->redirectToRoute('show_players',array(
+            'id_team' => $id_team,
+        ));
     }
 }
