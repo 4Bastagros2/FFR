@@ -8,38 +8,61 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class TeamFormController extends AbstractController
 {
     /**
      * @Route("/team/form/{id_team}", name="team_form")
      */
-    public function index(Team $team, Request $request, EntityManagerInterface $manager)
+    public function index(Request $request,$id)
     {
         dump($team);
 
         // $form = $this->createForm(FormAddTeamType::class, $team);
 
-        // $form->handleRequest($request);
-        // // if ($form->isSubmitted() && $form->isValid()) {
-        // if ($form->isSubmitted()) {
-        //     // $form->getData() holds the submitted values
-        //     // but, the original `$task` variable has also been updated
-        //     $task = $form->getData();
+        $form->handleRequest($request);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            
 
-        //     $team->addUser($this->getUser());
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $task = $form['picture']->getData();
+            // $task1 = $form->get('picture')->getData();
+
+            // $player->addIsPost($form->get('is_post')->getViewData());
+            
     
-        //     // ... perform some action, such as saving the task to the database
-        //     // for example, if Task is a Doctrine entity, save it!
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($team);
-        //     $entityManager->flush();
+            if ($task) {
+                $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                // $safeFilename = "player".$id_player;
+                $safeFilename = "team";
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
 
+                try {
+                    $task->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
 
-    
-            // return $this->redirectToRoute('task_success');
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $team->setPicture($newFilename);
+            } else {
+                $team->setPicture("default_avatar.png");
+            }
 
-        // }
+                            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($team);
+            $entityManager->flush();
+        }
 
         return $this->render('team_form/index.html.twig', [
             'controller_name' => 'TeamFormController',
