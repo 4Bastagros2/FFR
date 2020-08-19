@@ -20,11 +20,17 @@ class ShowPlayersController extends AbstractController
      */
     public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_team, $id_player)
     {
+        $open_modal = false;
+
         if($id_player == -1)
         {
             $player = new Player();
+        } else if($id_player == -2) {
+            $player = new Player();
+            $open_modal = true;
         } else {
-            $player = $PlayerRepo->find($id);
+            $player = $playerrepo->find($id_player);
+            $open_modal = true;
         }
 
         $thisTeam = $teamrepo->findById($id_team)[0];
@@ -90,6 +96,7 @@ class ShowPlayersController extends AbstractController
             "players" => $thisPlayers,
             "team" => $thisTeam,
             "idteam" => $id_team,
+            "openmodal" => $open_modal,
             'form' => $form->createView()
         ]);
     }
