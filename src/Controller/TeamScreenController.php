@@ -20,7 +20,23 @@ class TeamScreenController extends AbstractController
     
     public function index(Request $request, TeamRepository $teamRepo, TeamRepository $team, UserRepository $user)
     {
-        $id = 0;
+         $id = 0;
+        // $open_modal = false;
+
+        // if($id_team == -1)
+        // {
+        //     $team = new Team();
+        // } else if($id_team == -2) {
+        //     $team = new Team();
+        //     $open_modal = true;
+        // } else {
+        //     $team = $teamRepo->find($id_team);
+        //     $open_modal = true;
+        // }
+
+        // $thisTeam = $teamrepo->findById($id_team)[0];
+
+
         
         $team = new Team();
 
@@ -32,6 +48,9 @@ class TeamScreenController extends AbstractController
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $form->getData();
+
+            $team->setCategory();
+            $team->setPlaySeason();
 
             $team->addUser($this->getUser());
     
@@ -59,6 +78,14 @@ class TeamScreenController extends AbstractController
             'teams' => $teams,
             'team' => $team,
             'form' => $form->createView(),
+        ]);
+
+        return $this->render('team_screen/index.html.twig', [
+            'controller_name' => 'TeamScreenController',
+            "team" => $thisTeam,
+            "idteam" => $id_team,
+            "openmodal" => $open_modal,
+            'form' => $form->createView()
         ]);
     }
 }
