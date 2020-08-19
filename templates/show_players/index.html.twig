@@ -26,8 +26,10 @@
 
 						<thead>
 							<tr>
+								
 								<th data-priority="1">Nom</th>
 								<th data-priority="10">Prénom</th>
+								<th data-priority=""></th>
 								<th data-priority="3">Essais</th>
 								<th data-priority="4">transformations</th>
 								<th data-priority="5">Pénalités</th>
@@ -41,13 +43,18 @@
 						<tbody>
 							{% for player in players %}
 								<tr>
-<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;">
-		<a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">Éditer</a>
-	</small>
-	<a href="{{ path('del_player', {id_team: team.id, id_player: player.id}) }}">Supprimer</a>
-</td></small></td>
+						<td>{{ player.lestname}}<br><small style="font-size: 0.85rem;">
 
+									
 									<td>{{ player.firstname }}</td>
+									<td>
+										<a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">
+											<img src="{{asset ('icons/edit.png') }}">
+										</a>
+										<a href="{{ path('del_player', {id_team: team.id, id_player: player.id}) }}">
+											<img src="{{asset ('icons/trash.png') }}">
+										</a>
+									</td>
 									<td>{{ player.totalessais }}</td>
 									<td>{{ player.totaltransformations }}</td>
 									<td>{{ player.totalpenalites }}</td>
