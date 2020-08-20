@@ -1,0 +1,57 @@
+{# {% include 'main_nav.html.twig' %} #}
+<div class="modal">
+
+    <div class="modal-content">
+
+        <div class="dash-card modal-card">
+
+            <div class="card-header">
+
+                <a href="" class="dis-block close-btn">&larr; Retour</a>
+
+            </div>
+
+            <div class="container">
+
+                {{ form_start(form, {'attr': {'id': 'add_match'}}) }}
+
+                <div class="form-row">
+                    <div class="col-12">
+                        {{ form_label(form.local_team, 'Équipe adverse' ) }}
+                        {{ form_widget(form.local_team) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        {{ form_label(form.date, 'Date du match / Heure du début du match' ) }}
+                        {{ form_widget(form.date) }}
+                    </div>
+                    {# <div class="col-sm-12">
+                        {{ form_label(form.duration, 'Durée du match (heure / minutes) ' ) }}
+                        {{ form_widget(form.duration) }}
+                    </div> #}
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        {# {{ form_label(form.domicile, 'Cocher si à domicile' ) }} #}
+                        {{ form_row(form.domicile) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        {{ form_label(form.match_type, 'Catégorie de match' ) }}
+                        {{ form_widget(form.match_type) }}
+                    </div>
+                </div>
+
+                {{ form_end(form)}}
+
+            </div>
+
+
+        {{ form_end(form)}}
+        </div>
+
+    </div>
+
+</div>

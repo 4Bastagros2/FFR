@@ -34,6 +34,11 @@ class Season
      */
     private $teams;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
@@ -95,6 +100,18 @@ class Season
                 $team->setPlaySeason(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
