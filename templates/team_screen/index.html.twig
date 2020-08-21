@@ -18,7 +18,11 @@
 					
 				</div>
 				<div class="card-body">
-					<img src="/img/picture/{{ team.picture }}" alt="">
+					{# <img src="{{ asset('/img/picture/' team.picture ) }}" alt=""> #}
+					<img src="{{ asset('/img/picture/' ~ team.picture) | imagine_filter('TeamImage') }}" />
+
+					{# <img src="/img/picture{{ vich_uploader_asset(team.picture, 'imageFile')|imagine_filter('TeamImage')  }}" alt="Image"> #}
+
 					
 				</div>
 				<div class="card-footer">
