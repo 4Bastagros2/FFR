@@ -2,7 +2,7 @@
   display: none;
 }
 
-.modal-content {
+.guigui .modal-content {
   position: absolute;
   top: 0;
   width: 100vw;
@@ -13,6 +13,8 @@
   display: -ms-grid;
   display: grid;
 }
+
+
 
 .modal-content label {
   margin-bottom: 0;

@@ -49,10 +49,10 @@
 									<td>{{ player.firstname }}</td>
 									<td>
 										<a href="{{ path('show_players', {id_team: team.id, id_player: player.id}) }}">
-											<img src="{{asset ('icons/edit.png') }}">
+											<img class="editicon" src="{{asset ('icons/edit.png') }}">
 										</a>
 										<a href="{{ path('del_player', {id_team: team.id, id_player: player.id}) }}">
-											<img src="{{asset ('icons/trash.png') }}">
+											<img class="editicon" src="{{asset ('icons/trash.png') }}">
 										</a>
 									</td>
 									<td>{{ player.totalessais }}</td>
