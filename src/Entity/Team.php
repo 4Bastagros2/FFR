@@ -20,6 +20,11 @@ class Team
     private $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="coaches")
+     */
+    private $users;
+
+    /**
      * @ORM\Column(type="string", length=500)
      */
     private $category;
@@ -28,11 +33,6 @@ class Team
      * @ORM\ManyToMany(targetEntity=Match::class, inversedBy="teams")
      */
     private $play_matches;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="coaches")
-     */
-    private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="teams")
@@ -94,34 +94,6 @@ class Team
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addCoach($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeCoach($this);
-        }
-
-        return $this;
-    }
-
     public function getPlaySeason(): ?Season
     {
         return $this->play_season;
@@ -157,6 +129,32 @@ class Team
         if ($this->players->contains($player)) {
             $this->players->removeElement($player);
             $player->removePlayIn($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
         }
 
         return $this;
