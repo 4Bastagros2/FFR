@@ -96,7 +96,7 @@ class AddMatchController extends AbstractController
             $teams->find($id_team)->addPlayMatch($match);
             
            
-            
+        
             $entityManager->persist($match);
             $entityManager->flush();
             $flashy->success('Ajout réussi !');

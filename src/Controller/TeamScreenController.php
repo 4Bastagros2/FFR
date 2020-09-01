@@ -8,9 +8,10 @@ use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class TeamScreenController extends AbstractController
@@ -20,7 +21,7 @@ class TeamScreenController extends AbstractController
      */
 
     
-    public function index(Request $request, TeamRepository $teamRepo, TeamRepository $team, UserRepository $user)
+    public function index(Request $request, TeamRepository $teamRepo, TeamRepository $team, UserRepository $user, FlashyNotifier $flashy)
     {
         $id = 0;
         
@@ -82,6 +83,7 @@ class TeamScreenController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($team);
             $entityManager->flush();
+            $flashy->success('Ajout réussi !');
 
 
     
