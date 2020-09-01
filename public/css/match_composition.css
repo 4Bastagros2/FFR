@@ -48,7 +48,7 @@
       justify-content: space-around;
 }
 
-#players_list {
+#players_list, #banc, #selected {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
