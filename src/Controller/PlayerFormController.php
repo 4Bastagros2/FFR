@@ -92,7 +92,7 @@ class PlayerFormController extends AbstractController
             // return $this->redirectToRoute('task_success');
         
 
-
+            $flashy->success('Ajout réussi !');
         return $this->render('player_form/index.html.twig', [
             'controller_name' => 'PlayerFormController',
             'form' => $form->createView(),

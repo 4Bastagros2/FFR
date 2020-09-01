@@ -7,6 +7,7 @@ use App\Form\PlayerFormType;
 use App\Repository\PlayerRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\TeamRepository;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -18,7 +19,7 @@ class ShowPlayersController extends AbstractController
     /**
      * @Route("/show/players/{id_team}/{id_player}", name="show_players", defaults={"id_player"=-1})
      */
-    public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_team, $id_player)
+    public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_team, $id_player, FlashyNotifier $flashy)
     {
         $open_modal = false;
 
@@ -42,6 +43,8 @@ class ShowPlayersController extends AbstractController
         // if ($form->isSubmitted() && $form->isValid()) {
         if ($form->isSubmitted() && $form->isValid()) {
             
+            $this->addFlash('success', 'Ajouté avec succes !');
+
 
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
@@ -80,6 +83,7 @@ class ShowPlayersController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();
+            
 
             // ... persist the $product variable or any other work
 
@@ -90,7 +94,7 @@ class ShowPlayersController extends AbstractController
 
 
 
-
+        
         return $this->render('show_players/index.html.twig', [
             'controller_name' => 'ShowPlayersController',
             "players" => $thisPlayers,
