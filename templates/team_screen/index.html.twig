@@ -15,16 +15,38 @@
 			<div class="team-card">
 				<div class="card-header">
 					<p class="team-cat">{{ team.category }}</p>
+
 				</div>
 				<div class="card-body">
-					<img src="/img/picture{{ team.picture }}" alt="">
+					<img src="{{ asset('/img/picture/' ~ team.picture) | imagine_filter('TeamImage') }}" />
+				</a>
 				</div>
 				<div class="card-footer">
-					<button class="btn-lg btn-edit pointer"><a href="{{path('team_form', {id_team: team.id})}}">Modifier</a></button>
-					<button class="btn-lg btn-delete pointer"><a href="{{path('del_team', {id_team:team.id})}}">Supprimer</a></button>
+					<button class="btn-lg btn-delete pointer col-12" data-toggle="modal"
+						data-target="#supprimer-{{team.id}}">Supprimer</button>
 				</div>
 			</div>
 		</a>
+
+		<!-- Modal -->
+		<div class="modal fade" id="supprimer-{{team.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"><center>Êtes vous sur de vouloir supprimer?</center></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+						<button type="button" class="btn btn-primary"><a
+								href="{{path('del_team', {id_team:team.id})}}">Oui</a></button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		{% endfor %}
 	</div>
@@ -34,7 +56,6 @@
 
 
 {% include 'team_form/index.html.twig' with {'form': form} %}
-
 
 {% endif %}
 {% endblock %}

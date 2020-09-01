@@ -10,3 +10,7 @@
 /public/img/picture/
 !/public/img/picture/default_avatar.png
 ###< symfony/framework-bundle ###
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
