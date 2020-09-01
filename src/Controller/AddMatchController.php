@@ -99,7 +99,7 @@ class AddMatchController extends AbstractController
         
             $entityManager->persist($match);
             $entityManager->flush();
-            $flashy->success('Ajout réussi !');
+            
             
             
             // return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);

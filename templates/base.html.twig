@@ -36,7 +36,16 @@
 
 	<body>
 		{% block body %}{% endblock %}
+		{% for message in app.flashes('success') %}
+            <div class="alert bite alert-success w-100 bg-success" style="position: fixed; top:0; right: 0; z-index:999">
+                {{ message }}
+            </div>
+        {% endfor %}
 		{% block javascripts %}
+		<script>$(document).ready(function(){
+			$('.bite').delay(2300).fadeOut();
+			})
+		</script>
 		<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
 		{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 		{% endblock %}

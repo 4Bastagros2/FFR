@@ -200,10 +200,9 @@ class MatchCalendarController extends AbstractController
 
             $team->find($id_team)->addPlayMatch($match);
             
-            $flashy->success('Match ajouté !');
-            
             $entityManager->persist($match);
             $entityManager->flush();
+            $this->addFlash('success', 'Ajouté avec succes !');
             
             
             return $this->redirectToRoute('match_calendar',['id_team'=>$id_team]);
@@ -213,7 +212,6 @@ class MatchCalendarController extends AbstractController
 
         // $flashy->success('Test');
         // dump($match);
-
         
         return $this->render('match_calendar/index.html.twig', [
             'match'=>$matches,
