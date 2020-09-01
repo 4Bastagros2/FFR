@@ -20,6 +20,11 @@ class Team
     private $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="coaches")
+     */
+    private $users;
+
+    /**
      * @ORM\Column(type="string", length=500)
      */
     private $category;
@@ -28,11 +33,6 @@ class Team
      * @ORM\ManyToMany(targetEntity=Match::class, inversedBy="teams")
      */
     private $play_matches;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="coaches")
-     */
-    private $users;
 
     /**
      * @ORM\Column(type="string", length=500, nullable=true)

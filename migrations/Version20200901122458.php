@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200722124157 extends AbstractMigration
+final class Version20200901122458 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -21,56 +21,69 @@ final class Version20200722124157 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE club (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, picture VARCHAR(500) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE conversation (id INT AUTO_INCREMENT NOT NULL, last_message_id INT NOT NULL, UNIQUE INDEX UNIQ_8A8E26E9BA0E79C3 (last_message_id), INDEX last_message_id_index (last_message_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE `match` (id INT AUTO_INCREMENT NOT NULL, match_type_id INT NOT NULL, date DATETIME NOT NULL, duration TIME DEFAULT NULL, local_team VARCHAR(500) DEFAULT NULL, visitor_team VARCHAR(500) DEFAULT NULL, stats JSON DEFAULT NULL, composition JSON DEFAULT NULL, INDEX IDX_7A5BC505B2EAD3FC (match_type_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE match_type (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(500) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE message (id INT AUTO_INCREMENT NOT NULL, conversation_id INT NOT NULL, user_id INT NOT NULL, content LONGTEXT NOT NULL, created_at DATETIME NOT NULL, INDEX IDX_B6BD307F9AC0396 (conversation_id), INDEX IDX_B6BD307FA76ED395 (user_id), INDEX created_at_index (created_at), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE participant (id INT AUTO_INCREMENT NOT NULL, conversation_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_D79F6B119AC0396 (conversation_id), INDEX IDX_D79F6B11A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE player (id INT AUTO_INCREMENT NOT NULL, lest_name VARCHAR(255) NOT NULL, first_name VARCHAR(255) NOT NULL, picture VARCHAR(500) DEFAULT NULL, birth_date DATE DEFAULT NULL, club_entry_date DATE DEFAULT NULL, stats JSON DEFAULT NULL, license_number INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE player_team (player_id INT NOT NULL, team_id INT NOT NULL, INDEX IDX_66FAF62C99E6F5DF (player_id), INDEX IDX_66FAF62C296CD8AE (team_id), PRIMARY KEY(player_id, team_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE player_post (player_id INT NOT NULL, post_id INT NOT NULL, INDEX IDX_F8903CBE99E6F5DF (player_id), INDEX IDX_F8903CBE4B89032C (post_id), PRIMARY KEY(player_id, post_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE post (id INT AUTO_INCREMENT NOT NULL, post VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE season (id INT AUTO_INCREMENT NOT NULL, season_start DATE DEFAULT NULL, season_end DATE DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE season (id INT AUTO_INCREMENT NOT NULL, season_start DATE DEFAULT NULL, season_end DATE DEFAULT NULL, year VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE team (id INT AUTO_INCREMENT NOT NULL, play_season_id INT DEFAULT NULL, category VARCHAR(500) NOT NULL, INDEX IDX_C4E0A61F79D32D8C (play_season_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE team_user (team_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_5C722232296CD8AE (team_id), INDEX IDX_5C722232A76ED395 (user_id), PRIMARY KEY(team_id, user_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE team_match (team_id INT NOT NULL, match_id INT NOT NULL, INDEX IDX_BD5D8C45296CD8AE (team_id), INDEX IDX_BD5D8C452ABEACD6 (match_id), PRIMARY KEY(team_id, match_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user_team (user_id INT NOT NULL, team_id INT NOT NULL, INDEX IDX_BE61EAD6A76ED395 (user_id), INDEX IDX_BE61EAD6296CD8AE (team_id), PRIMARY KEY(user_id, team_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE conversation ADD CONSTRAINT FK_8A8E26E9BA0E79C3 FOREIGN KEY (last_message_id) REFERENCES message (id)');
         $this->addSql('ALTER TABLE `match` ADD CONSTRAINT FK_7A5BC505B2EAD3FC FOREIGN KEY (match_type_id) REFERENCES match_type (id)');
+        $this->addSql('ALTER TABLE message ADD CONSTRAINT FK_B6BD307F9AC0396 FOREIGN KEY (conversation_id) REFERENCES conversation (id)');
+        $this->addSql('ALTER TABLE message ADD CONSTRAINT FK_B6BD307FA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE participant ADD CONSTRAINT FK_D79F6B119AC0396 FOREIGN KEY (conversation_id) REFERENCES conversation (id)');
+        $this->addSql('ALTER TABLE participant ADD CONSTRAINT FK_D79F6B11A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE player_team ADD CONSTRAINT FK_66FAF62C99E6F5DF FOREIGN KEY (player_id) REFERENCES player (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE player_team ADD CONSTRAINT FK_66FAF62C296CD8AE FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE player_post ADD CONSTRAINT FK_F8903CBE99E6F5DF FOREIGN KEY (player_id) REFERENCES player (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE player_post ADD CONSTRAINT FK_F8903CBE4B89032C FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE team ADD CONSTRAINT FK_C4E0A61F79D32D8C FOREIGN KEY (play_season_id) REFERENCES season (id)');
+        $this->addSql('ALTER TABLE team_user ADD CONSTRAINT FK_5C722232296CD8AE FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE team_user ADD CONSTRAINT FK_5C722232A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE team_match ADD CONSTRAINT FK_BD5D8C45296CD8AE FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE team_match ADD CONSTRAINT FK_BD5D8C452ABEACD6 FOREIGN KEY (match_id) REFERENCES `match` (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE user_team ADD CONSTRAINT FK_BE61EAD6A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE user_team ADD CONSTRAINT FK_BE61EAD6296CD8AE FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE user ADD finances_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D6499245991F FOREIGN KEY (finances_id) REFERENCES club (id)');
-        $this->addSql('CREATE INDEX IDX_8D93D6499245991F ON user (finances_id)');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D6499245991F');
+        $this->addSql('ALTER TABLE message DROP FOREIGN KEY FK_B6BD307F9AC0396');
+        $this->addSql('ALTER TABLE participant DROP FOREIGN KEY FK_D79F6B119AC0396');
         $this->addSql('ALTER TABLE team_match DROP FOREIGN KEY FK_BD5D8C452ABEACD6');
         $this->addSql('ALTER TABLE `match` DROP FOREIGN KEY FK_7A5BC505B2EAD3FC');
+        $this->addSql('ALTER TABLE conversation DROP FOREIGN KEY FK_8A8E26E9BA0E79C3');
         $this->addSql('ALTER TABLE player_team DROP FOREIGN KEY FK_66FAF62C99E6F5DF');
         $this->addSql('ALTER TABLE player_post DROP FOREIGN KEY FK_F8903CBE99E6F5DF');
         $this->addSql('ALTER TABLE player_post DROP FOREIGN KEY FK_F8903CBE4B89032C');
         $this->addSql('ALTER TABLE team DROP FOREIGN KEY FK_C4E0A61F79D32D8C');
         $this->addSql('ALTER TABLE player_team DROP FOREIGN KEY FK_66FAF62C296CD8AE');
+        $this->addSql('ALTER TABLE team_user DROP FOREIGN KEY FK_5C722232296CD8AE');
         $this->addSql('ALTER TABLE team_match DROP FOREIGN KEY FK_BD5D8C45296CD8AE');
-        $this->addSql('ALTER TABLE user_team DROP FOREIGN KEY FK_BE61EAD6296CD8AE');
+        $this->addSql('ALTER TABLE message DROP FOREIGN KEY FK_B6BD307FA76ED395');
+        $this->addSql('ALTER TABLE participant DROP FOREIGN KEY FK_D79F6B11A76ED395');
+        $this->addSql('ALTER TABLE team_user DROP FOREIGN KEY FK_5C722232A76ED395');
         $this->addSql('DROP TABLE club');
+        $this->addSql('DROP TABLE conversation');
         $this->addSql('DROP TABLE `match`');
         $this->addSql('DROP TABLE match_type');
+        $this->addSql('DROP TABLE message');
+        $this->addSql('DROP TABLE participant');
         $this->addSql('DROP TABLE player');
         $this->addSql('DROP TABLE player_team');
         $this->addSql('DROP TABLE player_post');
         $this->addSql('DROP TABLE post');
         $this->addSql('DROP TABLE season');
         $this->addSql('DROP TABLE team');
+        $this->addSql('DROP TABLE team_user');
         $this->addSql('DROP TABLE team_match');
-        $this->addSql('DROP TABLE user_team');
-        $this->addSql('DROP INDEX IDX_8D93D6499245991F ON user');
-        $this->addSql('ALTER TABLE user DROP finances_id');
+        $this->addSql('DROP TABLE user');
     }
 }

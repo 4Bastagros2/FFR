@@ -37,7 +37,7 @@ class Season
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $name;
+    private $year;
 
     public function __construct()
     {
@@ -104,14 +104,14 @@ class Season
         return $this;
     }
 
-    public function getName(): ?string
+    public function getYear(): ?string
     {
-        return $this->name;
+        return $this->year;
     }
 
-    public function setName(?string $name): self
+    public function setYear(?string $year): self
     {
-        $this->name = $name;
+        $this->year = $year;
 
         return $this;
     }
