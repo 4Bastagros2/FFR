@@ -154,7 +154,7 @@ class MatchCalendarController extends AbstractController
         $form->handleRequest($request);
        
         if ($form->isSubmitted()) {
-           
+            $this->addFlash('success', 'Ajouté avec succes !');
             $task=$form->get('domicile');
            
             $data=$task->getViewData();
@@ -201,7 +201,7 @@ class MatchCalendarController extends AbstractController
             
             $entityManager->persist($match);
             $entityManager->flush();
-            $this->addFlash('success', 'Ajouté avec succes !');
+           
             
             
             return $this->redirectToRoute('match_calendar',['id_team'=>$id_team]);
