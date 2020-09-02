@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Message;
+use App\Entity\Conversation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,4 +48,14 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findMessageByConversationId(int $conversationId)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->where('m.conversation = :conversationId')
+            ->setParameter('conversationId', $conversationId)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }
