@@ -194,9 +194,8 @@ class MatchCalendarController extends AbstractController
             $entityManager->flush();
             
             $match->addTeam( $this->getDoctrine()->getRepository(Team::class)->find($id_team) );
-            // ->find($form->get('teams')->getViewData()[0]));
+            // ->find($form-('teams')->getViewData()[0]));
             
-           
 
             $team->find($id_team)->addPlayMatch($match);
             

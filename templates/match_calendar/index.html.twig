@@ -44,9 +44,37 @@
                             <!-- <td>vs</td> -->
                             <td>{{ match.visitorteam }}</td>
                             <td>
-                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"></small></a></td>
-
+                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"></small></a>
+                                <img class="editicon pointer" src="{{asset ('icons/trash.png') }}" data-toggle="modal"
+											data-target="#SupprimerMatch-{{match.id}}"></td>
                         </tr>
+
+                        <!-- Modal -->
+								<div class="modal fade" id="SupprimerMatch-{{match.id}}" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">
+													<center>Êtes vous sur de vouloir supprimer?</center>
+												</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Non</button>
+												<button type="button" class="btn btn-primary"><a
+														href="{{path('del_match', {id_team: idteam, id_match: match.id})}}">Oui</a></button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
                         {% endfor %}
 
 
