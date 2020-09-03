@@ -73,7 +73,7 @@ class Match
     public function __construct()
     {
         $this->teams = new ArrayCollection();
-        $compo = json_decode("[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]");
+        $compo = json_decode('[{"compo":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"banc":[0,0,0,0,0,0,0],"selected":[]},{"compo":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"banc":[0,0,0,0,0,0,0],"selected":[]},{"compo":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"banc":[0,0,0,0,0,0,0],"selected":[]}]');
         $this->setComposition($compo);
     }
 
@@ -142,13 +142,16 @@ class Match
         return $this;
     }
 
-    public function getComposition(): ?array
+    // public function getComposition(): ?array
+    public function getComposition()
     {
         return $this->composition;
     }
 
-    public function setComposition(?array $composition): self
+    // public function setComposition(?array $composition): self
+    public function setComposition($composition)
     {
+
         $this->composition = $composition;
 
         return $this;

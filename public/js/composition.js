@@ -1,16 +1,40 @@
 $(function(){
 
 var id_match = $('.global').data('idMatch');
+// var id_compo = $('.global').data('idCompo');
 
 // var positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var positions = JSON.parse(document.getElementById("composition").value);
+var id_comp = JSON.parse(document.getElementById("idcomposition").value);
+
+var banc = positions[id_comp]['banc'];
+var compo = positions[id_comp]['compo'];
+var selected = positions[id_comp]['selected'];
+
 console.log('positions : '+positions);
+console.log('banc : '+positions.banc);
+// console.log('positions : '+positions);
+
 
 for (i= 1; i<17 ; i++) {
-  if(positions[i]>0) {
-    $('[data-id-position="'+i+'"]').append($('[data-id-player="'+positions[i]+'"]'));   
+  if(positions[id_comp]['compo'][i]>0) {
+    $('[data-id-position="'+i+'"]').append($('[data-id-player="'+positions[id_comp]['compo'][i]+'"]'));   
   }
 }
+
+positions[id_comp]['banc'].forEach((item, index) => {
+  console.log("player au banc : " + item) //value
+  console.log(index) //index
+  $('#banc').append($('[data-id-player="'+item+'"]'));   
+})
+
+
+positions[id_comp]['selected'].forEach((item, index) => {
+  console.log("player dans les selections : " + item) //value
+  // console.log(index) //index
+  $('#selected').append($('[data-id-player="'+item+'"]'));   
+})
+
 
 
 $('.draggable').draggable({
@@ -33,66 +57,61 @@ $('.draggable').draggable({
   
       id = $(ui.draggable).data('id');
       // idcard = $(this).attr('id');
-      previous = ui.draggable.parent();
-
-      // console.log($('.player_card', previous).attr('id')+$('.player_card', previous).html());
-      
-      
-      // $(".global").data('idcard', idcard);
-      
-      // console.log(this);
-      // console.log(previous);
-      
+      previous = ui.draggable.parent();      
       
       if(!$(this).is($(previous)))
       {
-        // $(ui.draggable).one('shown.bs.popover', function(e) 
-        // {
-          //   $(".jail").css('visibility', 'visible');
           console.log('positions : ----------------------------');
           console.log(positions);
           
           console.log('---------------------------- id player');
+
           id_player = $(ui.draggable).data('idPlayer');
+
           console.log(id_player);
+
           id_position = $(this).data('idPosition');
           prev_position = ui.draggable.parent().data('idPosition');
-          prev_player = positions[id_position];
+          prev_player = positions[id_comp]['compo'][id_position];
           // console.log('id_player:'+id_player+' id_position')
           console.log('[data-id-player="'+prev_player+'"]');
           if(prev_player>0){
-            if(prev_position>0) positions[prev_position] = prev_player;
+            if(prev_position>0) positions[id_comp]['compo'][prev_position] = prev_player;
             $(previous).append($('[data-id-player="'+prev_player+'"]'));            
           } else {
-            positions[prev_position] = 0;
+            positions[id_comp]['compo'][prev_position] = 0;
           }
           $(this).append(ui.draggable.css({
             position: 'relative'
             // background: 'green'
           }));
-          if(id_position>0) positions[id_position] = id_player;
+          if(id_position>0) positions[id_comp]['compo'][id_position] = id_player;
+          if($(previous).attr('id')=="banc"){
+            for( var i = 0; i < positions[id_comp]['banc'].length; i++){ if ( positions[id_comp]['banc'][i] === 5) { positions[id_comp]['banc'].splice(i, 1); }}
+          }
+          if($(previous).attr('id')=="selected"){
+            for( var i = 0; i < positions[id_comp]['selected'].length; i++){ if ( positions[id_comp]['selected'][i] === 5) { positions[id_comp]['selected'].splice(i, 1); }}
+          }
           
+          if($(this).attr('id')=="banc"){
+            positions[id_comp]['banc'].push(id_player)
+          }
+          if($(this).attr('id')=="selected"){
+            positions[id_comp]['selected'].push(id_player)
+          }
+
           console.log(positions);
           console.log('----------------------------');
-          //   $('#btn-cancel').one('click', function(e){
-            //     // alert('cancel');
-            //     $(previous)
-            //     .append(ui.draggable.css({
-              //       position: 'relative',
-              //       background: 'green'
-              //     }));          
-              //     // $('[data-toggle="popover"]').popover('hide');
-              //     $(".jail").css('visibility', 'hidden');
-              //   });
-              
-              //   $('#btn-confirm').one('click', function() {
-                //     // alert('confirm');
-                console.log('---------------------------- id player');
-        $.ajax({
-          method: "POST",
-          url: `/match/composition/update/${id_match}`,
-          data: { composition: JSON.stringify(positions) }
-        })
+          console.log('compo à insérer : ' + JSON.stringify(positions))
+          $.ajax({
+            method: "POST",
+            url: `/match/composition/update/${id_match}`,
+            // data: { composition: JSON.stringify(positions)},
+            // data: { composition: positions},
+            data: { composition: ""},
+            error : function(xhr, textStatus, errorThrown) {  
+                alert('Ajax request failed.' + errorThrown +textStatus);  
+           }}  )
           .done(function( msg ) {
             // alert( "composition sauvée : " + msg );
             // alert( "composition sauvée : " + id_match );

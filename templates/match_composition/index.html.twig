@@ -20,6 +20,7 @@
 
     <div class="container">
 
+        <input type='hidden' id="idcomposition" value='{{ idcomposition }}' />
         <input type='hidden' id="composition" value='{{ composition }}' />
 
         <div class="example-wrapper global" data-id-match="{{ id_match }}">
@@ -88,8 +89,18 @@
                         </div>
                     </div>
                 </div>
+                <div data-id-position="0" id="banc" class="droppable">
+                <h3>Banc</h3>
+                </div>
 
+                <div data-id-position="0" id="selected" class="droppable">
+                <h3>Sélection</h3>
+                </div>
+
+
+            </div>
                 <div data-id-position="0" id="players_list" class="droppable">
+                <h3>Liste des joueurs</h3>
                     {% for player in players %}
                    
                     {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'firstname': player.firstname, 'lastname': player.lestname} %}
@@ -104,8 +115,6 @@
                                                                             } %}
                     {% endfor %}
                 </div>
-
-            </div>
 
         </div>
 
