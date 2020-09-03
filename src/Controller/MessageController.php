@@ -33,6 +33,7 @@ class MessageController extends AbstractController
      * @var UserRepository
      */
     private $userRepository;
+    
 
     public function __construct(EntityManagerInterface $entityManager,
                                 MessageRepository $messageRepository,
