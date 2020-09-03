@@ -26,7 +26,7 @@ class AddMatchFormType extends AbstractType
        
         $builder
             ->add('date',DateTimeType::class,['label'=>'Date du match : '])
-            ->add('duration',TimeType::class,['label'=>'Durée du match'])
+            // ->add('duration',TimeType::class,['label'=>'Durée du match'])
             ->add('domicile', CheckboxType::class, [
                 'mapped' => false,
                 'required'=>false,
