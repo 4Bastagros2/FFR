@@ -12,7 +12,10 @@
 
 <div class="menu-tab">
     <center>
-        <h4>Composition de l'équipe</h4>
+        <h4>Compositons : </h4>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 0})}}"><h4 {{ (idcomposition == 0) ? 'class="active"' : 'class=""' }}>1</h4></a>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 1})}}"><h4 {{ (idcomposition == 1) ? 'class="active"' : 'class=""' }}>2</h4></a>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 2})}}"><h4 {{ (idcomposition == 2) ? 'class="active"' : 'class=""' }}>3</h4></a>
     </center>
 </div>
 
