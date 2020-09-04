@@ -72,6 +72,7 @@ $('.draggable').draggable({
 
           id_position = $(this).data('idPosition');
           prev_position = ui.draggable.parent().data('idPosition');
+          // console.log("previous id : " + ui.draggable.parent().attr('id'));
           prev_player = positions[id_comp]['compo'][id_position];
           // console.log('id_player:'+id_player+' id_position')
           // console.log('[data-id-player="'+prev_player+'"]');
@@ -86,12 +87,6 @@ $('.draggable').draggable({
             // background: 'green'
           }));
           if(id_position>0) positions[id_comp]['compo'][id_position] = id_player;
-          if($(previous).attr('id')=="banc"){
-            for( var i = 0; i < positions[id_comp]['banc'].length; i++){ if ( positions[id_comp]['banc'][i] === 5) { positions[id_comp]['banc'].splice(i, 1); }}
-          }
-          if($(previous).attr('id')=="selected"){
-            for( var i = 0; i < positions[id_comp]['selected'].length; i++){ if ( positions[id_comp]['selected'][i] === 5) { positions[id_comp]['selected'].splice(i, 1); }}
-          }
           
           if($(this).attr('id')=="banc"){
             positions[id_comp]['banc'].push(id_player)
@@ -99,8 +94,21 @@ $('.draggable').draggable({
           if($(this).attr('id')=="selected"){
             positions[id_comp]['selected'].push(id_player)
           }
+          
+          if(prev_position==0) {
+            if($(previous).attr('id')=="banc"){
+              // console.log("banc before : " + positions[id_comp]['banc']);
+              for( var i = 0; i < positions[id_comp]['banc'].length; i++){ if ( positions[id_comp]['banc'][i] == id_player) { positions[id_comp]['banc'].splice(i, 1); }}
+              // console.log("banc after : " + positions[id_comp]['banc']);
+            }
+            if($(previous).attr('id')=="selected"){
+              // console.log("selected before : " + positions[id_comp]['selected']);
+              for( var i = 0; i < positions[id_comp]['selected'].length; i++){ if ( positions[id_comp]['selected'][i] == id_player) { positions[id_comp]['selected'].splice(i, 1); }}
+              // console.log("selected after : " + positions[id_comp]['selected']);
+            }
+          }
 
-          // console.log(positions);
+          // console.log("positions : " + positions);
           // console.log('----------------------------');
           // console.log('compo à insérer : ' + JSON.stringify(positions))
           $.ajax({
