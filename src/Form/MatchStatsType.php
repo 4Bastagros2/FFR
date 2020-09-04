@@ -16,7 +16,7 @@ class MatchStatsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        dump($options);
+        
         $builder
             ->add('score',TextType::class,['label'=>'score'])
             ->add('reds',TextType::class,['label'=>'carton rouge'])
