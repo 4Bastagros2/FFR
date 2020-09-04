@@ -16,7 +16,7 @@ class MatchStatsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        dump($options);
+        
         $builder
             ->add('score',TextType::class,['label'=>'score'])
             ->add('reds',TextType::class,['label'=>'carton rouge'])
@@ -26,10 +26,11 @@ class MatchStatsType extends AbstractType
             ->add('penalites',TextType::class,['label'=>'penalités'])
             ->add('drops',TextType::class,['label'=>'drops effectués'])
             ->add('drops',TextType::class,['label'=>'drops effectués'])
-            // 'entry_type'   => PlayerMatchStatsType::class,
-            // 'data_class' => Player::class,
             ->add('players', CollectionType::class, [
                 'label'        => 'Statistiques des joueurs',
+                // 'choise_label' => function($player){
+                //     return $player-> getLestName();
+                // },
                 'entry_type'   => PlayerMatchStatsType::class,
                 'entry_options' => [
                     'attr' => [
