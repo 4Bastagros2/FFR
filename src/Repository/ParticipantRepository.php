@@ -47,4 +47,23 @@ class ParticipantRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findParticipantByConversationIdAndUserId(int $conversationId, int $userId)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->
+            where(
+                $qb->expr()->andX(
+                    $qb->expr()->eq('p.conversartion', 'conversationId'),
+                    $qb->expr()->neq('p.user', 'userId'),
+                )
+            )
+
+            ->setParameters([
+                'conversationId' => $conversationId,
+                'userId' => $userId
+            ]);
+
+            return $qb->getQuery()->getOneOrNullResult();
+    }
 }

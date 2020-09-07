@@ -1,3 +1,5 @@
+parameters:
+    mercure_secret_key: '%env(MERCURE_SECRET_KEY)%'
 security:
 
     role_hierarchy:
