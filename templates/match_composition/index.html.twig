@@ -12,7 +12,10 @@
 
 <div class="menu-tab">
     <center>
-        <h4>Composition de l'équipe</h4>
+        <h4>Compositons : </h4>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 0})}}"><h4 {{ (idcomposition == 0) ? 'class="active"' : 'class=""' }}>1</h4></a>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 1})}}"><h4 {{ (idcomposition == 1) ? 'class="active"' : 'class=""' }}>2</h4></a>
+        <a href="{{path('match_composition', {id_match: id_match, id_composition: 2})}}"><h4 {{ (idcomposition == 2) ? 'class="active"' : 'class=""' }}>3</h4></a>
     </center>
 </div>
 
@@ -89,31 +92,40 @@
                         </div>
                     </div>
                 </div>
-                <div data-id-position="0" id="banc" class="droppable">
-                <h3>Banc</h3>
-                </div>
 
-                <div data-id-position="0" id="selected" class="droppable">
-                <h3>Sélection</h3>
-                </div>
+                <div id="list">
 
+                    <div>
+                        <h3>Banc</h3>
+                        <div data-id-position="0" id="banc" class="droppable">
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Sélection</h3>
+                        <div data-id-position="0" id="selected" class="droppable">
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Equipe</h3>
+                        <div data-id-position="0" id="players_list" class="droppable">
+                            {% for player in players %}
+                            {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'lastname': player.firstname, 'firstname': player.lestname} %}
+                            {% include 'match_composition/playerstats.html.twig' with { 'id': player.id, 
+                                                                                        'essais': player.totalessais, 
+                                                                                        'transformations': player.totaltransformations,
+                                                                                        'penalites': player.totalpenalites,
+                                                                                        'drops': player.totaldrops,
+                                                                                        'rouges': player.totalrouges,
+                                                                                        'jaunes': player.totaljaunes,
+                                                                                        'temps': player.totaltemps
+                                                                                    } %}
+                            {% endfor %}
+                        </div>
+                    </div>
 
             </div>
-                <div data-id-position="0" id="players_list" class="droppable">
-                <h3>Liste des joueurs</h3>
-                    {% for player in players %}
-                    {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'lastname': player.firstname, 'firstname': player.lestname} %}
-                    {% include 'match_composition/playerstats.html.twig' with { 'id': player.id, 
-                                                                                'essais': player.totalessais, 
-                                                                                'transformations': player.totaltransformations,
-                                                                                'penalites': player.totalpenalites,
-                                                                                'drops': player.totaldrops,
-                                                                                'rouges': player.totalrouges,
-                                                                                'jaunes': player.totaljaunes,
-                                                                                'temps': player.totaltemps
-                                                                            } %}
-                    {% endfor %}
-                </div>
 
         </div>
 
