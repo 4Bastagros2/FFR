@@ -6,6 +6,8 @@
 {% block body %}
 
 {% include 'first_nav.html.twig' %}
+{% include 'chat.html.twig' %}
+
 
 {% if app.user %}
 <div class="team-wrapper">
@@ -50,12 +52,17 @@
 
 		{% endfor %}
 	</div>
-	<a class="add-team-btn pointer">+</a>
+<a class="add-team-btn pointer" data-toggle="modal" data-target="#addTeam">+</a>
+
+<a class="add-team-btn pointer btn-msg align-self-end" data-toggle="modal" data-target="#messagesModal" href="">Chat</a>
+
+
 </div>
 
 
 
 {% include 'team_form/index.html.twig' with {'form': form} %}
+
 
 {% endif %}
 {% endblock %}
