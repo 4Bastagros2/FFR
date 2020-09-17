@@ -132,13 +132,13 @@
                             {% for player in players %}
                             {% include 'match_composition/playercard.html.twig' with {'id': player.id, 'lastname': player.firstname, 'firstname': player.lestname} %}
                             {% include 'match_composition/playerstats.html.twig' with { 'id': player.id, 
-                                                                                        'essais': player.totalessais, 
-                                                                                        'transformations': player.totaltransformations,
-                                                                                        'penalites': player.totalpenalites,
-                                                                                        'drops': player.totaldrops,
-                                                                                        'rouges': player.totalrouges,
-                                                                                        'jaunes': player.totaljaunes,
-                                                                                        'temps': player.totaltemps
+                                                                                        'essais': player.essais, 
+                                                                                        'transformations': player.transformations,
+                                                                                        'penalites': player.penalites,
+                                                                                        'drops': player.drops,
+                                                                                        'rouges': player.rouges,
+                                                                                        'jaunes': player.jaunes,
+                                                                                        'temps': player.temps
                                                                                     } %}
                             {% endfor %}
                         </div>

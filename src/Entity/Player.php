@@ -238,7 +238,7 @@ class Player
     public function getEssais($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->essais[$match_id]) ? $this->essais[$match_id] : 0;
+        return isset($this->stats[$match_id]['essais']) ? $this->stats[$match_id]['essais'] : 0;
     }
 
         /**
@@ -277,7 +277,7 @@ class Player
     public function getTransformations($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->transformations[$match_id]) ? $this->transformations[$match_id] : 0;
+        return isset($this->stats[$match_id]['transformations']) ? $this->stats[$match_id]['transformations'] : 0;
     }
 
     /**
@@ -315,7 +315,7 @@ class Player
     public function getPenalites($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->penalites[$match_id]) ? $this->penalites[$match_id] : 0;
+        return isset($this->stats[$match_id]['penalites']) ? $this->stats[$match_id]['penalites'] : 0;
     }
 
     /**
@@ -353,7 +353,7 @@ class Player
     public function getDrops($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->drops[$match_id]) ? $this->drops[$match_id] : 0;
+        return isset($this->stats[$match_id]['drops']) ? $this->stats[$match_id]['drops'] : 0;
     }
 
     /**
@@ -391,7 +391,7 @@ class Player
     public function getRouges($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->rouges[$match_id]) ? $this->rouges[$match_id] : 0;
+        return isset($this->stats[$match_id]['rouges']) ? $this->stats[$match_id]['rouges'] : 0;
     }
 
     /**
@@ -429,7 +429,7 @@ class Player
     public function getJaunes($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->jaunes[$match_id]) ? $this->jaunes[$match_id] : 0;
+        return isset($this->stats[$match_id]['jaunes']) ? $this->stats[$match_id]['jaunes'] : 0;
     }
 
     /**
@@ -467,7 +467,7 @@ class Player
     public function getTemps($match_id = -1)
     {
         if($match_id==-1) $match_id = $this->current_match;
-        return isset($this->temps[$match_id]) ? $this->temps[$match_id] : 0;
+        return isset($this->stats[$match_id]['temps']) ? $this->stats[$match_id]['temps'] : 0;
     }
 
     /**
