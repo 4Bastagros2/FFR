@@ -12,6 +12,11 @@
 		{{ form_start(form, {'action': path('stat_joueur', {'id_player': id_player, 'id_match': id_match  }) }) }}
 
         <div id="StatMatchForm" class="cell-border row-border">
+        <div class="card-header">
+
+				<a href="" class="dis-block close-btn">&larr; Retour</a>
+
+			</div>
 
             <div>{{ form_row(form.rouges) }}</div>
             <div>{{ form_row(form.jaunes) }}</div>

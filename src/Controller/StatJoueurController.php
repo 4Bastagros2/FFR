@@ -75,7 +75,7 @@ class StatJoueurController extends AbstractController
             // ... persist the $product variable or any other work
             // return new Response();
             // return "nique";
-            // return $this->redirect($this->generateUrl('match_composition', ['id_match' => $id_match  ]));
+            return $this->redirect($this->generateUrl('match_composition', ['id_match' => $id_match  ]));
         }
 
 
