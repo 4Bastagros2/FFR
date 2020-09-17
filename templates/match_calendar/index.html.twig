@@ -44,9 +44,11 @@
                             <!-- <td>vs</td> -->
                             <td>{{ match.visitorteam }}</td>
                             <td>
-                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"></small></a>
+                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/stat.png') }}" title="stat joueur"></small></a>
+                                <a href="/stat/match/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"alt="stat" title="stat match"></small></a>
                                 <img class="editicon pointer" src="{{asset ('icons/trash.png') }}" data-toggle="modal"
-											data-target="#SupprimerMatch-{{match.id}}"></td>
+											data-target="#SupprimerMatch-{{match.id}}" title="sup match">
+                            </td>
                         </tr>
 
                         <!-- Modal -->

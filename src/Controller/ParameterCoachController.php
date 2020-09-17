@@ -27,7 +27,7 @@ class ParameterCoachController extends AbstractController
     // ajouter l id_team du connecter avec l id du mail ci dessus 
 
 
-    public function index(TeamRepository $teamReP, UserRepository $userRep,TeamRepository $teams, Request $request, SluggerInterface $slugger,$id_team, FlashyNotifier $flashy)
+    public function index(TeamRepository $teamReP, UserRepository $userRep, TeamRepository $teams, Request $request, SluggerInterface $slugger, $id_team, FlashyNotifier $flashy)
     {   
         // $user=new User();
         // $form = $this->createForm(CoachFormType::class, $user);
