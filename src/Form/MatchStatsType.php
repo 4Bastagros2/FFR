@@ -18,14 +18,14 @@ class MatchStatsType extends AbstractType
     {
         
         $builder
-            ->add('score',TextType::class,['label'=>'score'])
-            ->add('reds',TextType::class,['label'=>'carton rouge'])
-            ->add('yellows',TextType::class,['label'=>'carton jaune'])
-            ->add('essais',TextType::class,['label'=>'essais realisés'])
-            ->add('transformations',TextType::class,['label'=>'transfo reussis'])
-            ->add('penalites',TextType::class,['label'=>'penalités'])
-            ->add('drops',TextType::class,['label'=>'drops effectués'])
-            ->add('drops',TextType::class,['label'=>'drops effectués'])
+            ->add('recScore',TextType::class,['label'=>'Équipe locale'])
+            ->add('visiteurScore',TextType::class,['label'=>'Équipe Visiteur'])
+            // ->add('yellows',TextType::class,['label'=>'carton jaune'])
+            // ->add('essais',TextType::class,['label'=>'essais realisés'])
+            // ->add('transformations',TextType::class,['label'=>'transfo reussis'])
+            // ->add('penalites',TextType::class,['label'=>'penalités'])
+            // ->add('drops',TextType::class,['label'=>'drops effectués'])
+            // ->add('drops',TextType::class,['label'=>'drops effectués'])
             // ->add('players', CollectionType::class, [
             //     'label'        => 'Statistiques des joueurs',
             //     // 'choise_label' => function($player){

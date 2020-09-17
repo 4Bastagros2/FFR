@@ -61,8 +61,8 @@ class Match
      */
     private $teams;
 
-    private $score;
-    private $reds;
+    private $recScore;
+    private $visiteurScore;
     private $yellows;
     private $essais;
     private $transformations;
@@ -279,21 +279,21 @@ class Match
     /**
      * Get the value of score
      */ 
-    public function getScore()
+    public function getRecScore()
     {
-        return $this->score;
+        return isset($this->getStats()['recScore']) ? $this->getStats()['recScore'] : 'N.C';
     }
-
+    // return isset($this->getStats()['visiteurScore']) ? $this->getStats()['visiteurScore'] : 'N.C';
     /**
      * Set the value of score
      *
      * @return  self
      */ 
-    public function setScore($score)
+    public function setRecScore($recScore)
     {
-        $this->score = $score;
+        $this->recScore = $recScore;
         $tmpStats = $this->getStats();
-        $tmpStats['score'] = $score;
+        $tmpStats['recScore'] = $recScore;
         $this->setStats($tmpStats);
         return $this;
     }
@@ -301,9 +301,10 @@ class Match
     /**
      * Get the value of reds
      */ 
-    public function getReds()
+    public function getVisiteurScore()
     {
-        return $this->reds;
+        // return $this->getStats()['visiteurScore'];
+        return isset($this->getStats()['visiteurScore']) ? $this->getStats()['visiteurScore'] : 'N.C';
     }
 
     /**
@@ -311,11 +312,11 @@ class Match
      *
      * @return  self
      */ 
-    public function setReds($reds)
+    public function setVisiteurScore($visiteurScore)
     {
-        $this->reds = $reds;
+        $this->visiteurScore = $visiteurScore;
         $tmpStats = $this->getStats();
-        $tmpStats['reds'] = $reds;
+        $tmpStats['visiteurScore'] = $visiteurScore;
         $this->setStats($tmpStats);
 
         return $this;

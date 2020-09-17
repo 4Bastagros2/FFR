@@ -30,6 +30,7 @@
                             <th data-priority="3">Équipe locale</th>
                             <!-- <th></th> -->
                             <th data-priority="4">Équipe visiteur</th>
+                            <th data-priority="6">SCORE</th>
                             <th data-priority="5">Détail</th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@
                             <td>{{ match.localteam }}</td>
                             <!-- <td>vs</td> -->
                             <td>{{ match.visitorteam }}</td>
+                            <td>{{ match.recScore }} / {{ match.visiteurScore }}</td>
                             <td>
                                 <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/stat.png') }}" title="stat joueur"></small></a>
                                 <a href="/stat/match/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"alt="stat" title="stat match"></small></a>
