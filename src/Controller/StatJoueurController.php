@@ -64,7 +64,7 @@ class StatJoueurController extends AbstractController
 
             // $player->addIsPost($form->get('is_post')->getViewData());
             
-            dump($request);
+            // dump($request);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);

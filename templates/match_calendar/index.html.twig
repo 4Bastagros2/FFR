@@ -25,11 +25,11 @@
                 <table id="match-calendar" class="stripe hover cell-border dt-body-center">
                     <thead>
                         <tr>
-                            <th data-priority="4">Type</th>
-                            <th data-priority="1">Date (A/M/J)</th>
-                            <th data-priority="2">Équipe locale</th>
+                            <th data-priority="1">Type</th>
+                            <th data-priority="2">Date (A/M/J)</th>
+                            <th data-priority="3">Équipe locale</th>
                             <!-- <th></th> -->
-                            <th data-priority="3">Équipe visiteur</th>
+                            <th data-priority="4">Équipe visiteur</th>
                             <th data-priority="5">Détail</th>
                         </tr>
                     </thead>
@@ -169,7 +169,7 @@
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             },
-            "order": [ [ 1, 'desc' ]],
+            "order": [ [ 1, 'asc' ]],
             responsive: true,
             autoWidth: false
         });
