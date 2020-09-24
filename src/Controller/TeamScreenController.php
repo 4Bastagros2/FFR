@@ -64,23 +64,22 @@ class TeamScreenController extends AbstractController
         $teams = $teamRepo->findAll();
         $userConnect = $this->getUser();
         $team = $user->find($userConnect)->getCoaches();
-        $chat = new Chat();
-                $formchat = $this->createForm(ChatType::class, $chat);
-                $formchat->handleRequest($request);
+        // $chat = new Chat();
+        //         $formchat = $this->createForm(ChatType::class, $chat);
+        //         $formchat->handleRequest($request);
 
-                if ($formchat->isSubmitted() && $formchat->isValid()) {
-                    $chat->setAuteur($this->getUser()->getUsername());
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $entityManager->persist($chat);
-                    $entityManager->flush();                     
-                }
+        //         if ($formchat->isSubmitted() && $formchat->isValid()) {
+        //             $chat->setAuteur($this->getUser()->getUsername());
+        //             $entityManager = $this->getDoctrine()->getManager();
+        //             $entityManager->persist($chat);
+        //             $entityManager->flush();                     
+        //         }
                 
         return $this->render('team_screen/index.html.twig', [
             'controller_name' => 'TeamScreenController',
             'teams' => $teams,
             'team' => $team,
             'form' => $form->createView(),
-            'chat' => $formchat->createView(),
         ]);
     }
 }

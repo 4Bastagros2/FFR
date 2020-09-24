@@ -39,11 +39,6 @@ class Club
      */
     private $users;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Chat::class, mappedBy="club")
-     */
-    private $chats;
-
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -122,34 +117,4 @@ class Club
         return $this;
     }
 
-    /**
-     * @return Collection|Chat[]
-     */
-    public function getChats(): Collection
-    {
-        return $this->chats;
-    }
-
-    public function addChat(Chat $chat): self
-    {
-        if (!$this->chats->contains($chat)) {
-            $this->chats[] = $chat;
-            $chat->setClub($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChat(Chat $chat): self
-    {
-        if ($this->chats->contains($chat)) {
-            $this->chats->removeElement($chat);
-            // set the owning side to null (unless already changed)
-            if ($chat->getClub() === $this) {
-                $chat->setClub(null);
-            }
-        }
-
-        return $this;
-    }
 }

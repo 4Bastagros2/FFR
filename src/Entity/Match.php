@@ -61,6 +61,11 @@ class Match
      */
     private $teams;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Chat::class, mappedBy="match")
+     */
+    private $chats;
+
     private $recScore;
     private $visiteurScore;
     private $yellows;
@@ -433,6 +438,37 @@ class Match
         $tmpStats = $this->getStats();
         $tmpStats['drops'] = $drops;
         $this->setStats($tmpStats);
+
+        return $this;
+    }
+    
+    /**
+     * @return Collection|Chat[]
+     */
+    public function getChats(): Collection
+    {
+    return $this->chats;
+    }
+
+    public function addChat(Chat $chat): self
+    {
+        if (!$this->chats->contains($chat)) {
+            $this->chats[] = $chat;
+            $chat->setMatch($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChat(Chat $chat): self
+    {
+        if ($this->chats->contains($chat)) {
+            $this->chats->removeElement($chat);
+            // set the owning side to null (unless already changed)
+            if ($chat->getMatch() === $this) {
+                $chat->setMatch(null);
+            }
+        }
 
         return $this;
     }

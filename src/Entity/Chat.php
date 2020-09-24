@@ -34,9 +34,9 @@ class Chat
     private $Date_chat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=club::class, inversedBy="chats")
+     * @ORM\ManyToOne(targetEntity=Match::class, inversedBy="chats")
      */
-    private $club;
+    private $match;
 
 
     public function __construct()
@@ -85,26 +85,14 @@ class Chat
         return $this;
     }
 
-    // public function getProjet(): ?Projet
-    // {
-    //     return $this->projet;
-    // }
-
-    // public function setProjet(?Projet $projet): self
-    // {
-    //     $this->projet = $projet;
-
-    //     return $this;
-    // }
-
-    public function getClub(): ?club
+    public function getMatch(): ?match
     {
-        return $this->club;
+        return $this->match;
     }
 
-    public function setClub(?club $club): self
+    public function setMatch(?match $match): self
     {
-        $this->club = $club;
+        $this->match = $match;
 
         return $this;
     }
