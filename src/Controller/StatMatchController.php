@@ -33,8 +33,18 @@ class StatMatchController extends AbstractController
         $type = $match->getMatchType();
         $type_name = $type->getName();
         $teams = $match->getTeams();
-        $score = $match->getScore();
-        $reds = $match->getReds();
+
+
+
+
+
+        $recScore = $match->getRecScore();
+        $visitorScore = $match->getVisiteurScore();
+
+
+
+
+
         $yellows = $match->getYellows();
         $essais = $match->getEssais();
         $transformations = $match->getTransformations();
@@ -56,26 +66,35 @@ class StatMatchController extends AbstractController
             'players'   =>      $joueurs,
         ];
 
-        $form = $this->createForm(MatchStatsType::class, $mergedForms);
+        $form = $this->createForm(MatchStatsType::class, $match);
         $form->submit($request->request->get('match_stats'), false);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('success', 'Ajouté avec succes !');
             
             // $data=$task->getViewData();
+            $task = $form->getData();
+
+            // $match->setRecScore($task->getRecScore']);
+            // $match->setVisiteurScore($task['visiteurScore']);
             
-            // $task=$form->getData();
+            // dump($task);
+
+            // dump($task['recScore']);
 
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($match);
-            foreach($joueurs as $j)
-            {
-                $entityManager->persist($j);
-            }
+            // foreach($joueurs as $j)
+            // {
+                // $entityManager->persist($j);
+            
 
             $entityManager->flush();
 
-
+            return $this->redirectToRoute('match_calendar',array(
+                'id_team' => $team_id,
+            ));
         }
         // $Match->setScore(score)
         

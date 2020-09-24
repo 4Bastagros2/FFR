@@ -25,11 +25,12 @@
                 <table id="match-calendar" class="stripe hover cell-border dt-body-center">
                     <thead>
                         <tr>
-                            <th data-priority="4">Type</th>
-                            <th data-priority="1">Date (A/M/J)</th>
-                            <th data-priority="2">Équipe locale</th>
+                            <th data-priority="1">Type</th>
+                            <th data-priority="2">Date (A/M/J)</th>
+                            <th data-priority="3">Équipe locale</th>
                             <!-- <th></th> -->
-                            <th data-priority="3">Équipe visiteur</th>
+                            <th data-priority="4">Équipe visiteur</th>
+                            <th data-priority="6">SCORE</th>
                             <th data-priority="5">Détail</th>
                         </tr>
                     </thead>
@@ -43,10 +44,13 @@
                             <td>{{ match.localteam }}</td>
                             <!-- <td>vs</td> -->
                             <td>{{ match.visitorteam }}</td>
+                            <td>{{ match.recScore }} / {{ match.visiteurScore }}</td>
                             <td>
-                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"></small></a>
+                                <a href="/match/composition/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/stat.png') }}" title="stat joueur"></small></a>
+                                <a href="/stat/match/{{ match.id }}"><small><img class="editicon" src="{{asset ('icons/eyes.png') }}"alt="stat" title="stat match"></small></a>
                                 <img class="editicon pointer" src="{{asset ('icons/trash.png') }}" data-toggle="modal"
-											data-target="#SupprimerMatch-{{match.id}}"></td>
+											data-target="#SupprimerMatch-{{match.id}}" title="sup match">
+                            </td>
                         </tr>
 
                         <!-- Modal -->
@@ -92,7 +96,7 @@
 
             </div>
 
-            <div class="dashboard-content">
+            {# <div class="dashboard-content">
                 <div class="dash-card">
                     <div class="card-header">
                         <h5>Résultat des 5 derniers matches</h5>
@@ -133,7 +137,7 @@
                                     <td>
                                         <!-- le 2 affiche le nombre de point total de la saison mis par le joueur -->
                                         {# {{ meilleur_buteur.2 }}<br> #}
-                                    </td>
+                                    {# </td>
                                     <td>
                                         <!-- Le 0 affiche le last name -->
                                         {{ meilleur_buteur.0 }}
@@ -148,9 +152,9 @@
                     <div class="card-footer">
                         <a href="" class="small">Voir le classement des joueurs &xrarr;</a>
                     </div>
-                </div>
+                </div> #} 
 
-            </div>
+            {# </div> #}
 
         </div>
     </div>
@@ -167,7 +171,7 @@
             "language": {
                 "url": "{{ asset('js/french.lang') }}"
             },
-            "order": [ [ 1, 'desc' ]],
+            "order": [ [ 1, 'asc' ]],
             responsive: true,
             autoWidth: false
         });

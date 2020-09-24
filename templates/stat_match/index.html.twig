@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StatMatchController!{% endblock %}
+{% block title %}Statistiques match{% endblock %}
 
 {% block body %}
 
@@ -53,20 +53,20 @@
     <div class="dash-card table-responive">
 
         <div class="card-header">
-            <h4>Statistiques du match</h4>
+            <h4>Résultat du match !</h4>
         </div>
 
         {{ form_start(form, {'attr': {'id': ''}}) }}
 
         <div id="StatMatchForm" class="cell-border row-border">
 
-            <div>{{ form_row(form.score) }}</div>
-            <div>{{ form_row(form.reds) }}</div>
-            <div>{{ form_row(form.yellows) }}</div>
+            <div>{{ form_row(form.recScore) }}</div>
+            <div>{{ form_row(form.visiteurScore) }}</div>
+            {# <div>{{ form_row(form.yellows) }}</div>
             <div>{{ form_row(form.essais) }}</div>
             <div>{{ form_row(form.transformations) }}</div>
             <div>{{ form_row(form.penalites) }}</div>
-            <div>{{ form_row(form.drops) }}</div>
+            <div>{{ form_row(form.drops) }}</div> #}
 
 
         </div>

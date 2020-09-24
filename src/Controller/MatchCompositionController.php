@@ -48,6 +48,12 @@ class MatchCompositionController extends AbstractController
 
         $players = $team->getPlayers();
 
+
+        foreach($players as $p) {
+            $p->setCurrentMatch($id_match);
+        }
+
+
         // $bench = [];
 
         // foreach ($players as $player)
