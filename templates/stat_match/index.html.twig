@@ -48,10 +48,7 @@
 {% include 'main_nav.html.twig' %}
 
 <div class="main-wrapper">
-
-    <!-- <div class="container-fluid"> -->
     <div class="dash-card table-responive">
-
         <div class="card-header">
             <h4>Résultat du match !</h4>
         </div>
@@ -59,22 +56,11 @@
         {{ form_start(form, {'attr': {'id': ''}}) }}
 
         <div id="StatMatchForm" class="cell-border row-border">
-
             <div>{{ form_row(form.recScore) }}</div>
             <div>{{ form_row(form.visiteurScore) }}</div>
-            {# <div>{{ form_row(form.yellows) }}</div>
-            <div>{{ form_row(form.essais) }}</div>
-            <div>{{ form_row(form.transformations) }}</div>
-            <div>{{ form_row(form.penalites) }}</div>
-            <div>{{ form_row(form.drops) }}</div> #}
-
-
         </div>
-
         {{ form_end(form)}}
-
     </div>
-
 </div>
 
 {% endblock %}

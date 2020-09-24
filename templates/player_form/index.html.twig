@@ -1,35 +1,16 @@
-
-{% block javascripts %}
-<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-{% endblock %}
-
-
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="modal guigui">
-
 	<div class="modal-content">
-
 		<div class="dash-card modal-card">
-
-
-			<!-- <div class="form_add_team form-add"> -->
-
-			<!-- <div class="row"> -->
-
 			<div class="card-header">
-
 				<a href="" class="dis-block close-btn">&larr; Retour</a>
-
 			</div>
-			<!-- </div> -->
-
 			<div class="container">
 				{{ form_start(form, {'attr': {'id': 'player_form'}}) }}
-
 				<div class="form-row">
 					<div class="col-xs-12 col-sm-6">
 						{{ form_row(form.lest_name) }}
@@ -62,17 +43,10 @@
 						{{ form_row(form.club_entry_date ) }}
 					</div>
 				</div>
-				
-				<!-- <script src="//code.jquery.com/jquery.js"></script> -->
-				<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-				{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
-
 				{{ form_end(form)}}
 			</div>
-
 		</div>
 	</div>
 </div>
-		
 
 {% endblock %}

@@ -2,48 +2,29 @@
 
 <div class="guigui modal fade right" id="addTeam" tabindex="-1" role="dialog" aria-labelledby="addTeam" aria-hidden="true">
 
-
-
 	{{ form_start(form)}}
 
 	<div class="modal-content">
-
 		<div class="form_add_team form-add">
-
 			<div>
-
 				{{ form_label(form.category, 'Catégorie') }}
 				{{ form_widget(form.category) }}
-
 			</div>
-
 			<div>
-
 				{{ form_label(form.play_season, 'Saison jouée')}}
 				{{ form_widget(form.play_season)}}
-
 			</div>
-
 			<div>
-
 				{{ form_label(form.picture, 'Photo') }} 
 				{{ form_widget(form.picture) }}
-				
-
 			</div>
-
 			<button type="submit" class="btn-lg pointer">Ajouter</button>
-
 			<center>
 				<a id="close" class="underline" href="">Annuler</a>
 			</center>
-
 		</div>
-
 	</div>
-
 	{{ form_end(form)}}
-
 </div>
 
 {% endblock %}

@@ -14,11 +14,7 @@ class PlayerMatchStatsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // ->add('lest_name')
-            // ->add('first_name')
-            // ->add('picture')
-            // ->add('birth_date')
-            // ->add('club_entry_date')
+
             ->add('essais')
             ->add('transformations')
             ->add('penalites')
@@ -34,8 +30,6 @@ class PlayerMatchStatsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Player::class,
-            // 'id' => 'playerStat'
-        ]);
+            'data_class' => Player::class,]);
     }
 }

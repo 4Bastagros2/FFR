@@ -18,11 +18,8 @@ class FormAddTeamType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-
-
-
         $builder
+
         ->add('category',TextType::class,['label'=>'La category de la nouvelle equipe'])
         ->add('play_season',EntityType::class,[
             'class' => Season::class,
@@ -32,8 +29,7 @@ class FormAddTeamType extends AbstractType
             'label'=>'Photo',
             'required' => false,                                                    
             ))
-        ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
-    ;
+        ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -23,39 +23,26 @@ class AddMatchFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       
+
         $builder
             ->add('date',DateTimeType::class,['label'=>'Date du match : '])
-            // ->add('duration',TimeType::class,['label'=>'Durée du match'])
             ->add('domicile', CheckboxType::class, [
                 'mapped' => false,
                 'required'=>false,
                 'label'=>'Coché si vous jouez a domicile'
             ])
             ->add('local_team',TextType::class,['label'=>'Equipe adverse'])
-            
-            // ->add('stats', EntityType::class,[
-            //     'class' => Match::class,
-            // ])
-            // ->add('composition')
             ->add('match_type',EntityType::class,[
                 'class' => MatchType::class,
                 'choice_label' => 'name',
                 'label'=>'Type de match'
             ])
-            // ->add('teams',EntityType::class,[
-            //     'class' => Team::class,
-            //     'choices' => $options['teams'],    
-            //     'choice_label' => 'category',
-            //     'multiple' => true,
-            //     'expanded' => false,  
-            // ])
-            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
-        ;
+            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        
         $resolver->setDefaults([
             'data_class' => Match::class,
             'teams' => Collection::class,

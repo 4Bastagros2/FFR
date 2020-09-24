@@ -18,19 +18,15 @@ class ChatType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            
-            
+
             ->add('contenu', TextareaType::class, [
                 'label' => 'Votre Message :',
-               
-                ])
-            
-            
-              
-        ;
+                ]);
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
+        
         $resolver->setDefaults([
             'data_class' => Chat::class,
         ]);

@@ -1,11 +1,8 @@
 {% set route = app.request.get('_route') %}
 
-
 <div id="nav">
 	<div class="sm-menu nav-container">
-
 		<ul class="main-list">
-
 			<li>
 			<a href="/team/screen">
 				<h3>{{ app.user.finances.name }}  </h3>
@@ -38,12 +35,9 @@
 				</ul>
 			</li>
 		</ul>
-
 	</div>
-
 	<div class="bg-menu tab-container">
 		<ul class="sub-menu">
-
 			<li class="{{ 'match' in route ? 'active' }}">
 				<a href="/match/calendar/{{idteam}}">
 					<!-- <div class="li-wrapper {% if app.request.attributes.get('_route') starts with 'match' %}active{% endif %}"> -->
@@ -56,9 +50,7 @@
 					</div>
 				</a>
 			</li>
-
 			<li class="{{ 'player' in route ? 'active' }}">
-				{# inchallah sa marche #}
 				<a href="/show/players/{{ idteam }}">
 					<div class="li-wrapper ">
 						<svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewbox="0 0 45 31.5">
@@ -70,7 +62,6 @@
 					</div>
 				</a>
 			</li>
-
 			<li class="{{ 'classement' in route ? 'active' }}">
 				<a href="/classement/championnat/{{ idteam }}">
 					<div class="li-wrapper">
@@ -96,7 +87,6 @@
 				</a>
 			</li>
 		</ul>
-
 		<div class="side-menu">
 			<h3>{{ app.user.finances.name }}</h3>
 			<div class="user-info">
@@ -123,6 +113,5 @@
 				<a href="/logout">Se déconnecter</a>
 			</div>
 		</div>
-
 	</div>
 </div>

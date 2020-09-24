@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sélectionnez une équipe
-{% endblock %}
+{% block title %}Sélectionnez une équipe{% endblock %}
 
 {% block body %}
 
@@ -17,7 +16,6 @@
 			<div class="team-card">
 				<div class="card-header">
 					<p class="team-cat">{{ team.category }}</p>
-
 				</div>
 				<div class="card-body">
 					<img src="{{ asset('/img/picture/' ~ team.picture) | imagine_filter('TeamImage') }}" />
@@ -52,17 +50,11 @@
 
 		{% endfor %}
 	</div>
-<a class="add-team-btn pointer" data-toggle="modal" data-target="#addTeam">+</a>
-
-<a class="add-team-btn pointer btn-msg align-self-end" data-toggle="modal" data-target="#messagesModal" href="">Chat</a>
-
-
+	<a class="add-team-btn pointer" data-toggle="modal" data-target="#addTeam">+</a>
+	<a class="add-team-btn pointer btn-msg align-self-end" data-toggle="modal" data-target="#messagesModal" href="">Chat</a>
 </div>
 
-
-
 {% include 'team_form/index.html.twig' with {'form': form} %}
-
 
 {% endif %}
 {% endblock %}

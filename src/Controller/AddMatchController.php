@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use DateTime;
 use App\Entity\Team;
 use App\Entity\User;
@@ -37,41 +38,28 @@ class AddMatchController extends AbstractController
                     ->find($id);
         $userTeams = $connectedUser->getCoaches();
 
-        
-
         $form = $this->createForm(AddMatchFormType::class, $match,[
             'teams' => $userTeams,
-            // 'filsdepute' => $userConnect->getUsername()
-            // 'userId' => $this->getUser()->getId()
         ]);
 
-
         $form->handleRequest($request);
-       
+
         if ($form->isSubmitted()) {
-           
+
             $task=$form->get('domicile');
-           
+
             $data=$task->getViewData();
-            
-           
-          
-           
-            // if ($form->isSubmitted() && $form->isValid()) {
-            // if ($form->isSubmitted()) {
-            //     // $form->getData() holds the submitted values
-            //     // but, the original `$task` variable has also been updated
+
+                // $form->getData() holds the submitted values
+                // but, the original `$task` variable has also been updated
                 $task = $form->getData();
-        
                 // ... perform some action, such as saving the task to the database
                 // for example, if Task is a Doctrine entity, save it!
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($match);
                 $entityManager->flush();
         
-            //     // return $this->redirectToRoute('task_success');
-            
-            
+             // return $this->redirectToRoute('task_success');
             
             if($data==1){
                 $localTeam= $user->find($connectedUser)->getFinances()->getName();
@@ -89,24 +77,15 @@ class AddMatchController extends AbstractController
             $entityManager->flush();
             
             $match->addTeam( $this->getDoctrine()->getRepository(Team::class)->find($id_team) );
-            // ->find($form->get('teams')->getViewData()[0]));
-            
-           
 
             $teams->find($id_team)->addPlayMatch($match);
             
-           
-        
             $entityManager->persist($match);
             $entityManager->flush();
             
-            
-            
             // return $this->redirectToRoute('match_calendar',['id_team'=>$user->find($connectedUser)->getFinances()->getId()]);
         
-
         }
-
 
         return $this->render('add_match/index.html.twig', [
             'controller_name' => 'AddMatchController',
@@ -115,6 +94,3 @@ class AddMatchController extends AbstractController
         ]);
     }
 }
-
-        
-

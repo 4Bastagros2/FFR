@@ -15,8 +15,6 @@ class ShowTeamController extends AbstractController
     public function index(TeamRepository $team, UserRepository $user)
     {   
 
-
-       
         $userConnect = $this->getUser();
         
         $team = $user->find($userConnect)->getCoaches();

@@ -20,24 +20,12 @@ class StatJoueurController extends AbstractController
     public function update(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_match, $id_player, FlashyNotifier $flashy)
     {
 
-
-
-
-
-
-
-
-        
         return new Response();
     }
-
 
     /**
      * @Route("/stat/joueur/{id_match}/{id_player}", name="stat_joueur", defaults={"id_match"=-1, "id_player"=-1})
      */
-
-
-
 
     public function index(Request $request, TeamRepository $teamrepo, PlayerRepository $playerrepo, $id_match, $id_player, FlashyNotifier $flashy)
     {
@@ -45,51 +33,17 @@ class StatJoueurController extends AbstractController
 
         $player = $playerrepo->find($id_player);
         $player->setCurrentMatch($id_match);
-    
-    
-        // $form = $this->createForm(PlayerFormType::class, $playerForm);
         $form = $this->createForm(PlayerMatchStatsType::class, $player);
-    
-
-// < Submit form action
-
-
-
         $form->handleRequest($request);
-        // if ($form->isSubmitted() && $form->isValid()) {
+
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            // $task1 = $form->get('picture')->getData();
-
-            // $player->addIsPost($form->get('is_post')->getViewData());
-            
-            // dump($request);
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();
-            // $flashy->success('Stats joueurs modifiées');
 
-
-            // ... persist the $product variable or any other work
-            // return new Response();
-            // return "nique";
             return $this->redirect($this->generateUrl('match_composition', ['id_match' => $id_match  ]));
         }
 
-
-
-
-
-
-// Submit form action >
-
-
-
-
-
-    
         return $this->render('stat_joueur/stat_joueur.html.twig', [
             'controller_name' => 'StatJoueurController',
             'form' => $form->createView(),
@@ -97,10 +51,4 @@ class StatJoueurController extends AbstractController
             'id_player' => $id_player,
         ]);
     }
-
-
-
-
-
-
 }

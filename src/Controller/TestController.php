@@ -15,7 +15,6 @@ class TestController extends AbstractController
     {
 
         $player = new Player();
-
         $player->setEssais(139, 0);
         $player->setTransformations(139, 0);
         $player->setPenalites(139, 0);
@@ -23,10 +22,7 @@ class TestController extends AbstractController
         $player->setRouges(139, 0);
         $player->setJaunes(139, 0);
         $player->setTemps(139, 0);
-
-        dump($player->getStats());
-
-
+        
         
         return $this->render('test/index.html.twig', [
             'controller_name' => 'TestController',

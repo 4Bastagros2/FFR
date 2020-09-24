@@ -22,43 +22,22 @@ class PlayerFormController extends AbstractController
     public function index(PlayerRepository $PlayerRepo, Request $request, $id, SluggerInterface $slugger, FlashyNotifier $flashy)
     {
 
-
         if($id == -1)
         {
             $player = new Player();
         } else {
             $player = $PlayerRepo->find($id);
         }
-        // ...
 
-
-        // $form = $this->createForm(PlayerFormType::class, $playerForm);
         $form = $this->createForm(PlayerFormType::class, $player);
-
-
-
         $form->handleRequest($request);
-        // if ($form->isSubmitted() && $form->isValid()) {
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
             $task = $form['picture']->getData();
-            // $task1 = $form->get('picture')->getData();
 
-            // $player->addIsPost($form->get('is_post')->getViewData());
-            
-    
             if ($task) {
                 $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
                 $safeFilename = "player".$id;
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
-
-
-
-
-
-
 
                 try {
                     $task->move(
@@ -66,33 +45,19 @@ class PlayerFormController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $player->setPicture($newFilename);
-
-
-                            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($player);
-            $entityManager->flush();
-            $flashy->success('Ajout réussi !');
 
             }
 
-            // ... persist the $product variable or any other work
+            $player->setPicture($newFilename);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($player);
+            $entityManager->flush();
+
+            }
 
             return $this->redirect($this->generateUrl('player_form'));
         }
-
-
-            // return $this->redirectToRoute('task_success');
-        
-
-            $flashy->success('Ajout réussi !');
+            
         return $this->render('player_form/index.html.twig', [
             'controller_name' => 'PlayerFormController',
             'form' => $form->createView(),

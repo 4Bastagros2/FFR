@@ -22,56 +22,19 @@ class MatchCompositionController extends AbstractController
         $date=$matchRep->find($id_match)->getDate()->format('Y-m-d H:i:s');
         $today=date('Y-m-d H:i:s');
         ;
-        // dump($date);
-        // dump($today);
         if($today>$date){
             $return = $this->redirectToRoute('stat_match',["id"=>$id_match]);
         }else{
+            $match=$matchRep->find($id_match);
+            $compo = $match->getComposition();
+            $team = $match->getTeams()[0];
+            $id_team = $team->getId();
+            $players = $team->getPlayers();
 
-        
-        
-
-
-        $match=$matchRep->find($id_match);
-
-        // if(date("Y-m-d H:i:s") > $match->getDate())
-        //     return $this->redirect($this->generateUrl('stats_match'));
-
-
-        $compo = $match->getComposition();
-
-        // dump($compo);
-
-        $team = $match->getTeams()[0];
-
-        $id_team = $team->getId();
-
-        $players = $team->getPlayers();
-
-
-        foreach($players as $p) {
-            $p->setCurrentMatch($id_match);
+            foreach($players as $p) {
+                $p->setCurrentMatch($id_match);
         }
 
-
-        // $bench = [];
-
-        // foreach ($players as $player)
-        // {
-        //         if(!in_array($player->getId(), $compo))
-        //         {
-        //             // dump('player in bench'.$player->getId());
-        //             $bench[] = $player;
-        //         }
-        // }
-
-        // dump($players);
-        // dump($bench);
-        // dump(json_encode($bench));
-        
-        // dump(json_encode($compo));
-        
-        // 'bench' => $bench,
         $return = $this->render('match_composition/index.html.twig', [
             'controller_name' => 'MatchCompositionController',
             'id_match' => $id_match,
@@ -83,6 +46,4 @@ class MatchCompositionController extends AbstractController
     }
     return $return;
 }
-
-
 }

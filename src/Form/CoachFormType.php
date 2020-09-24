@@ -16,15 +16,13 @@ class CoachFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+        
             ->add('email',TextType::class,['label'=>'Email du coach à ajouter'])
-            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
-        ;
+            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        // $resolver->setDefaults([
-        //     'data_class' => User::class,
-        // ]);
+
     }
 }

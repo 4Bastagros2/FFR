@@ -40,24 +40,12 @@ class ShowPlayersController extends AbstractController
         $form = $this->createForm(PlayerFormType::class, $player);
 
         $form->handleRequest($request);
-        // if ($form->isSubmitted() && $form->isValid()) {
+
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $this->addFlash('success', 'Ajouté avec succes !');
-
-
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
             $task = $form['picture']->getData();
-            // $task1 = $form->get('picture')->getData();
-
-            // $player->addIsPost($form->get('is_post')->getViewData());
             
-    
             if ($task) {
                 $originalFilename = pathinfo($task->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                // $safeFilename = "player".$id_player;
                 $safeFilename = "player";
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$task->guessExtension();
 
@@ -67,33 +55,22 @@ class ShowPlayersController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
                 }
 
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
                 $player->setPicture($newFilename);
+
             } else {
                 $player->setPicture("default_avatar.png");
             }
             $player->setStats([]);
-
-                            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
             $entityManager->flush();
-            
-
-            // ... persist the $product variable or any other work
 
             return $this->redirect($this->generateUrl('show_players', [
                 'id_team' => $id_team,
             ]));
         }
-
-
-
         
         return $this->render('show_players/index.html.twig', [
             'controller_name' => 'ShowPlayersController',

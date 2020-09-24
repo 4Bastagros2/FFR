@@ -18,48 +18,11 @@ class MatchStatsType extends AbstractType
     {
         
         $builder
+
             ->add('recScore',TextType::class,['label'=>'Équipe locale'])
             ->add('visiteurScore',TextType::class,['label'=>'Équipe Visiteur'])
-            // ->add('yellows',TextType::class,['label'=>'carton jaune'])
-            // ->add('essais',TextType::class,['label'=>'essais realisés'])
-            // ->add('transformations',TextType::class,['label'=>'transfo reussis'])
-            // ->add('penalites',TextType::class,['label'=>'penalités'])
-            // ->add('drops',TextType::class,['label'=>'drops effectués'])
-            // ->add('drops',TextType::class,['label'=>'drops effectués'])
-            // ->add('players', CollectionType::class, [
-            //     'label'        => 'Statistiques des joueurs',
-            //     // 'choise_label' => function($player){
-            //     //     return $player-> getLestName();
-            //     // },
-            //     'entry_type'   => PlayerMatchStatsType::class,
-            //     'entry_options' => [
-            //         'attr' => [
-            //             'class' => 'player', // we want to use 'tr.item' as collection elements' selector
-            //         ],
-            //     ],
-            //     'allow_add'    => false,
-            //     'allow_delete' => false,
-            //     'prototype'    => true,
-            //     'required'     => false,
-            //     'attr' => [
-            //         'class' => 'table player-collection',
-            //     ],
-                
-            //     ])
-                // 'by_reference' => true,
-                // 'delete_empty' => true,
             ->add('save', SubmitType::class, ['label' => 'Sauvegarder',
                 'attr' => ['class' => 'save btn-lg pointer'],
-
             ]);
-        ;
     }
-
-    // public function configureOptions(OptionsResolver $resolver)
-    // {
-    //     $resolver->setDefaults([
-    //         'data_class' => Match::class,
-    //         // 'data_class' => 'Fuz\AppBundle\Entity\Basic\InATable\DiscountCollection',
-    //     ]);
-    // }
 }

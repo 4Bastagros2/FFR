@@ -6,15 +6,12 @@
 
 {% include 'main_nav.html.twig' %}
 
-<div class="players-wrapper">
+    <div class="players-wrapper">
 
-    
-{% for team in team %}
+        {% for team in team %}
 
-    
-    <a href="/match/calendar/{{team.id}}">{{team.category}}</a>
+            <a href="/match/calendar/{{team.id}}">{{team.category}}</a>
 
-    
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
 {% endblock %}

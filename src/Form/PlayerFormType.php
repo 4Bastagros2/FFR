@@ -20,6 +20,7 @@ class PlayerFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('lest_name',TextType::class,['label'=>'Nom'])
             ->add('first_name',TextType::class,['label'=>'Prénom'])
             ->add('picture', FileType::class, array('data_class' => null,
@@ -28,35 +29,20 @@ class PlayerFormType extends AbstractType
                                                     ))
             ->add('birth_date',DateType::class,['label'=>'Date de naissance'])
             ->add('club_entry_date',DateType::class,['label'=>'Date d\'entrée au club'])
-            // ->add('stats',TextType::class,['label'=>'Les statistiques du joueur'])
             ->add('license_number',NumberType::class,['label'=>'N° de license'])
-            // ->add('play_in')
             ->add('is_post', EntityType::class, [
-                // looks for choices from this entity
                 'class' => Post::class,
                 'label'=>'Postes occupés',
-            
-                // uses the User.username property as the visible option string
                 'choice_label' => 'post',
-            
-                // used to render a select box, check boxes or radios
                 'multiple' => true,
-                'expanded' => true,
-            ])
+                'expanded' => true,])
             ->add('play_in', EntityType::class, [
-                // looks for choices from this entity
                 'class' => Team::class,
-            
-                // uses the User.username property as the visible option string
                 'choice_label' => 'category',
-            
-                // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => true,
-                'label'=>'Jouera en'
-            ])
-            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']])
-        ;
+                'label'=>'Jouera en'])
+            ->add('Submit', SubmitType::class, ['label' => '+ Ajouter', 'attr' => ['class' => 'btn-lg pointer']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -65,6 +51,4 @@ class PlayerFormType extends AbstractType
             'data_class' => Player::class,
         ]);
     }
-
-
 }
